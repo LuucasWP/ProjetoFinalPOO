@@ -9,4 +9,4 @@ levels até level 10
 atributos podem subir: aleatoriamente, conforme a classe, conforme a decisão do jogador *a decidir
 dificuldade pode ser um enum multiplicador dos parâmetros base
 código em português
-jogo em português
+jogo em português.
