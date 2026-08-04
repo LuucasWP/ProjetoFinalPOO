@@ -43,11 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControladorCombate.cs" />
+    <Compile Include="ControladorEncontro.cs" />
+    <Compile Include="ControladorNavegacao.cs" />
+    <Compile Include="ControladorTela.cs" />
+    <Compile Include="Encontro.cs" />
+    <Compile Include="Combatente.cs" />
+    <Compile Include="Enums\Afinidade.cs" />
+    <Compile Include="Enums\CategoriaHabilidade.cs" />
+    <Compile Include="Enums\Raridade.cs" />
+    <Compile Include="Enums\TipoEncontro.cs" />
+    <Compile Include="Habilidade.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Mapa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
