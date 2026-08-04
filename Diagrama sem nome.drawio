@@ -94,6 +94,21 @@
         <mxCell id="p-uD-GFI3tTD3CPN50ki-71" parent="p-uD-GFI3tTD3CPN50ki-67" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="-&amp;nbsp;" vertex="1">
           <mxGeometry height="26" width="185" y="104" as="geometry" />
         </mxCell>
+        <mxCell id="p-uD-GFI3tTD3CPN50ki-72" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="ControladorNavegacao" vertex="1">
+          <mxGeometry height="52" width="140" x="640" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="p-uD-GFI3tTD3CPN50ki-75" parent="p-uD-GFI3tTD3CPN50ki-72" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="26" width="140" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="p-uD-GFI3tTD3CPN50ki-76" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="ControladorEncontro" vertex="1">
+          <mxGeometry height="52" width="140" x="110" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="p-uD-GFI3tTD3CPN50ki-80" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="ControladorTela" vertex="1">
+          <mxGeometry height="52" width="140" x="80" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="p-uD-GFI3tTD3CPN50ki-84" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Habilidade" vertex="1">
+          <mxGeometry height="52" width="140" x="290" y="540" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
