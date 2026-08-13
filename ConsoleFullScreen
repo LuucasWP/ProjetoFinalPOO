@@ -1,0 +1,116 @@
+[DllImport("kernel32.dll", ExactSpelling = true)]
+private static extern IntPtr GetConsoleWindow();
+
+[DllImport("user32.dll")]
+private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
+
+[DllImport("user32.dll", SetLastError = true)]
+private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+[DllImport("user32.dll", SetLastError = true)]
+private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+[DllImport("user32.dll")]
+private static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+[DllImport("user32.dll")]
+private static extern int ShowCursor(bool bShow);
+
+private const int GWL_STYLE = -16;
+private const int WS_CAPTION = 0x00C00000;
+private const int WS_THICKFRAME = 0x00040000;
+private const int WS_MINIMIZEBOX = 0x00020000;
+private const int WS_MAXIMIZEBOX = 0x00010000;
+
+private const uint SWP_NOSIZE = 0x0001;
+private const uint SWP_NOMOVE = 0x0002;
+private const uint SWP_NOZORDER = 0x0004;
+private const uint SWP_FRAMECHANGED = 0x0020;
+
+private const int SW_MAXIMIZE = 3;
+static void Main(string[] args)
+{
+    IntPtr consolePtr = GetConsoleWindow();
+
+    if (consolePtr != IntPtr.Zero)
+    {
+        // 1. Remove title bar and window borders (True Full Screen/Borderless)
+        int style = GetWindowLong(consolePtr, GWL_STYLE);
+        style &= ~(WS_CAPTION | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX);
+        SetWindowLong(consolePtr, GWL_STYLE, style);
+
+        // 2. Resize to cover the entire primary screen resolution
+        int screenWidth = Console.LargestWindowWidth;
+        int screenHeight = Console.LargestWindowHeight;
+
+        // Set maximum buffer and window bounds
+        Console.SetWindowSize(screenWidth, screenHeight);
+        Console.SetBufferSize(screenWidth, screenHeight);
+
+        // Refresh frame changes to apply borderless style
+        SetWindowPos(consolePtr, IntPtr.Zero, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED);
+
+        // Maximize cleanly
+        ShowWindow(consolePtr, 3); // SW_MAXIMIZE = 3
+    }
+
+    // 3. Hide the blinking text console cursor
+    Console.CursorVisible = false;
+
+    // 4. Hide the physical mouse cursor pointer
+    // Note: ShowCursor uses an internal counter. If it doesn't vanish, call it in a loop or decrement appropriately.
+    ShowCursor(false);
+    Console.Write("O");
+
+    int x = Console.WindowWidth / 2;
+    int y = Console.WindowHeight / 2;
+
+    Console.Clear();
+    Console.SetCursorPosition(x, y);
+    Console.Write("O");
+
+    bool running = true;
+    while (running)
+    {
+        // Check if a key was pressed without freezing the loop
+        if (Console.KeyAvailable)
+        {
+            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+
+            // Clear the old position first (overwrite with a space)
+            Console.SetCursorPosition(x, y);
+            Console.Write(" ");
+
+            // Update coordinates based on key pressed
+            switch (keyInfo.Key)
+            {
+                case ConsoleKey.UpArrow:
+                    if (y > 0) y--;
+                    break;
+                case ConsoleKey.DownArrow:
+                    if (y < Console.WindowHeight - 1) y++;
+                    break;
+                case ConsoleKey.LeftArrow:
+                    if (x > 0) x--;
+                    break;
+                case ConsoleKey.RightArrow:
+                    if (x < Console.WindowWidth - 1) x++;
+                    break;
+                case ConsoleKey.Escape:
+                    running = false;
+                    break;
+            }
+
+            // Draw 'O' at the new position
+            Console.SetCursorPosition(x, y);
+            Console.Write("O");
+        }
+
+        // Small sleep to keep CPU usage low
+        Thread.Sleep(10);
+    }
+
+    // Restore mouse cursor visibility before exiting
+    ShowCursor(true);
+
+}
