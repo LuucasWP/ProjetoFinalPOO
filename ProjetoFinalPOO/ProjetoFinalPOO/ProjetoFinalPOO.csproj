@@ -55,7 +55,12 @@
     <Compile Include="Enums\TipoEncontro.cs" />
     <Compile Include="Habilidade.cs" />
     <Compile Include="Item.cs" />
-    <Compile Include="Mapa.cs" />
+    <Compile Include="Mapa\Mapa.cs" />
+    <Compile Include="Mapa_Jogo.cs" />
+    <Compile Include="Mapa\Aresta.cs" />
+    <Compile Include="Mapa\Grafo.cs" />
+    <Compile Include="Mapa\MapaRPGBuilder.cs" />
+    <Compile Include="Mapa\Vertice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
