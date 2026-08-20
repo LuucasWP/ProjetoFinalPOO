@@ -13,7 +13,7 @@ namespace ProjetoFinalPOO.Mapa
             this._encontros = new List<Encontro>();
         }
         
-        public Grafo novoMapa = new MapaRPGBuilder()
+        /*public Grafo novoMapa = new MapaRPGBuilder()
             .GerarInicio()
             .AdicionarGalaxia(1)
             .AdicionarGalaxia(2)
@@ -21,6 +21,6 @@ namespace ProjetoFinalPOO.Mapa
             .AdicionarGalaxia(4)
             .AdicionarGalaxia(5)
             .AdicionarGalaxia(6)
-            .Construir();
+            .Construir();*/
     }
 }

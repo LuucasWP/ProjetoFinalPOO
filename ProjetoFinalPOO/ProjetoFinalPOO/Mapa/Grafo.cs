@@ -6,9 +6,11 @@ namespace ProjetoFinalPOO.Mapa
     {
         public List<Vertice> Vertices { get; set; } = new List<Vertice>();
         
-        public void AdicionarVertice(string nome)
+        public Vertice AdicionarVertice(string nome)
         {
-            Vertices.Add(new Vertice(nome));
+            Vertice novoVertice = new Vertice(nome);
+            Vertices.Add(novoVertice);
+            return novoVertice;
         }
         public void AdicionarAresta(string origemNome, string destinoNome, int peso)
         {

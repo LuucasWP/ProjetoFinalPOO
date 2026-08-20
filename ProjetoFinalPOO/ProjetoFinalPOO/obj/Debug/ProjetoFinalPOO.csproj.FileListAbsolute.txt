@@ -5,3 +5,10 @@ C:\Users\Luuta\RiderProjects\Git\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO
 C:\Users\Luuta\RiderProjects\Git\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.csproj.CoreCompileInputs.cache
 C:\Users\Luuta\RiderProjects\Git\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.exe
 C:\Users\Luuta\RiderProjects\Git\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.pdb
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\bin\Debug\ProjetoFinalPOO.exe.config
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\bin\Debug\ProjetoFinalPOO.exe
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\bin\Debug\ProjetoFinalPOO.pdb
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.csproj.AssemblyReference.cache
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.csproj.CoreCompileInputs.cache
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.exe
+C:\Users\marco\RiderProjects\ProjetoFinalPOO\ProjetoFinalPOO\ProjetoFinalPOO\obj\Debug\ProjetoFinalPOO.pdb

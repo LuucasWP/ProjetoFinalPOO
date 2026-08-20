@@ -7,7 +7,8 @@ namespace ProjetoFinalPOO.Mapa
     {
         public string Nome { get; set; }
         public List<Aresta> Arestas { get; set; } = new List<Aresta>();
+        public Encontro Encontro { get; set; }
         public Vertice(string nome) => this.Nome = nome;
-        public Encontro _encontros { get; set; }
+        
     }
 }
