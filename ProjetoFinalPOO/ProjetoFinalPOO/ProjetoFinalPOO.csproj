@@ -47,8 +47,11 @@
     <Compile Include="ControladorEncontro.cs" />
     <Compile Include="ControladorNavegacao.cs" />
     <Compile Include="ControladorTela.cs" />
-    <Compile Include="Encontro.cs" />
     <Compile Include="Combatente.cs" />
+    <Compile Include="EncontroPlaneta\Encontro.cs" />
+    <Compile Include="EncontroPlaneta\EncontroBaseEspacial.cs" />
+    <Compile Include="EncontroPlaneta\EncontroBatalha.cs" />
+    <Compile Include="EncontroPlaneta\IEncontro.cs" />
     <Compile Include="Enums\Afinidade.cs" />
     <Compile Include="Enums\CategoriaHabilidade.cs" />
     <Compile Include="Enums\Raridade.cs" />
