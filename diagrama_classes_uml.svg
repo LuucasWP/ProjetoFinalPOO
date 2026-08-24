@@ -1,0 +1,1532 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4400 3200" width="4400" height="3200" style="background-color: #0b1329; font-family: 'DejaVu Sans', 'Liberation Sans', Arial, sans-serif;">
+    <defs>
+        <!-- Filtros de Sombra Suave -->
+        <filter id="card-shadow" x="-5%" y="-5%" width="115%" height="115%">
+            <feDropShadow dx="3" dy="6" stdDeviation="7" flood-color="#000000" flood-opacity="0.6"/>
+        </filter>
+        <filter id="pkg-shadow" x="-2%" y="-2%" width="105%" height="105%">
+            <feDropShadow dx="3" dy="5" stdDeviation="10" flood-color="#000000" flood-opacity="0.7"/>
+        </filter>
+        
+        <!-- Marcadores UML 2.0 -->
+        <marker id="inheritance" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+            <polygon points="1,1 13,7 1,13" fill="#f8fafc" stroke="#38bdf8" stroke-width="2"/>
+        </marker>
+        
+        <marker id="realization" markerWidth="14" markerHeight="14" refX="13" refY="7" orient="auto">
+            <polygon points="1,1 13,7 1,13" fill="#0b1329" stroke="#a855f7" stroke-width="2"/>
+        </marker>
+        
+        <marker id="composition" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+            <polygon points="1,6 8,1 15,6 8,11" fill="#38bdf8" stroke="#38bdf8" stroke-width="1.5"/>
+        </marker>
+        
+        <marker id="aggregation" markerWidth="16" markerHeight="12" refX="1" refY="6" orient="auto">
+            <polygon points="1,6 8,1 15,6 8,11" fill="#0b1329" stroke="#38bdf8" stroke-width="2"/>
+        </marker>
+        
+        <marker id="association" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <polyline points="2,2 10,6 2,10" fill="none" stroke="#94a3b8" stroke-width="2"/>
+        </marker>
+    </defs>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#172554" stroke-width="0.75" opacity="0.6"/>
+    </pattern>
+    <rect width="4400" height="3200" fill="url(#grid)" />
+
+    <!-- Cabeçalho Principal -->
+    <rect x="50" y="30" width="4300" height="90" rx="14" fill="#1e293b" stroke="#334155" stroke-width="2" filter="url(#pkg-shadow)"/>
+    <text x="80" y="72" fill="#38bdf8" font-size="28" font-weight="bold" letter-spacing="1">MERCENÁRIOS DO ÉTER // DIAGRAMA DE CLASSES UML (PADRÃO FORMAL OO)</text>
+    <text x="80" y="100" fill="#94a3b8" font-size="16">Projeto Final de Programação Orientada a Objetos • Arquitetura em Camadas, Padrões GoF (State, Strategy, Builder, Singleton, Factory, Observer) &amp; Motor 3D</text>
+    <text x="4000" y="80" fill="#cbd5e1" font-size="15" font-weight="bold">VERSÃO 2.0 • .NET 10</text>
+
+        <!-- Pacote: PACOTE: Combatentes (Tripulação &amp; Inimigos) -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="60" y="150" width="1330" height="890" rx="14" fill="#0c1a30" stroke="#3b82f6" stroke-width="2" opacity="0.96"/>
+            <path d="M 60 192 L 1390 192" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="78" y="136" width="513" height="28" rx="6" fill="#3b82f6"/>
+            <text x="88" y="155" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Combatentes (Tripulação &amp; Inimigos)</text>
+            <text x="84" y="182" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Combatentes • Hierarquia Polimórfica, Modificadores &amp; Singletons</text>
+        </g>
+        
+        <!-- Classe: Combatente -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="200" width="520" height="480" rx="8" fill="#0c1527" stroke="#3b82f6" stroke-width="2"/>
+            <rect x="80" y="200" width="520" height="46" rx="8" fill="#1e3a8a"/>
+            <rect x="80" y="238" width="520" height="8" fill="#1e3a8a"/>
+        
+<text x="340.0" y="216" fill="#93c5fd" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;abstract&gt;&gt;</text>
+<text x="340.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Combatente</text>
+<line x1="80" y1="246" x2="600" y2="246" stroke="#3b82f6" stroke-width="1.5"/>
+<text x="90" y="263" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="263" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_contadorID: int {static}</text>
+<text x="90" y="281" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="281" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Id: int {readOnly}</text>
+<text x="90" y="299" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="299" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_nome: string</text>
+<text x="90" y="317" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="317" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_level: int</text>
+<text x="90" y="335" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="335" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_exp: int</text>
+<text x="90" y="353" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="353" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_vidaTotal: int</text>
+<text x="90" y="371" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="371" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_vidaAtual: int</text>
+<text x="90" y="389" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="389" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_defesa: int</text>
+<text x="90" y="407" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="407" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_agilidade: int</text>
+<text x="90" y="425" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="425" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_afinidade: AfinidadeDefesa</text>
+<text x="90" y="443" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="443" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_habilidades: List&lt;Habilidade&gt;</text>
+<text x="90" y="461" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="461" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_habilidadesDisponiveis: List&lt;Habilidade&gt;</text>
+<text x="90" y="479" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="479" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_estaDefendendo: bool</text>
+<text x="90" y="497" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="497" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string =&gt; _nome</text>
+<text x="90" y="515" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="515" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Level: int =&gt; _level</text>
+<text x="90" y="533" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="533" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VidaTotal: int</text>
+<text x="90" y="551" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="551" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VidaAtual: int</text>
+<text x="90" y="569" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="569" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Defesa: int</text>
+<text x="90" y="587" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="587" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Agilidade: int</text>
+<text x="90" y="605" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="605" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Afinidade: AfinidadeDefesa</text>
+<text x="90" y="623" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="623" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">EstaMorto: bool =&gt; VidaAtual == 0</text>
+<text x="90" y="641" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="641" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">estaDefendo: bool =&gt; _estaDefendendo</text>
+<line x1="80" y1="663" x2="600" y2="663" stroke="#3b82f6" stroke-width="1"/>
+<text x="90" y="680" fill="#facc15" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">#</text>
+<text x="104" y="680" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Combatente()</text>
+<text x="90" y="698" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="698" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdcionarHabilidade(List&lt;Habilidade&gt;): void</text>
+<text x="90" y="716" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="716" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdcionarHabilidadesDisponiveis(List&lt;Habilidade&gt;): void</text>
+<text x="90" y="734" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="734" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >SubstituirHabilidade(Habilidade, Habilidade): bool</text>
+<text x="90" y="752" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="752" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CalcularPoderBase(Habilidade): int {virtual}</text>
+<text x="90" y="770" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="770" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RemoverMoeda(Habilidade): void</text>
+<text x="90" y="788" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="788" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ReceberDano(int): void {virtual}</text>
+<text x="90" y="806" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="806" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Defender(): void {virtual}</text>
+<text x="90" y="824" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="824" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" font-style="italic">AlterarModificador(int): void {abstract}</text>
+</g>
+        <!-- Classe: AfinidadeDefesa -->
+        <g filter="url(#card-shadow)">
+            <rect x="620" y="200" width="230" height="130" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="620" y="200" width="230" height="46" rx="8" fill="#713f12"/>
+            <rect x="620" y="238" width="230" height="8" fill="#713f12"/>
+        
+<text x="735.0" y="216" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="735.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">AfinidadeDefesa</text>
+<line x1="620" y1="246" x2="850" y2="246" stroke="#eab308" stroke-width="1.5"/>
+<text x="634" y="263" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Armadurado = 1</text>
+<text x="634" y="281" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Mecanico = 2</text>
+<text x="634" y="299" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Biologico = 3</text>
+<line x1="620" y1="321" x2="850" y2="321" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Classe: InimigoTeste -->
+        <g filter="url(#card-shadow)">
+            <rect x="870" y="200" width="500" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="870" y="200" width="500" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="870" y="238" width="500" height="8" fill="#0f3a5d"/>
+        
+<text x="1120.0" y="216" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1120.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">InimigoTeste</text>
+<line x1="870" y1="246" x2="1370" y2="246" stroke="#0284c7" stroke-width="1.5"/>
+<text x="880" y="263" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="263" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="880" y="281" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="281" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VidaTotal: 100</text>
+<text x="880" y="299" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="299" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Defesa: 10</text>
+<text x="880" y="317" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="317" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Agilidade: 50</text>
+<text x="880" y="335" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="335" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Afinidade: Armadurado</text>
+<line x1="870" y1="357" x2="1370" y2="357" stroke="#0284c7" stroke-width="1"/>
+<text x="880" y="374" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="374" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >InimigoTeste(string nome)</text>
+<text x="880" y="392" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="894" y="392" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarModificador(int): void {override}</text>
+</g>
+        <!-- Classe: Sentinela -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="710" width="400" height="260" rx="8" fill="#0c1527" stroke="#10b981" stroke-width="2"/>
+            <rect x="80" y="710" width="400" height="46" rx="8" fill="#064e3b"/>
+            <rect x="80" y="748" width="400" height="8" fill="#064e3b"/>
+        
+<text x="280.0" y="726" fill="#6ee7b7" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;singleton&gt;&gt;</text>
+<text x="280.0" y="745" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Sentinela</text>
+<line x1="80" y1="756" x2="480" y2="756" stroke="#10b981" stroke-width="1.5"/>
+<text x="90" y="773" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="773" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_instancia: Sentinela {static}</text>
+<text x="90" y="791" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="791" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_adrenalina: int</text>
+<text x="90" y="809" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="809" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Adrenalina: int {get, set &lt;= 45}</text>
+<line x1="80" y1="831" x2="480" y2="831" stroke="#10b981" stroke-width="1"/>
+<text x="90" y="848" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="848" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Sentinela()</text>
+<text x="90" y="866" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="866" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Instancia(): Sentinela {static}</text>
+<text x="90" y="884" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="884" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CalcularPoderBase(Habilidade): int {override}</text>
+<text x="90" y="902" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="902" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarModificador(int): void {override}</text>
+<text x="90" y="920" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="920" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ReceberDano(int): void {override}</text>
+<text x="90" y="938" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="104" y="938" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Defender(): void {override}</text>
+</g>
+        <!-- Classe: Engenheiro -->
+        <g filter="url(#card-shadow)">
+            <rect x="510" y="710" width="420" height="260" rx="8" fill="#0c1527" stroke="#10b981" stroke-width="2"/>
+            <rect x="510" y="710" width="420" height="46" rx="8" fill="#064e3b"/>
+            <rect x="510" y="748" width="420" height="8" fill="#064e3b"/>
+        
+<text x="720.0" y="726" fill="#6ee7b7" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;singleton&gt;&gt;</text>
+<text x="720.0" y="745" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Engenheiro</text>
+<line x1="510" y1="756" x2="930" y2="756" stroke="#10b981" stroke-width="1.5"/>
+<text x="520" y="773" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="534" y="773" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_instancia: Engenheiro {static}</text>
+<text x="520" y="791" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="534" y="791" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_sobreaquecimento: int</text>
+<text x="520" y="809" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="534" y="809" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Sobreaquecimento: int {get, set &lt;= 45}</text>
+<line x1="510" y1="831" x2="930" y2="831" stroke="#10b981" stroke-width="1"/>
+<text x="520" y="848" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="534" y="848" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Engenheiro()</text>
+<text x="520" y="866" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="534" y="866" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Instancia(): Engenheiro {static}</text>
+<text x="520" y="884" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="534" y="884" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CalcularPoderBase(Habilidade): int {override}</text>
+<text x="520" y="902" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="534" y="902" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarModificador(int): void {override}</text>
+<text x="520" y="920" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="534" y="920" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Defender(): void {override}</text>
+</g>
+        <!-- Classe: Biomancer -->
+        <g filter="url(#card-shadow)">
+            <rect x="950" y="710" width="420" height="260" rx="8" fill="#0c1527" stroke="#10b981" stroke-width="2"/>
+            <rect x="950" y="710" width="420" height="46" rx="8" fill="#064e3b"/>
+            <rect x="950" y="748" width="420" height="8" fill="#064e3b"/>
+        
+<text x="1160.0" y="726" fill="#6ee7b7" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;singleton&gt;&gt;</text>
+<text x="1160.0" y="745" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Biomancer</text>
+<line x1="950" y1="756" x2="1370" y2="756" stroke="#10b981" stroke-width="1.5"/>
+<text x="960" y="773" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="974" y="773" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_instancia: Biomancer {static}</text>
+<text x="960" y="791" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="974" y="791" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_mana: int</text>
+<text x="960" y="809" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="974" y="809" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Mana: int {get, set &lt;= 45}</text>
+<line x1="950" y1="831" x2="1370" y2="831" stroke="#10b981" stroke-width="1"/>
+<text x="960" y="848" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="974" y="848" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Biomancer()</text>
+<text x="960" y="866" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="974" y="866" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Instancia(): Biomancer {static}</text>
+<text x="960" y="884" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="974" y="884" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CalcularPoderBase(Habilidade): int {override}</text>
+<text x="960" y="902" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="974" y="902" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarModificador(int): void {override}</text>
+<text x="960" y="920" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="974" y="920" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Defender(): void {override}</text>
+</g>
+        <!-- Pacote: PACOTE: Combate &amp; Habilidades (Clash Engine) -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="1420" y="150" width="1420" height="890" rx="14" fill="#0a192f" stroke="#0284c7" stroke-width="2" opacity="0.96"/>
+            <path d="M 1420 192 L 2840 192" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="1438" y="136" width="524" height="28" rx="6" fill="#0284c7"/>
+            <text x="1448" y="155" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Combate &amp; Habilidades (Clash Engine)</text>
+            <text x="1444" y="182" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO • Resolução de Turnos, Moedas, Embates &amp; Slots</text>
+        </g>
+        
+        <!-- Classe: Habilidade -->
+        <g filter="url(#card-shadow)">
+            <rect x="1440" y="200" width="440" height="390" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1440" y="200" width="440" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1440" y="238" width="440" height="8" fill="#0f3a5d"/>
+        
+<text x="1660.0" y="216" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1660.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Habilidade</text>
+<line x1="1440" y1="246" x2="1880" y2="246" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1450" y="263" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="263" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_contadorID: int {static}</text>
+<text x="1450" y="281" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="281" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Id: int {get}</text>
+<text x="1450" y="299" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="299" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_nome: string</text>
+<text x="1450" y="317" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="317" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_descricao: string</text>
+<text x="1450" y="335" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="335" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_categoria: CategoriaHabilidade</text>
+<text x="1450" y="353" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="353" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_modificador: int</text>
+<text x="1450" y="371" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="371" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_afinidade: AfinidadeAtaque</text>
+<text x="1450" y="389" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="389" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_poderBase: int</text>
+<text x="1450" y="407" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="407" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_moeda: int</text>
+<text x="1450" y="425" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="425" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_poderAdiconalMoeda: int</text>
+<text x="1450" y="443" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="443" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="1450" y="461" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="461" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Descricao: string</text>
+<text x="1450" y="479" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="479" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Categoria: CategoriaHabilidade</text>
+<text x="1450" y="497" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="497" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Modificador: int</text>
+<text x="1450" y="515" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="515" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Afinidade: AfinidadeAtaque</text>
+<text x="1450" y="533" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="533" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">PoderBase: int</text>
+<text x="1450" y="551" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="551" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Moeda: int</text>
+<text x="1450" y="569" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="569" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">PoderAdicionalMoeda: int</text>
+<line x1="1440" y1="591" x2="1880" y2="591" stroke="#0284c7" stroke-width="1"/>
+<text x="1450" y="608" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="608" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Habilidade(nome, desc, cat, mod, af, p, m, pam)</text>
+<text x="1450" y="626" fill="#38bdf8" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">~</text>
+<text x="1464" y="626" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RemoverMoeda(): void</text>
+</g>
+        <!-- Classe: CategoriaHabilidade -->
+        <g filter="url(#card-shadow)">
+            <rect x="1900" y="200" width="240" height="130" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="1900" y="200" width="240" height="46" rx="8" fill="#713f12"/>
+            <rect x="1900" y="238" width="240" height="8" fill="#713f12"/>
+        
+<text x="2020.0" y="216" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="2020.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">CategoriaHabilidade</text>
+<line x1="1900" y1="246" x2="2140" y2="246" stroke="#eab308" stroke-width="1.5"/>
+<text x="1914" y="263" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Basica = 1</text>
+<text x="1914" y="281" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Avancada = 2</text>
+<text x="1914" y="299" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Especialista = 3</text>
+<line x1="1900" y1="321" x2="2140" y2="321" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Classe: AfinidadeAtaque -->
+        <g filter="url(#card-shadow)">
+            <rect x="1900" y="350" width="240" height="130" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="1900" y="350" width="240" height="46" rx="8" fill="#713f12"/>
+            <rect x="1900" y="388" width="240" height="8" fill="#713f12"/>
+        
+<text x="2020.0" y="366" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="2020.0" y="385" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">AfinidadeAtaque</text>
+<line x1="1900" y1="396" x2="2140" y2="396" stroke="#eab308" stroke-width="1.5"/>
+<text x="1914" y="413" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Acido = 1</text>
+<text x="1914" y="431" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Eletrico = 2</text>
+<text x="1914" y="449" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Fogo = 3</text>
+<line x1="1900" y1="471" x2="2140" y2="471" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Classe: ControladorCombate -->
+        <g filter="url(#card-shadow)">
+            <rect x="2160" y="200" width="660" height="480" rx="8" fill="#0c1527" stroke="#10b981" stroke-width="2"/>
+            <rect x="2160" y="200" width="660" height="46" rx="8" fill="#064e3b"/>
+            <rect x="2160" y="238" width="660" height="8" fill="#064e3b"/>
+        
+<text x="2490.0" y="216" fill="#6ee7b7" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;singleton&gt;&gt;</text>
+<text x="2490.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ControladorCombate</text>
+<line x1="2160" y1="246" x2="2820" y2="246" stroke="#10b981" stroke-width="1.5"/>
+<text x="2170" y="263" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="263" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_instancia: ControladorCombate {static}</text>
+<text x="2170" y="281" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="281" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_combatentesAliados: List&lt;Combatente&gt;</text>
+<text x="2170" y="299" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="299" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_combatentesInimigos: List&lt;Combatente&gt;</text>
+<text x="2170" y="317" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="317" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_rodada: int</text>
+<text x="2170" y="335" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="335" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_ordem: List&lt;Combatente&gt;</text>
+<text x="2170" y="353" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="353" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_intencaoAtaqueInimigos: Dictionary&lt;Combatente, Habilidade&gt;</text>
+<text x="2170" y="371" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="371" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">CombatentesAliados: List&lt;Combatente&gt;</text>
+<text x="2170" y="389" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="389" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">CombatentesInimigos: List&lt;Combatente&gt;</text>
+<text x="2170" y="407" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="407" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Ordem: List&lt;Combatente&gt;</text>
+<text x="2170" y="425" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="425" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Rodada: int</text>
+<text x="2170" y="443" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="443" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">IntencaoAtaqueInimigos: Dictionary&lt;Combatente, Habilidade&gt;</text>
+<line x1="2160" y1="465" x2="2820" y2="465" stroke="#10b981" stroke-width="1"/>
+<text x="2170" y="482" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="482" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ControladorCombate()</text>
+<text x="2170" y="500" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="500" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Instancia(): ControladorCombate {static}</text>
+<text x="2170" y="518" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="518" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >IniciarCombate(List&lt;Combatente&gt;): void</text>
+<text x="2170" y="536" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="536" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >IniciarRodada(): void</text>
+<text x="2170" y="554" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="554" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AcaoProximoCombatente(): (Combatente, bool)</text>
+<text x="2170" y="572" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="572" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RealizarEmbate(Combatente, Combatente, Habilidade): Combatente</text>
+<text x="2170" y="590" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="590" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Atacar(Combatente, Combatente, Habilidade): int</text>
+<text x="2170" y="608" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="608" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >InimigoAtacaSemOposicao(Combatente): int</text>
+<text x="2170" y="626" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="626" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >VerificarFimDeRodada(): bool</text>
+<text x="2170" y="644" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="644" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >VerificarAlvoNaoAtacouRodada(Combatente): bool</text>
+<text x="2170" y="662" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2184" y="662" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >VerificarFimDeCombate(): bool</text>
+<text x="2170" y="680" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="680" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >OrdernarOrdemCombatentes(): void</text>
+<text x="2170" y="698" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="698" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarIntencaoAtaqueInimigos(): void</text>
+<text x="2170" y="716" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2184" y="716" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >MultiplicadorAfinidade(AfinidadeDefesa, AfinidadeAtaque): decimal</text>
+</g>
+        <!-- Classe: Slot -->
+        <g filter="url(#card-shadow)">
+            <rect x="1440" y="690" width="460" height="280" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1440" y="690" width="460" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1440" y="728" width="460" height="8" fill="#0f3a5d"/>
+        
+<text x="1670.0" y="706" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1670.0" y="725" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Slot</text>
+<line x1="1440" y1="736" x2="1900" y2="736" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1450" y="753" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="753" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_numeroSlot: int</text>
+<text x="1450" y="771" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="771" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_combatente: Combatente</text>
+<text x="1450" y="789" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="789" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_habilidadePlanejada: Habilidade</text>
+<text x="1450" y="807" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="807" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_alvoPlanejadoSlot: int</text>
+<text x="1450" y="825" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="825" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_defendendo: bool</text>
+<text x="1450" y="843" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="843" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_jaAtacouNestaRodada: bool</text>
+<text x="1450" y="861" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="861" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">NumeroSlot: int</text>
+<text x="1450" y="879" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="879" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Combatente: Combatente</text>
+<text x="1450" y="897" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="897" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">HabilidadePlanejada: Habilidade</text>
+<text x="1450" y="915" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="915" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AlvoPlanejadoSlot: int</text>
+<text x="1450" y="933" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="933" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Defendendo: bool</text>
+<text x="1450" y="951" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="951" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">JaAtacouNestaRodada: bool</text>
+<line x1="1440" y1="973" x2="1900" y2="973" stroke="#0284c7" stroke-width="1"/>
+<text x="1450" y="990" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="990" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Slot(int numeroSlot, Combatente c)</text>
+<text x="1450" y="1008" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="1008" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ResetarTurno(): void</text>
+<text x="1450" y="1026" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="1026" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ToString(): string</text>
+</g>
+        <!-- Classe: ResultadoEmbate -->
+        <g filter="url(#card-shadow)">
+            <rect x="1930" y="690" width="520" height="310" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1930" y="690" width="520" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1930" y="728" width="520" height="8" fill="#0f3a5d"/>
+        
+<text x="2190.0" y="706" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="2190.0" y="725" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ResultadoEmbate</text>
+<line x1="1930" y1="736" x2="2450" y2="736" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1940" y="753" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="753" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Atacante: Combatente</text>
+<text x="1940" y="771" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="771" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Defensor: Combatente</text>
+<text x="1940" y="789" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="789" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">HabilidadeAtacante: Habilidade</text>
+<text x="1940" y="807" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="807" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">HabilidadeDefensor: Habilidade</text>
+<text x="1940" y="825" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="825" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">MoedasAtacante: List&lt;bool&gt;</text>
+<text x="1940" y="843" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="843" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">MoedasDefensor: List&lt;bool&gt;</text>
+<text x="1940" y="861" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="861" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">PoderFinalAtacante: int</text>
+<text x="1940" y="879" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="879" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">PoderFinalDefensor: int</text>
+<text x="1940" y="897" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="897" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VitoriaAtacanteNoEmbate: bool</text>
+<text x="1940" y="915" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="915" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">EhAtaqueUnilateral: bool</text>
+<text x="1940" y="933" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="933" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">MultiplicadorAfinidade: double</text>
+<text x="1940" y="951" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="951" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">DanoCausado: int</text>
+<text x="1940" y="969" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="969" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">MensagemLog: string</text>
+<text x="1940" y="987" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="987" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AtacanteEhAliado: bool</text>
+<text x="1940" y="1005" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="1005" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">EhDistancia: bool</text>
+<line x1="1930" y1="1027" x2="2450" y2="1027" stroke="#0284c7" stroke-width="1"/>
+<text x="1940" y="1044" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="1044" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ResultadoEmbate(...)</text>
+<text x="1940" y="1062" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1954" y="1062" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ToString(): string</text>
+</g>
+        <!-- Pacote: PACOTE: Itens &amp; Efeitos Táticos -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="2870" y="150" width="1470" height="890" rx="14" fill="#08201a" stroke="#10b981" stroke-width="2" opacity="0.96"/>
+            <path d="M 2870 192 L 4340 192" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="2888" y="136" width="381" height="28" rx="6" fill="#10b981"/>
+            <text x="2898" y="155" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Itens &amp; Efeitos Táticos</text>
+            <text x="2894" y="182" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Model • Interface IAplicavelEfeito &amp; Espólios</text>
+        </g>
+        
+        <!-- Classe: IAplicavelEfeito -->
+        <g filter="url(#card-shadow)">
+            <rect x="2900" y="200" width="560" height="150" rx="8" fill="#0c1527" stroke="#a855f7" stroke-width="2"/>
+            <rect x="2900" y="200" width="560" height="46" rx="8" fill="#581c87"/>
+            <rect x="2900" y="238" width="560" height="8" fill="#581c87"/>
+        
+<text x="3180.0" y="216" fill="#d8b4fe" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+<text x="3180.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">IAplicavelEfeito</text>
+<line x1="2900" y1="246" x2="3460" y2="246" stroke="#a855f7" stroke-width="1.5"/>
+<text x="2910" y="263" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="263" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string {get}</text>
+<text x="2910" y="281" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="281" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Descricao: string {get}</text>
+<line x1="2900" y1="303" x2="3460" y2="303" stroke="#a855f7" stroke-width="1"/>
+<text x="2910" y="320" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="320" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AplicarEfeito(Combatente u, Combatente a, List&lt;string&gt; logs): string</text>
+</g>
+        <!-- Classe: Item -->
+        <g filter="url(#card-shadow)">
+            <rect x="2900" y="370" width="560" height="320" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2900" y="370" width="560" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2900" y="408" width="560" height="8" fill="#0f3a5d"/>
+        
+<text x="3180.0" y="386" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3180.0" y="405" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Item</text>
+<line x1="2900" y1="416" x2="3460" y2="416" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2910" y="433" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="433" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_id: int</text>
+<text x="2910" y="451" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="451" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_nome: string</text>
+<text x="2910" y="469" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="469" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_descricao: string</text>
+<text x="2910" y="487" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="487" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_raridade: Raridade</text>
+<text x="2910" y="505" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="505" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_tipo: TipoItem</text>
+<text x="2910" y="523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2924" y="523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_valorEfeito: int</text>
+<text x="2910" y="541" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Id: int</text>
+<text x="2910" y="559" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="2910" y="577" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="577" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Descricao: string</text>
+<text x="2910" y="595" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="595" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Raridade: Raridade</text>
+<text x="2910" y="613" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="613" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Tipo: TipoItem</text>
+<text x="2910" y="631" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="631" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">ValorEfeito: int</text>
+<line x1="2900" y1="653" x2="3460" y2="653" stroke="#0284c7" stroke-width="1"/>
+<text x="2910" y="670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Item(id, nome, raridade, tipo, valor, desc)</text>
+<text x="2910" y="688" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="688" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AplicarEfeito(Combatente, Combatente, List&lt;string&gt;): string</text>
+<text x="2910" y="706" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="706" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Usar(Combatente usuario, Combatente alvo, List&lt;string&gt;): string</text>
+<text x="2910" y="724" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="724" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ToString(): string</text>
+</g>
+        <!-- Classe: TipoItem -->
+        <g filter="url(#card-shadow)">
+            <rect x="3490" y="200" width="260" height="230" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="3490" y="200" width="260" height="46" rx="8" fill="#713f12"/>
+            <rect x="3490" y="238" width="260" height="8" fill="#713f12"/>
+        
+<text x="3620.0" y="216" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="3620.0" y="235" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TipoItem</text>
+<line x1="3490" y1="246" x2="3750" y2="246" stroke="#eab308" stroke-width="1.5"/>
+<text x="3504" y="263" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">CuraVida</text>
+<text x="3504" y="281" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">RecuperaEnergia</text>
+<text x="3504" y="299" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">RestauraSanidade</text>
+<text x="3504" y="317" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">EscudoEmergencial</text>
+<text x="3504" y="335" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">GranadaFogo</text>
+<text x="3504" y="353" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">GranadaEletrica</text>
+<text x="3504" y="371" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">GranadaAcido</text>
+<line x1="3490" y1="393" x2="3750" y2="393" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Classe: Raridade -->
+        <g filter="url(#card-shadow)">
+            <rect x="3490" y="450" width="260" height="180" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="3490" y="450" width="260" height="46" rx="8" fill="#713f12"/>
+            <rect x="3490" y="488" width="260" height="8" fill="#713f12"/>
+        
+<text x="3620.0" y="466" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="3620.0" y="485" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Raridade</text>
+<line x1="3490" y1="496" x2="3750" y2="496" stroke="#eab308" stroke-width="1.5"/>
+<text x="3504" y="513" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Comum</text>
+<text x="3504" y="531" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Incomum</text>
+<text x="3504" y="549" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Raro</text>
+<text x="3504" y="567" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Epico</text>
+<text x="3504" y="585" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Lendario</text>
+<line x1="3490" y1="607" x2="3750" y2="607" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Classe: BancoItens -->
+        <g filter="url(#card-shadow)">
+            <rect x="2900" y="720" width="520" height="190" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2900" y="720" width="520" height="46" rx="8" fill="#1e293b"/>
+            <rect x="2900" y="758" width="520" height="8" fill="#1e293b"/>
+        
+<text x="3160.0" y="736" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="3160.0" y="755" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">BancoItens</text>
+<line x1="2900" y1="766" x2="3420" y2="766" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="2900" y1="787" x2="3420" y2="787" stroke="#0284c7" stroke-width="1"/>
+<text x="2910" y="804" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="804" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterTodosItens(): List&lt;Item&gt; {static}</text>
+<text x="2910" y="822" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="822" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >GerarEscolhaTresItens(Random): List&lt;Item&gt; {static}</text>
+<text x="2910" y="840" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2924" y="840" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterInventarioInicial(): List&lt;Item&gt; {static}</text>
+</g>
+        <!-- Classe: BancoHabilidades -->
+        <g filter="url(#card-shadow)">
+            <rect x="3440" y="720" width="480" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3440" y="720" width="480" height="46" rx="8" fill="#1e293b"/>
+            <rect x="3440" y="758" width="480" height="8" fill="#1e293b"/>
+        
+<text x="3680.0" y="736" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="3680.0" y="755" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">BancoHabilidades</text>
+<line x1="3440" y1="766" x2="3920" y2="766" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="3440" y1="787" x2="3920" y2="787" stroke="#0284c7" stroke-width="1"/>
+<text x="3450" y="804" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3464" y="804" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterHabilidadesSentinela(): List&lt;Habilidade&gt; {static}</text>
+<text x="3450" y="822" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3464" y="822" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterHabilidadesEngenheiro(): List&lt;Habilidade&gt; {static}</text>
+<text x="3450" y="840" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3464" y="840" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterHabilidadesBiomancer(): List&lt;Habilidade&gt; {static}</text>
+<text x="3450" y="858" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3464" y="858" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterHabilidadesInimigo(string): List&lt;Habilidade&gt; {static}</text>
+<text x="3450" y="876" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3464" y="876" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTripulacaoPadrao(): List&lt;Combatente&gt; {static}</text>
+</g>
+        <!-- Pacote: PACOTE: Mapa Estelar &amp; Encontros Planetários -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="60" y="1070" width="1550" height="940" rx="14" fill="#21160a" stroke="#d97706" stroke-width="2" opacity="0.96"/>
+            <path d="M 60 1112 L 1610 1112" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="78" y="1056" width="524" height="28" rx="6" fill="#d97706"/>
+            <text x="88" y="1075" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Mapa Estelar &amp; Encontros Planetários</text>
+            <text x="84" y="1102" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Mapa / EncontroPlaneta • Grafo 2D &amp; Strategy Pattern</text>
+        </g>
+        
+        <!-- Classe: Grafo -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="1120" width="460" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="80" y="1120" width="460" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="80" y="1158" width="460" height="8" fill="#0f3a5d"/>
+        
+<text x="310.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="310.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Grafo</text>
+<line x1="80" y1="1166" x2="540" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="90" y="1183" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Vertices: List&lt;Vertice&gt;</text>
+<line x1="80" y1="1205" x2="540" y2="1205" stroke="#0284c7" stroke-width="1"/>
+<text x="90" y="1222" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1222" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdicionarVertice(string nome): Vertice</text>
+<text x="90" y="1240" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1240" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdicionarAresta(string origem, string destino, int peso): void</text>
+</g>
+        <!-- Classe: Vertice -->
+        <g filter="url(#card-shadow)">
+            <rect x="570" y="1120" width="380" height="190" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="570" y="1120" width="380" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="570" y="1158" width="380" height="8" fill="#0f3a5d"/>
+        
+<text x="760.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="760.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Vertice</text>
+<line x1="570" y1="1166" x2="950" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="580" y="1183" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="580" y="1201" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1201" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Arestas: List&lt;Aresta&gt;</text>
+<text x="580" y="1219" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1219" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Encontro: Encontro</text>
+<line x1="570" y1="1241" x2="950" y2="1241" stroke="#0284c7" stroke-width="1"/>
+<text x="580" y="1258" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1258" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Vertice(string nome)</text>
+</g>
+        <!-- Classe: Aresta -->
+        <g filter="url(#card-shadow)">
+            <rect x="570" y="1340" width="380" height="180" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="570" y="1340" width="380" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="570" y="1378" width="380" height="8" fill="#0f3a5d"/>
+        
+<text x="760.0" y="1356" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="760.0" y="1375" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Aresta</text>
+<line x1="570" y1="1386" x2="950" y2="1386" stroke="#0284c7" stroke-width="1.5"/>
+<text x="580" y="1403" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1403" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Id: int</text>
+<text x="580" y="1421" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1421" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Destino: Vertice</text>
+<text x="580" y="1439" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1439" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Peso: int</text>
+<line x1="570" y1="1461" x2="950" y2="1461" stroke="#0284c7" stroke-width="1"/>
+<text x="580" y="1478" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="594" y="1478" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Aresta(Vertice destino, int peso)</text>
+</g>
+        <!-- Classe: Mapa -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="1360" width="460" height="160" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="80" y="1360" width="460" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="80" y="1398" width="460" height="8" fill="#0f3a5d"/>
+        
+<text x="310.0" y="1376" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="310.0" y="1395" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Mapa</text>
+<line x1="80" y1="1406" x2="540" y2="1406" stroke="#0284c7" stroke-width="1.5"/>
+<text x="90" y="1423" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1423" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="90" y="1441" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1441" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_encontros: List&lt;Encontro&gt;</text>
+<line x1="80" y1="1463" x2="540" y2="1463" stroke="#0284c7" stroke-width="1"/>
+<text x="90" y="1480" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1480" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Mapa(string nome)</text>
+</g>
+        <!-- Classe: MapaRPGBuilder -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="1550" width="460" height="220" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="80" y="1550" width="460" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="80" y="1588" width="460" height="8" fill="#0f3a5d"/>
+        
+<text x="310.0" y="1566" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="310.0" y="1585" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">MapaRPGBuilder</text>
+<line x1="80" y1="1596" x2="540" y2="1596" stroke="#0284c7" stroke-width="1.5"/>
+<text x="90" y="1613" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="1613" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_grafo: Grafo</text>
+<text x="90" y="1631" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="1631" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_ultimoPlaneta: List&lt;string&gt;</text>
+<text x="90" y="1649" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="1649" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_random: Random</text>
+<line x1="80" y1="1671" x2="540" y2="1671" stroke="#0284c7" stroke-width="1"/>
+<text x="90" y="1688" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1688" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >MapaRPGBuilder()</text>
+<text x="90" y="1706" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1706" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >GerarInicio(): MapaRPGBuilder</text>
+<text x="90" y="1724" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1724" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdicionarGalaxia(int numeroGalaxia): MapaRPGBuilder</text>
+<text x="90" y="1742" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="1742" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Construir(): Grafo</text>
+</g>
+        <!-- Classe: IEncontro -->
+        <g filter="url(#card-shadow)">
+            <rect x="980" y="1120" width="300" height="140" rx="8" fill="#0c1527" stroke="#a855f7" stroke-width="2"/>
+            <rect x="980" y="1120" width="300" height="46" rx="8" fill="#581c87"/>
+            <rect x="980" y="1158" width="300" height="8" fill="#581c87"/>
+        
+<text x="1130.0" y="1136" fill="#d8b4fe" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+<text x="1130.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">IEncontro</text>
+<line x1="980" y1="1166" x2="1280" y2="1166" stroke="#a855f7" stroke-width="1.5"/>
+<line x1="980" y1="1187" x2="1280" y2="1187" stroke="#a855f7" stroke-width="1"/>
+<text x="990" y="1204" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1204" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+</g>
+        <!-- Classe: Encontro -->
+        <g filter="url(#card-shadow)">
+            <rect x="980" y="1290" width="360" height="200" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="980" y="1290" width="360" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="980" y="1328" width="360" height="8" fill="#0f3a5d"/>
+        
+<text x="1160.0" y="1306" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1160.0" y="1325" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Encontro</text>
+<line x1="980" y1="1336" x2="1340" y2="1336" stroke="#0284c7" stroke-width="1.5"/>
+<text x="990" y="1353" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1353" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Id: int</text>
+<text x="990" y="1371" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1371" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="990" y="1389" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1389" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Descricao: string</text>
+<text x="990" y="1407" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1407" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">QuantidadeLimite: int</text>
+<text x="990" y="1425" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1425" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Comportamento: IEncontro</text>
+<line x1="980" y1="1447" x2="1340" y2="1447" stroke="#0284c7" stroke-width="1"/>
+</g>
+        <!-- Classe: EncontroBatalha -->
+        <g filter="url(#card-shadow)">
+            <rect x="980" y="1520" width="260" height="130" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="980" y="1520" width="260" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="980" y="1558" width="260" height="8" fill="#0f3a5d"/>
+        
+<text x="1110.0" y="1536" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1110.0" y="1555" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">EncontroBatalha</text>
+<line x1="980" y1="1566" x2="1240" y2="1566" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="980" y1="1587" x2="1240" y2="1587" stroke="#0284c7" stroke-width="1"/>
+<text x="990" y="1604" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1004" y="1604" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+</g>
+        <!-- Classe: EncontroBaseEspacial -->
+        <g filter="url(#card-shadow)">
+            <rect x="1260" y="1520" width="320" height="190" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1260" y="1520" width="320" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1260" y="1558" width="320" height="8" fill="#0f3a5d"/>
+        
+<text x="1420.0" y="1536" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1420.0" y="1555" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">EncontroBaseEspacial</text>
+<line x1="1260" y1="1566" x2="1580" y2="1566" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="1260" y1="1587" x2="1580" y2="1587" stroke="#0284c7" stroke-width="1"/>
+<text x="1270" y="1604" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1284" y="1604" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="1270" y="1622" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1284" y="1622" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Curar(): void</text>
+<text x="1270" y="1640" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1284" y="1640" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >MudarHabilidades(): void</text>
+<text x="1270" y="1658" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1284" y="1658" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarItem(): void</text>
+</g>
+        <!-- Classe: TipoEncontro -->
+        <g filter="url(#card-shadow)">
+            <rect x="1310" y="1120" width="280" height="190" rx="8" fill="#0c1527" stroke="#eab308" stroke-width="2"/>
+            <rect x="1310" y="1120" width="280" height="46" rx="8" fill="#713f12"/>
+            <rect x="1310" y="1158" width="280" height="8" fill="#713f12"/>
+        
+<text x="1450.0" y="1136" fill="#fde047" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="1450.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TipoEncontro</text>
+<line x1="1310" y1="1166" x2="1590" y2="1166" stroke="#eab308" stroke-width="1.5"/>
+<text x="1324" y="1183" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">CombateComum</text>
+<text x="1324" y="1201" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">CombateElite</text>
+<text x="1324" y="1219" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Chefe</text>
+<text x="1324" y="1237" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">EstacaoReparo</text>
+<text x="1324" y="1255" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">Comercio</text>
+<text x="1324" y="1273" fill="#fde047" font-size="11.5" font-family="DejaVu Sans Mono, monospace">EventoAnomalia</text>
+<line x1="1310" y1="1295" x2="1590" y2="1295" stroke="#eab308" stroke-width="1"/>
+</g>
+        <!-- Pacote: PACOTE: Motor Gráfico, Câmera 3D &amp; Efeitos -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="1640" y="1070" width="1260" height="940" rx="14" fill="#190d2e" stroke="#7c3aed" stroke-width="2" opacity="0.96"/>
+            <path d="M 1640 1112 L 2900 1112" stroke="#7c3aed" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="1658" y="1056" width="502" height="28" rx="6" fill="#7c3aed"/>
+            <text x="1668" y="1075" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Motor Gráfico, Câmera 3D &amp; Efeitos</text>
+            <text x="1664" y="1102" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Model.Telas • Double Buffering, Raycasting &amp; Screen Shake</text>
+        </g>
+        
+        <!-- Classe: AnimadorEmbateConsole -->
+        <g filter="url(#card-shadow)">
+            <rect x="1660" y="1120" width="500" height="260" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1660" y="1120" width="500" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1660" y="1158" width="500" height="8" fill="#0f3a5d"/>
+        
+<text x="1910.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1910.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">AnimadorEmbateConsole</text>
+<line x1="1660" y1="1166" x2="2160" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1670" y="1183" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_largura: int</text>
+<text x="1670" y="1201" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1201" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_altura: int</text>
+<text x="1670" y="1219" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1219" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_bufferChar: char[,]</text>
+<text x="1670" y="1237" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1237" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_bufferCor: ConsoleColor[,]</text>
+<text x="1670" y="1255" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1255" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_camera: CameraCombate</text>
+<line x1="1660" y1="1277" x2="2160" y2="1277" stroke="#0284c7" stroke-width="1"/>
+<text x="1670" y="1294" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1294" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AnimadorEmbateConsole(int largura, int altura)</text>
+<text x="1670" y="1312" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1312" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ExecutarAnimacao(Combatente a, Combatente d, ResultadoEmbate res, bool? ehAliado): void</text>
+<text x="1670" y="1330" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1330" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharProjetil(Vetor3D, AfinidadeAtaque, bool, ConsoleColor): void</text>
+<text x="1670" y="1348" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1348" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharSpriteProjetado(Vetor3D, string[], string, ConsoleColor): void</text>
+<text x="1670" y="1366" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1684" y="1366" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DespejarBufferNoConsole(): void</text>
+</g>
+        <!-- Classe: CameraCombate -->
+        <g filter="url(#card-shadow)">
+            <rect x="2190" y="1120" width="480" height="410" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2190" y="1120" width="480" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2190" y="1158" width="480" height="8" fill="#0f3a5d"/>
+        
+<text x="2430.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="2430.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">CameraCombate</text>
+<line x1="2190" y1="1166" x2="2670" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2200" y="1183" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">PosX, PosY, PosZ: double</text>
+<text x="2200" y="1201" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1201" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AlvoX, AlvoY, AlvoZ: double</text>
+<text x="2200" y="1219" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1219" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AnguloRotacao, AlvoAngulo: double</text>
+<text x="2200" y="1237" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1237" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VelocidadeSuavizacao: double = 8.0</text>
+<text x="2200" y="1255" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1255" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">TraumaTremor: double = 0.0</text>
+<text x="2200" y="1273" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1273" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">LarguraTela: int</text>
+<text x="2200" y="1291" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1291" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AlturaTela: int</text>
+<line x1="2190" y1="1313" x2="2670" y2="1313" stroke="#0284c7" stroke-width="1"/>
+<text x="2200" y="1330" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1330" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CameraCombate(int largura, int altura)</text>
+<text x="2200" y="1348" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1348" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Resetar(): void</text>
+<text x="2200" y="1366" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1366" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AdicionarImpacto(double): void</text>
+<text x="2200" y="1384" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1384" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >EnquadrarCombatentes(Vetor3D, Vetor3D, double): void</text>
+<text x="2200" y="1402" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1402" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >FocarEntidade(Vetor3D, double): void</text>
+<text x="2200" y="1420" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1420" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Atualizar(double dt): void</text>
+<text x="2200" y="1438" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1438" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RotacionarXZ(Vetor3D, double): Vetor3D</text>
+<text x="2200" y="1456" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1456" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ProjetarParaConsole(Vetor3D): (int x, int y, bool vis)</text>
+</g>
+        <!-- Classe: IObservadorCombate -->
+        <g filter="url(#card-shadow)">
+            <rect x="1660" y="1410" width="500" height="160" rx="8" fill="#0c1527" stroke="#a855f7" stroke-width="2"/>
+            <rect x="1660" y="1410" width="500" height="46" rx="8" fill="#581c87"/>
+            <rect x="1660" y="1448" width="500" height="8" fill="#581c87"/>
+        
+<text x="1910.0" y="1426" fill="#d8b4fe" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+<text x="1910.0" y="1445" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">IObservadorCombate</text>
+<line x1="1660" y1="1456" x2="2160" y2="1456" stroke="#a855f7" stroke-width="1.5"/>
+<line x1="1660" y1="1477" x2="2160" y2="1477" stroke="#a855f7" stroke-width="1"/>
+<text x="1670" y="1494" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1494" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AtualizarEstado(Slot[], Slot[], int): void</text>
+<text x="1670" y="1512" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1512" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AtualizarIniciativa(List&lt;Combatente&gt;, Combatente): void</text>
+<text x="1670" y="1530" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1530" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ExibirEmbate(ResultadoEmbate): void</text>
+<text x="1670" y="1548" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1684" y="1548" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AtualizarLog(string): void</text>
+</g>
+        <!-- Classe: Vetor3D -->
+        <g filter="url(#card-shadow)">
+            <rect x="2190" y="1560" width="480" height="180" rx="8" fill="#0c1527" stroke="#6b7280" stroke-width="2"/>
+            <rect x="2190" y="1560" width="480" height="46" rx="8" fill="#374151"/>
+            <rect x="2190" y="1598" width="480" height="8" fill="#374151"/>
+        
+<text x="2430.0" y="1576" fill="#d1d5db" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;struct&gt;&gt;</text>
+<text x="2430.0" y="1595" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Vetor3D</text>
+<line x1="2190" y1="1606" x2="2670" y2="1606" stroke="#6b7280" stroke-width="1.5"/>
+<text x="2200" y="1623" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1623" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">X: double</text>
+<text x="2200" y="1641" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1641" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Y: double</text>
+<text x="2200" y="1659" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1659" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Z: double</text>
+<line x1="2190" y1="1681" x2="2670" y2="1681" stroke="#6b7280" stroke-width="1"/>
+<text x="2200" y="1698" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1698" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Vetor3D(double x, double y, double z)</text>
+<text x="2200" y="1716" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1716" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >operator +(Vetor3D, Vetor3D): Vetor3D</text>
+<text x="2200" y="1734" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1734" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >operator -(Vetor3D, Vetor3D): Vetor3D</text>
+<text x="2200" y="1752" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2214" y="1752" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" font-style="italic">operator *(Vetor3D, double): Vetor3D</text>
+</g>
+        <!-- Pacote: PACOTE: Infraestrutura, Áudio &amp; UI Base -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="2930" y="1070" width="1410" height="940" rx="14" fill="#141c28" stroke="#64748b" stroke-width="2" opacity="0.96"/>
+            <path d="M 2930 1112 L 4340 1112" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="2948" y="1056" width="469" height="28" rx="6" fill="#64748b"/>
+            <text x="2958" y="1075" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Infraestrutura, Áudio &amp; UI Base</text>
+            <text x="2954" y="1102" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Música / Exceções • Sistema de Áudio em Console &amp; UI Helpers</text>
+        </g>
+        
+        <!-- Classe: Musica -->
+        <g filter="url(#card-shadow)">
+            <rect x="2960" y="1120" width="480" height="240" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2960" y="1120" width="480" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2960" y="1158" width="480" height="8" fill="#0f3a5d"/>
+        
+<text x="3200.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3200.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Musica</text>
+<line x1="2960" y1="1166" x2="3440" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2970" y="1183" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Nome: string</text>
+<text x="2970" y="1201" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1201" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Notas: List&lt;Nota&gt;</text>
+<line x1="2960" y1="1223" x2="3440" y2="1223" stroke="#0284c7" stroke-width="1"/>
+<text x="2970" y="1240" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1240" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Musica(string nome)</text>
+<text x="2970" y="1258" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1258" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Tocar(): void</text>
+</g>
+        <!-- Classe: Nota -->
+        <g filter="url(#card-shadow)">
+            <rect x="3470" y="1120" width="300" height="170" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3470" y="1120" width="300" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="3470" y="1158" width="300" height="8" fill="#0f3a5d"/>
+        
+<text x="3620.0" y="1136" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3620.0" y="1155" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Nota</text>
+<line x1="3470" y1="1166" x2="3770" y2="1166" stroke="#0284c7" stroke-width="1.5"/>
+<text x="3480" y="1183" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3494" y="1183" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Frequencia: int</text>
+<text x="3480" y="1201" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3494" y="1201" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">DuracaoMs: int</text>
+<line x1="3470" y1="1223" x2="3770" y2="1223" stroke="#0284c7" stroke-width="1"/>
+<text x="3480" y="1240" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3494" y="1240" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Nota(int frequencia, int duracaoMs)</text>
+</g>
+        <!-- Classe: BibliotecaDeMusicas -->
+        <g filter="url(#card-shadow)">
+            <rect x="2960" y="1390" width="480" height="160" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2960" y="1390" width="480" height="46" rx="8" fill="#1e293b"/>
+            <rect x="2960" y="1428" width="480" height="8" fill="#1e293b"/>
+        
+<text x="3200.0" y="1406" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="3200.0" y="1425" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">BibliotecaDeMusicas</text>
+<line x1="2960" y1="1436" x2="3440" y2="1436" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="2960" y1="1457" x2="3440" y2="1457" stroke="#0284c7" stroke-width="1"/>
+<text x="2970" y="1474" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1474" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >FanfarraDeConquista(): Musica {static}</text>
+<text x="2970" y="1492" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1492" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TemaEspacialOriginal(): Musica {static}</text>
+<text x="2970" y="1510" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1510" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >MusicaInicio(): Musica {static}</text>
+</g>
+        <!-- Classe: RegraJogoException -->
+        <g filter="url(#card-shadow)">
+            <rect x="2960" y="1580" width="500" height="150" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2960" y="1580" width="500" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2960" y="1618" width="500" height="8" fill="#0f3a5d"/>
+        
+<text x="3210.0" y="1596" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3210.0" y="1615" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">RegraJogoException</text>
+<line x1="2960" y1="1626" x2="3460" y2="1626" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2970" y="1643" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1643" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">CodigoRegra: string</text>
+<line x1="2960" y1="1665" x2="3460" y2="1665" stroke="#0284c7" stroke-width="1"/>
+<text x="2970" y="1682" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1682" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RegraJogoException(string msg, string cod)</text>
+<text x="2970" y="1700" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2984" y="1700" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RegraJogoException(string msg, Exception inner, string cod)</text>
+</g>
+        <!-- Classe: ConfiguradorTela -->
+        <g filter="url(#card-shadow)">
+            <rect x="3490" y="1580" width="500" height="190" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3490" y="1580" width="500" height="46" rx="8" fill="#1e293b"/>
+            <rect x="3490" y="1618" width="500" height="8" fill="#1e293b"/>
+        
+<text x="3740.0" y="1596" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="3740.0" y="1615" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ConfiguradorTela</text>
+<line x1="3490" y1="1626" x2="3990" y2="1626" stroke="#0284c7" stroke-width="1.5"/>
+<text x="3500" y="1643" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1643" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">LarguraAlvo: int = 200 {const}</text>
+<text x="3500" y="1661" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1661" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">AlturaAlvo: int = 55 {const}</text>
+<line x1="3490" y1="1683" x2="3990" y2="1683" stroke="#0284c7" stroke-width="1"/>
+<text x="3500" y="1700" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1700" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ConfigurarTelaCheia(): void {static}</text>
+<text x="3500" y="1718" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1718" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RestaurarTela(): void {static}</text>
+<text x="3500" y="1736" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1736" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterLarguraConsole(): int {static}</text>
+<text x="3500" y="1754" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3514" y="1754" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterAlturaConsole(): int {static}</text>
+</g>
+        <!-- Pacote: PACOTE: Telas, Navegação &amp; Orquestração (State &amp; Factory Pattern) -->
+        <g filter="url(#pkg-shadow)">
+            <rect x="60" y="2040" width="4280" height="1000" rx="14" fill="#061f18" stroke="#059669" stroke-width="2" opacity="0.96"/>
+            <path d="M 60 2082 L 4340 2082" stroke="#059669" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <rect x="78" y="2026" width="755" height="28" rx="6" fill="#059669"/>
+            <text x="88" y="2045" fill="#ffffff" font-size="14" font-weight="bold">PACOTE: Telas, Navegação &amp; Orquestração (State &amp; Factory Pattern)</text>
+            <text x="84" y="2072" fill="#94a3b8" font-size="13" font-style="italic">ProjetoFinalPOO.Controladores / Telas • Ciclo de Vida de Telas e Cenas</text>
+        </g>
+        
+        <!-- Classe: GerenciadorTelas -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="2090" width="420" height="260" rx="8" fill="#0c1527" stroke="#10b981" stroke-width="2"/>
+            <rect x="80" y="2090" width="420" height="46" rx="8" fill="#064e3b"/>
+            <rect x="80" y="2128" width="420" height="8" fill="#064e3b"/>
+        
+<text x="290.0" y="2106" fill="#6ee7b7" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;singleton&gt;&gt;</text>
+<text x="290.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">GerenciadorTelas</text>
+<line x1="80" y1="2136" x2="500" y2="2136" stroke="#10b981" stroke-width="1.5"/>
+<text x="90" y="2153" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2153" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_instancia: GerenciadorTelas {static}</text>
+<text x="90" y="2171" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2171" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_pilhaTelas: Stack&lt;ITela&gt;</text>
+<text x="90" y="2189" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2189" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_jogandoAtivo: bool</text>
+<text x="90" y="2207" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2207" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">Instancia: GerenciadorTelas {static}</text>
+<line x1="80" y1="2229" x2="500" y2="2229" stroke="#10b981" stroke-width="1"/>
+<text x="90" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >GerenciadorTelas()</text>
+<text x="90" y="2264" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2264" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AlterarTela(ITela): void</text>
+<text x="90" y="2282" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2282" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >EmpilharTela(ITela): void</text>
+<text x="90" y="2300" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2300" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesempilharTela(): void</text>
+<text x="90" y="2318" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2318" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RenderizarTelaAtual(): void</text>
+<text x="90" y="2336" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2336" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AtualizarTelaAtual(): void</text>
+<text x="90" y="2354" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2354" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Sair(): void</text>
+<text x="90" y="2372" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2372" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >EstaAtivo(): bool</text>
+<text x="90" y="2390" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2390" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >GetTelaAtual(): ITela</text>
+</g>
+        <!-- Classe: ITela -->
+        <g filter="url(#card-shadow)">
+            <rect x="530" y="2090" width="280" height="180" rx="8" fill="#0c1527" stroke="#a855f7" stroke-width="2"/>
+            <rect x="530" y="2090" width="280" height="46" rx="8" fill="#581c87"/>
+            <rect x="530" y="2128" width="280" height="8" fill="#581c87"/>
+        
+<text x="670.0" y="2106" fill="#d8b4fe" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+<text x="670.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ITela</text>
+<line x1="530" y1="2136" x2="810" y2="2136" stroke="#a855f7" stroke-width="1.5"/>
+<line x1="530" y1="2157" x2="810" y2="2157" stroke="#a855f7" stroke-width="1"/>
+<text x="540" y="2174" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="554" y="2174" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Entrar(): void</text>
+<text x="540" y="2192" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="554" y="2192" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+<text x="540" y="2210" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="554" y="2210" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Atualizar(): void</text>
+<text x="540" y="2228" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="554" y="2228" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Limpar(): void</text>
+<text x="540" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="554" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Sair(): void</text>
+</g>
+        <!-- Classe: ControladorTela -->
+        <g filter="url(#card-shadow)">
+            <rect x="840" y="2090" width="720" height="310" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="840" y="2090" width="720" height="46" rx="8" fill="#1e293b"/>
+            <rect x="840" y="2128" width="720" height="8" fill="#1e293b"/>
+        
+<text x="1200.0" y="2106" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="1200.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ControladorTela</text>
+<line x1="840" y1="2136" x2="1560" y2="2136" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="840" y1="2157" x2="1560" y2="2157" stroke="#0284c7" stroke-width="1"/>
+<text x="850" y="2174" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2174" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaMenu(): TelaMenu {static}</text>
+<text x="850" y="2192" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2192" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaOpcoes(): TelaOpcoes {static}</text>
+<text x="850" y="2210" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2210" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaCreditos(): TelaCreditos {static}</text>
+<text x="850" y="2228" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2228" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaCarregarJogo(): TelaCarregarJogo {static}</text>
+<text x="850" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaMapa(Mapa, Grafo, List&lt;Combatente&gt;, List&lt;Item&gt;): TelaMapa {static}</text>
+<text x="850" y="2264" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2264" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaEventoPlaneta(Vertice, List&lt;Combatente&gt;, List&lt;Item&gt;): TelaEventoPlaneta {static}</text>
+<text x="850" y="2282" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2282" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaCombate(List&lt;Combatente&gt;, List&lt;Combatente&gt;, List&lt;Item&gt;, string, bool): TelaCombate {static}</text>
+<text x="850" y="2300" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2300" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaTrocaHabilidades(List&lt;Combatente&gt;): TelaTrocaHabilidades {static}</text>
+<text x="850" y="2318" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2318" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaEscolhaItem(List&lt;Item&gt;, List&lt;Item&gt;): TelaEscolhaItem {static}</text>
+<text x="850" y="2336" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="864" y="2336" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >CriarTelaFimDeJogo(bool, int, int, int, int, List&lt;Combatente&gt;): TelaFimDeJogo {static}</text>
+</g>
+        <!-- Classe: ControladorJogo -->
+        <g filter="url(#card-shadow)">
+            <rect x="1590" y="2090" width="500" height="270" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1590" y="2090" width="500" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1590" y="2128" width="500" height="8" fill="#0f3a5d"/>
+        
+<text x="1840.0" y="2106" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1840.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">ControladorJogo</text>
+<line x1="1590" y1="2136" x2="2090" y2="2136" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1600" y="2153" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2153" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_gerenciador: GerenciadorTelas</text>
+<text x="1600" y="2171" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2171" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_tripulacao: List&lt;Combatente&gt;</text>
+<text x="1600" y="2189" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2189" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_inventarioEquipe: List&lt;Item&gt;</text>
+<line x1="1590" y1="2211" x2="2090" y2="2211" stroke="#0284c7" stroke-width="1"/>
+<text x="1600" y="2228" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1614" y="2228" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ControladorJogo()</text>
+<text x="1600" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1614" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Iniciar(): void</text>
+<text x="1600" y="2264" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2264" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ResetarEstadoJogo(): void</text>
+<text x="1600" y="2282" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2282" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >IniciarNovoJogo(): void</text>
+<text x="1600" y="2300" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2300" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AbrirCarregarJogo(): void</text>
+<text x="1600" y="2318" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2318" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AbrirOpcoes(): void</text>
+<text x="1600" y="2336" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2336" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >AbrirCreditos(): void</text>
+<text x="1600" y="2354" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1614" y="2354" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ExibirDespedida(): void</text>
+</g>
+        <!-- Classe: Program -->
+        <g filter="url(#card-shadow)">
+            <rect x="2120" y="2090" width="280" height="130" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2120" y="2090" width="280" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2120" y="2128" width="280" height="8" fill="#0f3a5d"/>
+        
+<text x="2260.0" y="2106" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="2260.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">Program</text>
+<line x1="2120" y1="2136" x2="2400" y2="2136" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="2120" y1="2157" x2="2400" y2="2157" stroke="#0284c7" stroke-width="1"/>
+<text x="2130" y="2174" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2144" y="2174" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Main(string[] args): void {static}</text>
+</g>
+        <!-- Classe: RenderizadorUI -->
+        <g filter="url(#card-shadow)">
+            <rect x="2430" y="2090" width="580" height="280" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2430" y="2090" width="580" height="46" rx="8" fill="#1e293b"/>
+            <rect x="2430" y="2128" width="580" height="8" fill="#1e293b"/>
+        
+<text x="2720.0" y="2106" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="2720.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">RenderizadorUI</text>
+<line x1="2430" y1="2136" x2="3010" y2="2136" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2440" y="2153" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2153" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">LarguraPadrao: int {static}</text>
+<text x="2440" y="2171" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2171" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">LarguraAtual: int {static}</text>
+<line x1="2430" y1="2193" x2="3010" y2="2193" stroke="#0284c7" stroke-width="1"/>
+<text x="2440" y="2210" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2210" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharCabecalho(string, int, ConsoleColor): void {static}</text>
+<text x="2440" y="2228" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2228" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharInicioSecao(string, int, ConsoleColor): void {static}</text>
+<text x="2440" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharLinhaConteudo(string, int, ConsoleColor, ConsoleColor): void {static}</text>
+<text x="2440" y="2264" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2264" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharLinhaDupla(string, string, int, ...): void {static}</text>
+<text x="2440" y="2282" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2282" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharTresCardsCombatentes(Slot[], Combatente, bool, ...): void {static}</text>
+<text x="2440" y="2300" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2300" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharTresCardsItens(List&lt;Item&gt;, int, int): void {static}</text>
+<text x="2440" y="2318" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2318" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharMaoCartasCombate(Combatente, int, int): void {static}</text>
+<text x="2440" y="2336" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2454" y="2336" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >DesenharGridHabilidadesCards(List&lt;Habilidade&gt;, List&lt;Habilidade&gt;, int): void {static}</text>
+</g>
+        <!-- Classe: BancoSprites -->
+        <g filter="url(#card-shadow)">
+            <rect x="3040" y="2090" width="480" height="220" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3040" y="2090" width="480" height="46" rx="8" fill="#1e293b"/>
+            <rect x="3040" y="2128" width="480" height="8" fill="#1e293b"/>
+        
+<text x="3280.0" y="2106" fill="#38bdf8" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;utility&gt;&gt;</text>
+<text x="3280.0" y="2125" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">BancoSprites</text>
+<line x1="3040" y1="2136" x2="3520" y2="2136" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="3040" y1="2157" x2="3520" y2="2157" stroke="#0284c7" stroke-width="1"/>
+<text x="3050" y="2174" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2174" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterSprite(string): string[] {static}</text>
+<text x="3050" y="2192" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2192" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterRetratoGrande(string): string[] {static}</text>
+<text x="3050" y="2210" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2210" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterArteCenario(string): string[] {static}</text>
+<text x="3050" y="2228" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2228" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterArteNaveVanguarda(): string[] {static}</text>
+<text x="3050" y="2246" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2246" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterArteItem(TipoItem): string[] {static}</text>
+<text x="3050" y="2264" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3064" y="2264" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ObterArteFimDeJogo(bool): string[] {static}</text>
+</g>
+        <!-- Classe: TelaMenu -->
+        <g filter="url(#card-shadow)">
+            <rect x="80" y="2460" width="360" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="80" y="2460" width="360" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="80" y="2498" width="360" height="8" fill="#0f3a5d"/>
+        
+<text x="260.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="260.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaMenu</text>
+<line x1="80" y1="2506" x2="440" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="90" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_opcoes: Tuple&lt;string,string&gt;[]</text>
+<text x="90" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_selecionado: int</text>
+<text x="90" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="104" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">BannerAscii: string[] {static}</text>
+<line x1="80" y1="2581" x2="440" y2="2581" stroke="#0284c7" stroke-width="1"/>
+<text x="90" y="2598" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2598" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaMenu()</text>
+<text x="90" y="2616" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2616" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): OpcaoMenuPrincipal</text>
+<text x="90" y="2634" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2634" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Entrar(): void</text>
+<text x="90" y="2652" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2652" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+<text x="90" y="2670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="104" y="2670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Sair(): void</text>
+</g>
+        <!-- Classe: TelaMapa -->
+        <g filter="url(#card-shadow)">
+            <rect x="470" y="2460" width="430" height="280" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="470" y="2460" width="430" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="470" y="2498" width="430" height="8" fill="#0f3a5d"/>
+        
+<text x="685.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="685.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaMapa</text>
+<line x1="470" y1="2506" x2="900" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="480" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_mapa: Mapa</text>
+<text x="480" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_grafo: Grafo</text>
+<text x="480" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_tripulacao: List&lt;Combatente&gt;</text>
+<text x="480" y="2577" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2577" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_inventarioEquipe: List&lt;Item&gt;</text>
+<text x="480" y="2595" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2595" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_verticeAtual: Vertice</text>
+<text x="480" y="2613" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2613" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_historicoCaminho: List&lt;Vertice&gt;</text>
+<text x="480" y="2631" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2631" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_indiceArestaSelecionada: int</text>
+<line x1="470" y1="2653" x2="900" y2="2653" stroke="#0284c7" stroke-width="1"/>
+<text x="480" y="2670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="494" y="2670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaMapa(Mapa, Grafo, List&lt;Combatente&gt;, ...)</text>
+<text x="480" y="2688" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="494" y="2688" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="480" y="2706" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="494" y="2706" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >RealizarSaltoHiperespacial(): bool</text>
+<text x="480" y="2724" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="494" y="2724" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaCombate -->
+        <g filter="url(#card-shadow)">
+            <rect x="930" y="2460" width="480" height="290" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="930" y="2460" width="480" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="930" y="2498" width="480" height="8" fill="#0f3a5d"/>
+        
+<text x="1170.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1170.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaCombate</text>
+<line x1="930" y1="2506" x2="1410" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="940" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_slotsAliados: Slot[]</text>
+<text x="940" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_slotsInimigos: Slot[]</text>
+<text x="940" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_inventarioEquipe: List&lt;Item&gt;</text>
+<text x="940" y="2577" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2577" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_controladorCombate: ControladorCombate</text>
+<text x="940" y="2595" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="954" y="2595" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">DanoTotalCausadoPelaTripulacao: int</text>
+<text x="940" y="2613" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="954" y="2613" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">InimigosDerrotados: int</text>
+<line x1="930" y1="2635" x2="1410" y2="2635" stroke="#0284c7" stroke-width="1"/>
+<text x="940" y="2652" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="954" y="2652" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaCombate(tripulacao, inimigos, inv, ...)</text>
+<text x="940" y="2670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="954" y="2670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): bool</text>
+<text x="940" y="2688" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2688" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >PrepararNovaRodada(): void</text>
+<text x="940" y="2706" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="954" y="2706" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ExecutarResolucaoAcao(Slot, Slot, bool): void</text>
+<text x="940" y="2724" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="954" y="2724" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaEventoPlaneta -->
+        <g filter="url(#card-shadow)">
+            <rect x="1440" y="2460" width="480" height="260" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1440" y="2460" width="480" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1440" y="2498" width="480" height="8" fill="#0f3a5d"/>
+        
+<text x="1680.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="1680.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaEventoPlaneta</text>
+<line x1="1440" y1="2506" x2="1920" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1450" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_verticePlaneta: Vertice</text>
+<text x="1450" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_tripulacao: List&lt;Combatente&gt;</text>
+<text x="1450" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_inventarioEquipe: List&lt;Item&gt;</text>
+<text x="1450" y="2577" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2577" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">CreditosGanhos: int</text>
+<text x="1450" y="2595" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2595" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">IntegridadeReparada: int</text>
+<text x="1450" y="2613" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2613" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">VitoriaNoCombate: bool</text>
+<line x1="1440" y1="2635" x2="1920" y2="2635" stroke="#0284c7" stroke-width="1"/>
+<text x="1450" y="2652" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2652" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaEventoPlaneta(Vertice, tripulacao, inv)</text>
+<text x="1450" y="2670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="1450" y="2688" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1464" y="2688" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >ProcessarEscolha(int): bool</text>
+<text x="1450" y="2706" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1464" y="2706" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaEscolhaItem -->
+        <g filter="url(#card-shadow)">
+            <rect x="1950" y="2460" width="400" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="1950" y="2460" width="400" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="1950" y="2498" width="400" height="8" fill="#0f3a5d"/>
+        
+<text x="2150.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="2150.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaEscolhaItem</text>
+<line x1="1950" y1="2506" x2="2350" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="1960" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1974" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_itensDisponiveis: List&lt;Item&gt;</text>
+<text x="1960" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1974" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_inventarioEquipe: List&lt;Item&gt;</text>
+<text x="1960" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="1974" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_itemEscolhido: Item</text>
+<line x1="1950" y1="2581" x2="2350" y2="2581" stroke="#0284c7" stroke-width="1"/>
+<text x="1960" y="2598" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1974" y="2598" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaEscolhaItem(List&lt;Item&gt;, List&lt;Item&gt;)</text>
+<text x="1960" y="2616" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1974" y="2616" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): Item</text>
+<text x="1960" y="2634" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="1974" y="2634" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaTrocaHabilidades -->
+        <g filter="url(#card-shadow)">
+            <rect x="2380" y="2460" width="400" height="210" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2380" y="2460" width="400" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2380" y="2498" width="400" height="8" fill="#0f3a5d"/>
+        
+<text x="2580.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="2580.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaTrocaHabilidades</text>
+<line x1="2380" y1="2506" x2="2780" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2390" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2404" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_tripulacao: List&lt;Combatente&gt;</text>
+<text x="2390" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2404" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_indicePersonagem: int</text>
+<text x="2390" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2404" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_indiceHabilidade: int</text>
+<line x1="2380" y1="2581" x2="2780" y2="2581" stroke="#0284c7" stroke-width="1"/>
+<text x="2390" y="2598" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2404" y="2598" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaTrocaHabilidades(List&lt;Combatente&gt;)</text>
+<text x="2390" y="2616" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2404" y="2616" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="2390" y="2634" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2404" y="2634" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaFimDeJogo -->
+        <g filter="url(#card-shadow)">
+            <rect x="2810" y="2460" width="440" height="230" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="2810" y="2460" width="440" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="2810" y="2498" width="440" height="8" fill="#0f3a5d"/>
+        
+<text x="3030.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3030.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaFimDeJogo</text>
+<line x1="2810" y1="2506" x2="3250" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<text x="2820" y="2523" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2834" y="2523" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_vitoria: bool</text>
+<text x="2820" y="2541" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2834" y="2541" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_saltosRealizados: int</text>
+<text x="2820" y="2559" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2834" y="2559" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_combatesVencidos: int</text>
+<text x="2820" y="2577" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2834" y="2577" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_danoTotalCausado: int</text>
+<text x="2820" y="2595" fill="#f87171" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">-</text>
+<text x="2834" y="2595" fill="#e2e8f0" font-size="11" font-family="DejaVu Sans Mono, monospace">_creditosObtidos: int</text>
+<line x1="2810" y1="2617" x2="3250" y2="2617" stroke="#0284c7" stroke-width="1"/>
+<text x="2820" y="2634" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2834" y="2634" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >TelaFimDeJogo(bool, int, int, int, int, ...)</text>
+<text x="2820" y="2652" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2834" y="2652" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="2820" y="2670" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="2834" y="2670" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaCarregarJogo -->
+        <g filter="url(#card-shadow)">
+            <rect x="3280" y="2460" width="330" height="160" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3280" y="2460" width="330" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="3280" y="2498" width="330" height="8" fill="#0f3a5d"/>
+        
+<text x="3445.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3445.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaCarregarJogo</text>
+<line x1="3280" y1="2506" x2="3610" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="3280" y1="2527" x2="3610" y2="2527" stroke="#0284c7" stroke-width="1"/>
+<text x="3290" y="2544" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3304" y="2544" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="3290" y="2562" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3304" y="2562" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+        <!-- Classe: TelaOpcoes -->
+        <g filter="url(#card-shadow)">
+            <rect x="3640" y="2460" width="310" height="160" rx="8" fill="#0c1527" stroke="#0284c7" stroke-width="2"/>
+            <rect x="3640" y="2460" width="310" height="46" rx="8" fill="#0f3a5d"/>
+            <rect x="3640" y="2498" width="310" height="8" fill="#0f3a5d"/>
+        
+<text x="3795.0" y="2476" fill="#7dd3fc" font-size="11" font-style="italic" text-anchor="middle">&lt;&lt;class&gt;&gt;</text>
+<text x="3795.0" y="2495" fill="#ffffff" font-size="15" font-weight="bold" text-anchor="middle">TelaOpcoes</text>
+<line x1="3640" y1="2506" x2="3950" y2="2506" stroke="#0284c7" stroke-width="1.5"/>
+<line x1="3640" y1="2527" x2="3950" y2="2527" stroke="#0284c7" stroke-width="1"/>
+<text x="3650" y="2544" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3664" y="2544" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Executar(): void</text>
+<text x="3650" y="2562" fill="#4ade80" font-size="11.5" font-family="DejaVu Sans Mono, monospace" font-weight="bold">+</text>
+<text x="3664" y="2562" fill="#f1f5f9" font-size="11" font-family="DejaVu Sans Mono, monospace" >Renderizar(): void</text>
+</g>
+    <!-- Relacionamentos de Herança de Combatente -->
+    <path d="M 280 710 L 280 680" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)"/>
+    <path d="M 720 710 L 720 690 L 320 690 L 320 680" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)"/>
+    <path d="M 1160 710 L 1160 695 L 360 695 L 360 680" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)"/>
+    <path d="M 870 300 L 600 300" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)"/>
+    
+    <!-- Implementação IAplicavelEfeito -> Item -->
+    <path d="M 3180 370 L 3180 350" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    
+    <!-- Implementação IEncontro -> EncontroBatalha / EncontroBaseEspacial -->
+    <path d="M 1110 1520 L 1110 1260" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    <path d="M 1420 1520 L 1420 1270 L 1140 1270 L 1140 1260" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    
+    <!-- Implementações ITela (Rotas organizadas pelo barramento horizontal) -->
+    <path d="M 260 2460 L 260 2400 L 670 2400 L 670 2270" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    <path d="M 685 2460 L 685 2270" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    <path d="M 1170 2460 L 1170 2410 L 700 2410 L 700 2270" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+    <path d="M 1680 2460 L 1680 2420 L 730 2420 L 730 2270" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+
+    <!-- Associação / Composição Grafo -> Vertice -> Aresta -->
+    <path d="M 540 1225 L 570 1225" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+    <path d="M 760 1310 L 760 1340" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+    
+    <!-- Agregação Vertice -> Encontro -->
+    <path d="M 950 1215 L 980 1310" stroke="#38bdf8" stroke-width="2" marker-start="url(#aggregation)"/>
+    <path d="M 1160 1290 L 1160 1260" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+
+    <!-- Associação ControladorCombate -> Habilidade -->
+    <path d="M 2160 310 L 1880 310" stroke="#94a3b8" stroke-width="2" marker-end="url(#association)"/>
+    
+    <!-- Associação Slot -> Habilidade -->
+    <path d="M 1670 690 L 1670 590" stroke="#94a3b8" stroke-width="2" marker-end="url(#association)"/>
+
+    <!-- Câmera 3D & Animação -->
+    <path d="M 2160 1250 L 2190 1250" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+    <path d="M 2430 1530 L 2430 1560" stroke="#94a3b8" stroke-width="2" marker-end="url(#association)"/>
+    
+    <!-- ControladorJogo -> GerenciadorTelas -->
+    <path d="M 1590 2220 L 500 2220" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+    <!-- GerenciadorTelas -> ITela -->
+    <path d="M 500 2180 L 530 2180" stroke="#38bdf8" stroke-width="2" marker-start="url(#aggregation)"/>
+    
+    <!-- Legenda Notação UML 2.0 -->
+    <g filter="url(#card-shadow)">
+        <rect x="3500" y="2640" width="760" height="360" rx="10" fill="#0c1527" stroke="#38bdf8" stroke-width="2"/>
+        <text x="3520" y="2675" fill="#38bdf8" font-size="16" font-weight="bold">LEGENDA DA NOTAÇÃO UML 2.0</text>
+        <line x1="3500" y1="2687" x2="4260" y2="2687" stroke="#334155" stroke-width="1.5"/>
+        
+        <!-- Símbolos e Conectores -->
+        <line x1="3530" y1="2720" x2="3630" y2="2720" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)"/>
+        <text x="3650" y="2725" fill="#f8fafc" font-size="13">Herança / Generalização (&lt;|--)</text>
+
+        <line x1="3530" y1="2760" x2="3630" y2="2760" stroke="#a855f7" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#realization)"/>
+        <text x="3650" y="2765" fill="#f8fafc" font-size="13">Realização de Interface (&lt;|..)</text>
+
+        <line x1="3530" y1="2800" x2="3630" y2="2800" stroke="#38bdf8" stroke-width="2" marker-start="url(#composition)"/>
+        <text x="3650" y="2805" fill="#f8fafc" font-size="13">Composição Forte (*--)</text>
+
+        <line x1="3530" y1="2840" x2="3630" y2="2840" stroke="#38bdf8" stroke-width="2" marker-start="url(#aggregation)"/>
+        <text x="3650" y="2845" fill="#f8fafc" font-size="13">Agregação Compartilhada (o--)</text>
+
+        <line x1="3530" y1="2880" x2="3630" y2="2880" stroke="#94a3b8" stroke-width="2" marker-end="url(#association)"/>
+        <text x="3650" y="2885" fill="#f8fafc" font-size="13">Associação / Dependência (--&gt;)</text>
+
+        <text x="3530" y="2930" fill="#94a3b8" font-size="13"><tspan fill="#4ade80" font-weight="bold">+ Public</tspan>  |  <tspan fill="#f87171" font-weight="bold">- Private</tspan>  |  <tspan fill="#facc15" font-weight="bold"># Protected</tspan>  |  <tspan fill="#38bdf8" font-weight="bold">~ Internal</tspan></text>
+        <text x="3530" y="2960" fill="#94a3b8" font-size="12" font-style="italic">Padrões: State, Strategy, Builder, Singleton, Factory &amp; Observer</text>
+    </g>
+</svg>
