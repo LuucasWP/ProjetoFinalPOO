@@ -43,19 +43,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Combatentes\Biomancer.cs" />
+    <Compile Include="Combatentes\InimigoTeste.cs" />
+    <Compile Include="Combatentes\Sentinela.cs" />
     <Compile Include="ControladorCombate.cs" />
     <Compile Include="ControladorEncontro.cs" />
     <Compile Include="ControladorNavegacao.cs" />
     <Compile Include="ControladorTela.cs" />
     <Compile Include="Encontro.cs" />
-    <Compile Include="Combatente.cs" />
-    <Compile Include="Enums\Afinidade.cs" />
+    <Compile Include="Combatentes\Combatente.cs" />
+    <Compile Include="Enums\AfinidadeAtaque.cs" />
+    <Compile Include="Enums\AfinidadeDefesa.cs" />
     <Compile Include="Enums\CategoriaHabilidade.cs" />
+    <Compile Include="Enums\OpcaoMenuCombate.cs" />
     <Compile Include="Enums\Raridade.cs" />
     <Compile Include="Enums\TipoEncontro.cs" />
     <Compile Include="Habilidade.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Mapa.cs" />
+    <Compile Include="Combatentes\Engenheiro.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
