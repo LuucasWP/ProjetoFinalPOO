@@ -4,9 +4,9 @@ namespace ProjetoFinalPOO.Música
 {
     public class BibliotecaDeMusicas
     {
-        public static Musica FanfarraDeConquista()
+        public static Musica TemaConquisataItem()
         {
-            Musica musica = new Musica("Fanfarra de Conquista");
+            Musica musica = new Musica("Tema Conquista Item");
             musica.Notas.Add(new Nota(523, 120));  
             musica.Notas.Add(new Nota(659, 120));  
             musica.Notas.Add(new Nota(784, 120));  
