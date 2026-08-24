@@ -64,6 +64,9 @@
     <Compile Include="Mapa\Grafo.cs" />
     <Compile Include="Mapa\MapaRPGBuilder.cs" />
     <Compile Include="Mapa\Vertice.cs" />
+    <Compile Include="Música\BibliotecaDeMusicas.cs" />
+    <Compile Include="Música\Musica.cs" />
+    <Compile Include="Música\Nota.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
