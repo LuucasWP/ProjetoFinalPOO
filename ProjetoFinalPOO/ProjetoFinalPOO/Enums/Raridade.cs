@@ -1,9 +1,14 @@
-﻿namespace ProjetoFinalPOO.Enums
+namespace ProjetoFinalPOO.Enums
 {
+    /// <summary>
+    /// Raridade de itens, equipamentos e cartas obtidas na exploração espacial.
+    /// </summary>
     public enum Raridade
     {
-        Comum = 1,
-        Incomum = 2,
-        Raro = 3
+        Comum,
+        Incomum,
+        Raro,
+        Epico,
+        Lendario
     }
 }
