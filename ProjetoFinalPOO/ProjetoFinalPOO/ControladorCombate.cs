@@ -157,8 +157,15 @@ namespace ProjetoFinalPOO
             danoFinal = (int)(poderHabilidade * multiplicadorAfinidade) - (estaDefendendo ? 2 * defesaAlvo : defesaAlvo);
 
             alvo.ReceberDano(danoFinal);
+            RemoverHabilidadeUtilizada(habilidade, atacador);
 
             return danoFinal;
+        }
+
+
+        private void RemoverHabilidadeUtilizada(Habilidade habilidade, Combatente combatente)
+        {
+            combatente.HabilidadesDisponiveis.Remove(habilidade);
         }
 
         public int InimigoAtacaSemOposicao(Combatente atacador)
