@@ -17,18 +17,18 @@ namespace ProjetoFinalPOO.Música
         public static Musica TemaEspacialOriginal()
         {
             Musica musica = new Musica("Tema Espacial Original");
-            musica.Notas.Add(new Nota(523, 200)); 
-            musica.Notas.Add(new Nota(659, 200)); 
-            musica.Notas.Add(new Nota(784, 200)); 
+            musica.Notas.Add(new Nota(523, 250)); 
+            musica.Notas.Add(new Nota(659, 250)); 
+            musica.Notas.Add(new Nota(784, 250)); 
             musica.Notas.Add(new Nota(1047, 400));
-            musica.Notas.Add(new Nota(784, 200)); 
-            musica.Notas.Add(new Nota(659, 200)); 
+            musica.Notas.Add(new Nota(784, 250)); 
+            musica.Notas.Add(new Nota(659, 250)); 
             musica.Notas.Add(new Nota(523, 400)); 
-            musica.Notas.Add(new Nota(587, 200)); 
-            musica.Notas.Add(new Nota(698, 200)); 
+            musica.Notas.Add(new Nota(587, 250)); 
+            musica.Notas.Add(new Nota(698, 250)); 
             musica.Notas.Add(new Nota(880, 400)); 
-            musica.Notas.Add(new Nota(698, 200)); 
-            musica.Notas.Add(new Nota(587, 200)); 
+            musica.Notas.Add(new Nota(698, 250)); 
+            musica.Notas.Add(new Nota(587, 250)); 
             musica.Notas.Add(new Nota(523, 600)); 
             return musica;
         }
@@ -36,17 +36,17 @@ namespace ProjetoFinalPOO.Música
         public static Musica MusicaInicio()
         {
             Musica musicaInicio = new Musica("Musica de Inicio");
-            musicaInicio.Notas.Add(new Nota(392, 250)); 
-            musicaInicio.Notas.Add(new Nota(392, 250)); 
-            musicaInicio.Notas.Add(new Nota(392, 250)); 
-            musicaInicio.Notas.Add(new Nota(392, 250)); 
-            musicaInicio.Notas.Add(new Nota(311, 500)); 
-            musicaInicio.Notas.Add(new Nota(392, 200));
-            musicaInicio.Notas.Add(new Nota(392, 200));
-            musicaInicio.Notas.Add(new Nota(466, 200));
-            musicaInicio.Notas.Add(new Nota(466, 200));
-            musicaInicio.Notas.Add(new Nota(392, 200));
-            musicaInicio.Notas.Add(new Nota(262, 500));
+            musicaInicio.Notas.Add(new Nota(394, 320)); 
+            musicaInicio.Notas.Add(new Nota(394, 320)); 
+            musicaInicio.Notas.Add(new Nota(394, 320)); 
+            musicaInicio.Notas.Add(new Nota(394, 320)); 
+            musicaInicio.Notas.Add(new Nota(309, 450)); 
+            musicaInicio.Notas.Add(new Nota(394, 350));
+            musicaInicio.Notas.Add(new Nota(394, 350));
+            musicaInicio.Notas.Add(new Nota(472, 350));
+            musicaInicio.Notas.Add(new Nota(472, 350));
+            musicaInicio.Notas.Add(new Nota(394, 350));
+            musicaInicio.Notas.Add(new Nota(526, 500));
             return musicaInicio;
 
         }
