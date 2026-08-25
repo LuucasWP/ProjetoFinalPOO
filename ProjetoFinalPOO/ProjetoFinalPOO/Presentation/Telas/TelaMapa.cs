@@ -306,6 +306,9 @@ namespace ProjetoFinalPOO.Model.Telas
                 tripulacao: _tripulacao
             );
             telaFim.Executar();
+
+            var telaCreditos = new TelaCreditos();
+            telaCreditos.Executar();
         }
 
         private bool ConfirmarRetornoMenu()

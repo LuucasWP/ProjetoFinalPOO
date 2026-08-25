@@ -67,10 +67,6 @@ namespace ProjetoFinalPOO.Controladores
                         IniciarNovoJogo();
                         break;
 
-                    case OpcaoMenuPrincipal.CarregarJogo:
-                        AbrirCarregarJogo();
-                        break;
-
                     case OpcaoMenuPrincipal.Opcoes:
                         AbrirOpcoes();
                         break;
@@ -123,13 +119,6 @@ namespace ProjetoFinalPOO.Controladores
             var telaMapa = ControladorTela.CriarTelaMapa(mapa, grafo, _tripulacao, _inventarioEquipe);
             _gerenciador.AlterarTela(telaMapa);
             telaMapa.Executar();
-        }
-
-        private void AbrirCarregarJogo()
-        {
-            var telaCarregar = ControladorTela.CriarTelaCarregarJogo();
-            _gerenciador.AlterarTela(telaCarregar);
-            telaCarregar.Executar();
         }
 
         private void AbrirOpcoes()

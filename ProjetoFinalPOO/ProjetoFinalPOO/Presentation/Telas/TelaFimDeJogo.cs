@@ -138,7 +138,7 @@ namespace ProjetoFinalPOO.Model.Telas
         private void DesenharRodape()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("  [ Pressione qualquer tecla para retornar ao Menu Principal... ]");
+            Console.WriteLine("  [ Pressione qualquer tecla para visualizar os Créditos do Jogo... ]");
             Console.ResetColor();
         }
 

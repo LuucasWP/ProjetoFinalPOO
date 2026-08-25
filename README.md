@@ -203,6 +203,9 @@ dotnet run
 ## 👥 Autores & Créditos
 
 Projeto desenvolvido para a disciplina de **Programação Orientada a Objetos (POO)**.
-- **Desenvolvedor**: Gabriel (Deki) & Equipe
+- **Equipe de Desenvolvimento**:
+  - **Gabriel Deeke Schwarz**
+  - **Lucas William Peschke**
+  - **Marco Antônio da Silva Fernandes**
 - **Diagrama UML**: [diagrama_classes_uml.svg](diagrama_classes_uml.svg)
 - **Documentação Técnica dos Sistemas**: [DOCUMENTACAO_SISTEMAS_JOGO.md](DOCUMENTACAO_SISTEMAS_JOGO.md)

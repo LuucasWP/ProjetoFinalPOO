@@ -787,7 +787,7 @@ namespace ProjetoFinalPOO.Model
                     corCard = hab.Afinidade switch
                     {
                         AfinidadeAtaque.Fogo => ConsoleColor.Red,
-                        AfinidadeAtaque.Eletrico => ConsoleColor.Cyan,
+                        AfinidadeAtaque.Eletrico => ConsoleColor.DarkYellow,
                         AfinidadeAtaque.Acido => ConsoleColor.Green,
                         _ => ConsoleColor.White
                     };

@@ -28,11 +28,6 @@ namespace ProjetoFinalPOO.Controladores
             return new TelaCreditos();
         }
 
-        public static TelaCarregarJogo CriarTelaCarregarJogo()
-        {
-            return new TelaCarregarJogo();
-        }
-
         public static TelaMapa CriarTelaMapa(
             ProjetoFinalPOO.Mapa.Mapa mapa,
             Grafo grafo = null,

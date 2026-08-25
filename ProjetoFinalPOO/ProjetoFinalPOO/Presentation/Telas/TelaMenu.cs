@@ -26,11 +26,10 @@ namespace ProjetoFinalPOO.Model.Telas
         {
             _opcoes = new (string, string)[]
             {
-                ("NOVO JOGO",      "Iniciar travessia estelar com sua tripulação mercenária e carga valiosa."),
-                ("CARREGAR JOGO",  "Retomar progresso de uma expedição espacial anterior."),
-                ("CONFIGURACOES",  "Ver parâmetros técnicos do sistema e exibição."),
-                ("DIARIO & LORE",  "Ver detalhes da missão, classes de tripulantes e mecânicas de combate."),
-                ("SAIR",           "Desconectar terminal de bordo e encerrar operação.")
+                ("NOVO JOGO",        "Iniciar travessia estelar com sua tripulação mercenária e carga valiosa."),
+                ("CONFIGURACOES",    "Ver parâmetros técnicos do sistema e exibição."),
+                ("CREDITOS & LORE",  "Ver créditos do projeto, história, classes de tripulantes e regras."),
+                ("SAIR",             "Desconectar terminal de bordo e encerrar operação.")
             };
             _selecionado = 0;
         }
@@ -87,25 +86,19 @@ namespace ProjetoFinalPOO.Model.Telas
                 case ConsoleKey.D2:
                 case ConsoleKey.NumPad2:
                     _selecionado = 1;
-                    opcaoConfirmada = OpcaoMenuPrincipal.CarregarJogo;
+                    opcaoConfirmada = OpcaoMenuPrincipal.Opcoes;
                     return true;
 
                 case ConsoleKey.D3:
                 case ConsoleKey.NumPad3:
                     _selecionado = 2;
-                    opcaoConfirmada = OpcaoMenuPrincipal.Opcoes;
+                    opcaoConfirmada = OpcaoMenuPrincipal.Creditos;
                     return true;
 
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-                    _selecionado = 3;
-                    opcaoConfirmada = OpcaoMenuPrincipal.Creditos;
-                    return true;
-
-                case ConsoleKey.D5:
-                case ConsoleKey.NumPad5:
                 case ConsoleKey.Escape:
-                    _selecionado = 4;
+                    _selecionado = 3;
                     opcaoConfirmada = OpcaoMenuPrincipal.Sair;
                     return true;
 
@@ -258,6 +251,10 @@ namespace ProjetoFinalPOO.Model.Telas
                         Console.ForegroundColor = ConsoleColor.Gray;
                         Console.Write(RenderizadorUI.TruncarOuPad("SISTEMA: Combate 3v3 por cartas e moedas influenciadas por Recursos Especiais.", larguraDir - 4));
                     }
+                    else
+                    {
+                        Console.Write(new string(' ', Math.Max(0, larguraDir - 4)));
+                    }
 
                     Console.ForegroundColor = corBorda;
                     Console.Write(" │");
@@ -273,7 +270,7 @@ namespace ProjetoFinalPOO.Model.Telas
         private void DesenharRodapeControles()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("  [▲/▼ ou W/S] Navegar entre opções  |  [ENTER / Espaço] Confirmar seleção  |  [1-5 / ESC] Atalho rápido");
+            Console.WriteLine("  [▲/▼ ou W/S] Navegar entre opções  |  [ENTER / Espaço] Confirmar seleção  |  [1-4 / ESC] Atalho rápido");
             Console.ResetColor();
         }
 

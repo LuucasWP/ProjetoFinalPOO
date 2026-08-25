@@ -21,14 +21,26 @@ namespace ProjetoFinalPOO.Model.Telas
         public void Renderizar()
         {
             Limpar();
-            RenderizadorUI.DesenharCabecalho("DIÁRIO DE BORDO, TRIPULAÇÃO, AFINIDADES & REGRAS TÁTICAS (README)", RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharCabecalho("CRÉDITOS, DIÁRIO DE BORDO, TRIPULAÇÃO & REGRAS TÁTICAS", RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan);
             Console.WriteLine();
 
+            DesenharCreditosProjeto();
             DesenharHistoriaLore();
             DesenharClassesTripulacao();
             DesenharTabelaAfinidades();
             DesenharMecanicasCombate();
             DesenharRodape();
+        }
+
+        private void DesenharCreditosProjeto()
+        {
+            RenderizadorUI.DesenharInicioSecao("CRÉDITOS & DESENVOLVIMENTO (POO - C# / .NET 10)", RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharLinhaConteudo("Projeto Final da Disciplina de Programação Orientada a Objetos (POO).", RenderizadorUI.LarguraPadrao, ConsoleColor.White, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharLinhaConteudo("Equipe de Desenvolvimento: Gabriel Deeke Schwarz | Lucas William Peschke | Marco Antônio da Silva Fernandes", RenderizadorUI.LarguraPadrao, ConsoleColor.Yellow, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharLinhaConteudo("Conceito & Inspirações: Limbus Company (Embates/Moedas) + Slay the Spire (Mapa Estelar em Grafo)", RenderizadorUI.LarguraPadrao, ConsoleColor.Gray, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharLinhaConteudo("Arquitetura: Clean Architecture, Padrões GoF, Terminal ANSI/UTF-8 e Áudio Dinâmico", RenderizadorUI.LarguraPadrao, ConsoleColor.DarkCyan, ConsoleColor.Cyan);
+            RenderizadorUI.DesenharFimSecao(RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan);
+            Console.WriteLine();
         }
 
         private void DesenharHistoriaLore()
@@ -97,7 +109,7 @@ namespace ProjetoFinalPOO.Model.Telas
         {
             RenderizadorUI.DesenharInicioSecao("MATRIZ DE AFINIDADES DE ATAQUE E DEFESA (README 23, 24, 25 e 26)", RenderizadorUI.LarguraPadrao, ConsoleColor.DarkMagenta);
             RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM ARMADURA : Fraca contra ÁCIDO (2.0x)  | Neutra contra ELÉTRICO (1.0x) | Forte contra FOGO (0.5x)", RenderizadorUI.LarguraPadrao, ConsoleColor.Yellow, ConsoleColor.DarkMagenta);
-            RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM MECÂNICO : Fraco contra ELÉTRICO (2.0x) | Neutro contra FOGO (1.0x)     | Forte contra ÁCIDO (0.5x)", RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan, ConsoleColor.DarkMagenta);
+            RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM MECÂNICO : Fraco contra ELÉTRICO (2.0x) | Neutro contra FOGO (1.0x)     | Forte contra ÁCIDO (0.5x)", RenderizadorUI.LarguraPadrao, ConsoleColor.DarkYellow, ConsoleColor.DarkMagenta);
             RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM BIOLÓGICO: Fraco contra FOGO (2.0x)     | Neutro contra ÁCIDO (1.0x)    | Forte contra ELÉTRICO (0.5x)", RenderizadorUI.LarguraPadrao, ConsoleColor.Green, ConsoleColor.DarkMagenta);
             RenderizadorUI.DesenharFimSecao(RenderizadorUI.LarguraPadrao, ConsoleColor.DarkMagenta);
             Console.WriteLine();

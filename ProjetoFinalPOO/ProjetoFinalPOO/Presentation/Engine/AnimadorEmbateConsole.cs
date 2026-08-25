@@ -86,15 +86,18 @@ namespace ProjetoFinalPOO.Model.Telas
 
             for (int f = 0; f < totalFrames; f++)
             {
-                // Pular animação se tecla for pressionada
+                // Pular animação se tecla de confirmação for pressionada (Enter, Espaço ou ESC)
                 if (!Console.IsInputRedirected)
                 {
                     try
                     {
                         if (Console.KeyAvailable)
                         {
-                            Console.ReadKey(true);
-                            break;
+                            ConsoleKey teclaPular = Console.ReadKey(true).Key;
+                            if (teclaPular == ConsoleKey.Enter || teclaPular == ConsoleKey.Spacebar || teclaPular == ConsoleKey.Escape)
+                            {
+                                break;
+                            }
                         }
                     }
                     catch { }
@@ -339,7 +342,7 @@ namespace ProjetoFinalPOO.Model.Telas
                 // HUD do Painel Direito
                 ConsoleColor corHud = ehAliado ? ConsoleColor.DarkYellow : ConsoleColor.DarkRed;
                 DesenharTextoNoBuffer(_offsetAnimacaoX + 2, 1, $"=== SIMULAÇÃO // CÂMERA 3D ===", corHud);
-                DesenharTextoNoBuffer(_offsetAnimacaoX + 2, 2, $"{atacante.Nome} ➔ {defensor.Nome} | [ESPAÇO: Pular]", ConsoleColor.DarkGray);
+                DesenharTextoNoBuffer(_offsetAnimacaoX + 2, 2, $"{atacante.Nome} ➔ {defensor.Nome} | [ESPAÇO/ESC: Pular]", ConsoleColor.DarkGray);
 
                 string tipoAlcance = ehDistancia ? "DISPARO" : "CORPO-A-CORPO";
                 string linhaAcao = $"AÇÃO: {atacante.Nome} '{resultado.NomeCarta}' [{tipoAlcance}] (Poder: {resultado.PoderFinal})";
@@ -369,7 +372,7 @@ namespace ProjetoFinalPOO.Model.Telas
             string resumoFinal = $"DESFECHO: {atacante.Nome} causou {resultado.DanoCausado} dano em {defensor.Nome} | HP: {defensor.VidaAtual}/{defensor.VidaTotal}";
             DesenharTextoNoBuffer(_offsetAnimacaoX + 2, _altura - 4, CortarTexto(resumoFinal, _larguraAnimacao - 4), ConsoleColor.White);
 
-            string promptContinuar = "[ EMBATE CONCLUÍDO ] >> Pressione qualquer tecla para continuar <<";
+            string promptContinuar = "[ EMBATE CONCLUÍDO ] >> Pressione ENTER, ESPAÇO ou ESC para continuar <<";
             DesenharTextoNoBuffer(_offsetAnimacaoX + Math.Max(2, (_larguraAnimacao - promptContinuar.Length) / 2), _altura - 3, promptContinuar, ConsoleColor.Yellow);
 
             DesenharBordasExternas();
@@ -380,7 +383,14 @@ namespace ProjetoFinalPOO.Model.Telas
                 try
                 {
                     while (Console.KeyAvailable) Console.ReadKey(true);
-                    Console.ReadKey(true);
+                    while (true)
+                    {
+                        ConsoleKey teclaFim = Console.ReadKey(true).Key;
+                        if (teclaFim == ConsoleKey.Enter || teclaFim == ConsoleKey.Spacebar || teclaFim == ConsoleKey.Escape)
+                        {
+                            break;
+                        }
+                    }
                 }
                 catch { }
             }
@@ -652,8 +662,8 @@ namespace ProjetoFinalPOO.Model.Telas
 
             return afinidade switch
             {
-                AfinidadeAtaque.Fogo => ConsoleColor.Yellow,
-                AfinidadeAtaque.Eletrico => ConsoleColor.Cyan,
+                AfinidadeAtaque.Fogo => ConsoleColor.Red,
+                AfinidadeAtaque.Eletrico => ConsoleColor.DarkYellow,
                 AfinidadeAtaque.Acido => ConsoleColor.Green,
                 _ => ConsoleColor.White
             };

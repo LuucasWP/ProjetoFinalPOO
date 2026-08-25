@@ -63,7 +63,7 @@ namespace ProjetoFinalPOO.Combatentes
         internal override void Defender()
         {
             base.Defender();
-            Mana += (30 / 100) * Mana;
+            Mana += Math.Max(10, (int)(Mana * 0.30) + 5);
         }
     }
 }

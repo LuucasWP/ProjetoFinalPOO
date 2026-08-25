@@ -472,7 +472,7 @@ namespace ProjetoFinalPOO.Model.Telas
 
             RenderizadorUI.DesenharInicioSecao("TABELA DE EFETIVIDADE ELEMENTAL (ATAQUE VS BLINDAGEM)", 0, ConsoleColor.DarkCyan);
             RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM ARMADURA : Fraca contra ÁCIDO (2.0x) | Neutra contra ELÉTRICO (1.0x) | Forte contra FOGO (0.5x)", 0, ConsoleColor.Yellow, ConsoleColor.DarkCyan);
-            RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM MECÂNICO : Fraco contra ELÉTRICO (2.0x) | Neutro contra FOGO (1.0x) | Forte contra ÁCIDO (0.5x)", 0, ConsoleColor.Cyan, ConsoleColor.DarkCyan);
+            RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM MECÂNICO : Fraco contra ELÉTRICO (2.0x) | Neutro contra FOGO (1.0x) | Forte contra ÁCIDO (0.5x)", 0, ConsoleColor.DarkYellow, ConsoleColor.DarkCyan);
             RenderizadorUI.DesenharLinhaConteudo("  - BLINDAGEM BIOLÓGICO: Fraco contra FOGO (2.0x) | Neutro contra ÁCIDO (1.0x) | Forte contra ELÉTRICO (0.5x)", 0, ConsoleColor.Green, ConsoleColor.DarkCyan);
             RenderizadorUI.DesenharFimSecao(0, ConsoleColor.DarkCyan);
             Console.WriteLine();

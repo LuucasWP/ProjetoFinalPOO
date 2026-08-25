@@ -681,9 +681,21 @@ namespace ProjetoFinalPOO.Model.Telas
             Console.WriteLine();
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("  [ Pressione qualquer tecla para prosseguir... ]");
+            Console.WriteLine("  [ Pressione ENTER, ESPAÇO ou ESC para prosseguir... ]");
             Console.ResetColor();
-            Console.ReadKey(true);
+            if (!Console.IsInputRedirected)
+            {
+                try
+                {
+                    while (Console.KeyAvailable) Console.ReadKey(true);
+                    while (true)
+                    {
+                        ConsoleKey k = Console.ReadKey(true).Key;
+                        if (k == ConsoleKey.Enter || k == ConsoleKey.Spacebar || k == ConsoleKey.Escape) break;
+                    }
+                }
+                catch { }
+            }
         }
 
         public void Renderizar()

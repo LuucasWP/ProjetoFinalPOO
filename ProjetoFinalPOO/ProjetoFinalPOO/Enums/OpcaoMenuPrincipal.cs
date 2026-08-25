@@ -6,9 +6,8 @@ namespace ProjetoFinalPOO.Enums
     public enum OpcaoMenuPrincipal
     {
         NovoJogo = 0,
-        CarregarJogo = 1,
-        Opcoes = 2,
-        Creditos = 3,
-        Sair = 4
+        Opcoes = 1,
+        Creditos = 2,
+        Sair = 3
     }
 }

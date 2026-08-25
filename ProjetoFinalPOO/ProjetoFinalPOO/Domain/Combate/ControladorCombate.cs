@@ -121,7 +121,18 @@ namespace ProjetoFinalPOO
 
         public Combatente RealizarEmbate(Combatente alvo, Combatente aliadoAtacando, Habilidade habilidadeSelecionada)
         {
-            Habilidade habilidadeDoAlvo = IntencaoAtaqueInimigos[alvo];
+            if (!IntencaoAtaqueInimigos.TryGetValue(alvo, out var habilidadeDoAlvo) || habilidadeDoAlvo == null)
+            {
+                habilidadeDoAlvo = alvo.HabilidadesDisponiveis.FirstOrDefault() ?? alvo.Habilidades.FirstOrDefault();
+            }
+
+            if (habilidadeDoAlvo == null || habilidadeSelecionada == null)
+            {
+                return aliadoAtacando;
+            }
+
+            int moedasAlvo = habilidadeDoAlvo.Moeda;
+            int moedasAtacante = habilidadeSelecionada.Moeda;
 
             do
             {
@@ -133,15 +144,17 @@ namespace ProjetoFinalPOO
                 else if (PoderHabilidadeSelecionada > PoderHabilidadeAlvo)
                 {
                     alvo.RemoverMoeda(habilidadeDoAlvo);
+                    moedasAlvo--;
                 }
                 else
+                {
                     aliadoAtacando.RemoverMoeda(habilidadeSelecionada);
+                    moedasAtacante--;
+                }
             }
-            while (alvo.HabilidadesDisponiveis.Find(h => h.Id == habilidadeDoAlvo.Id).Moeda > 0 &&
-                    aliadoAtacando.HabilidadesDisponiveis.Find(h => h.Id == habilidadeSelecionada.Id).Moeda > 0);
+            while (moedasAlvo > 0 && moedasAtacante > 0);
 
-            if (alvo.HabilidadesDisponiveis.Find(h => h.Id == habilidadeDoAlvo.Id).Moeda > 0 &&
-                    aliadoAtacando.HabilidadesDisponiveis.Find(h => h.Id == habilidadeSelecionada.Id).Moeda == 0)
+            if (moedasAlvo > 0 && moedasAtacante <= 0)
             {
                 aliadoAtacando.HabilidadesDisponiveis.Remove(habilidadeSelecionada);
                 RemoverIntencaoAtaqueInimigo(alvo);

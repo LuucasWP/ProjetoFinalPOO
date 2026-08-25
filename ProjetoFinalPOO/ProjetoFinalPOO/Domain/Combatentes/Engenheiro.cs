@@ -65,7 +65,7 @@ namespace ProjetoFinalPOO.Combatentes
         internal override void Defender()
         {
             base.Defender();
-            Sobreaquecimento += (2 / 100) * Sobreaquecimento;
+            Sobreaquecimento += Math.Max(2, (int)(Sobreaquecimento * 0.10) + 2);
         }
     }
 }

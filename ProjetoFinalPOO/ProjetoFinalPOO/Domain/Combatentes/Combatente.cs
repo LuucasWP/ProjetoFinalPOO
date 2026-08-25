@@ -104,6 +104,7 @@ namespace ProjetoFinalPOO.Combatentes
         {
             foreach (var habilidade in habilidadesAdicionadas)
             {
+                habilidade.ResetarMoeda();
                 int contadorHabilidade = 0;
 
                 contadorHabilidade = _habilidadesDisponiveis.FindAll(x => x.Categoria == habilidade.Categoria).Count();
@@ -112,15 +113,15 @@ namespace ProjetoFinalPOO.Combatentes
                 {
                     case CategoriaHabilidade.Basica:
                         if (contadorHabilidade < 3)
-                            _habilidadesDisponiveis.Add(habilidade);
+                            _habilidadesDisponiveis.Add(habilidade.Clonar());
                         break;
                     case CategoriaHabilidade.Avancada:
                         if (contadorHabilidade < 2)
-                            _habilidadesDisponiveis.Add(habilidade);
+                            _habilidadesDisponiveis.Add(habilidade.Clonar());
                         break;
                     case CategoriaHabilidade.Especialista:
                         if (contadorHabilidade < 1)
-                            _habilidadesDisponiveis.Add(habilidade);
+                            _habilidadesDisponiveis.Add(habilidade.Clonar());
                         break;
                     default:
                         break;
@@ -158,7 +159,12 @@ namespace ProjetoFinalPOO.Combatentes
 
         internal void RemoverMoeda(Habilidade habilidade)
         {
-            _habilidadesDisponiveis.Find(h => h.Id == habilidade.Id).RemoverMoeda();
+            if (habilidade == null) return;
+            var h = _habilidadesDisponiveis.Find(x => x.Id == habilidade.Id);
+            if (h != null)
+                h.RemoverMoeda();
+            else
+                habilidade.RemoverMoeda();
         }
 
         internal virtual void ReceberDano(int Dano)
@@ -170,7 +176,7 @@ namespace ProjetoFinalPOO.Combatentes
 
         internal virtual void Defender()
         {
-            VidaAtual += (5 / 100) * VidaAtual;
+            VidaAtual += Math.Max(1, (int)(_vidaTotal * 0.05));
             _estaDefendendo = true;
         }
 
