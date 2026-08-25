@@ -216,12 +216,12 @@
         <text x="650" y="827" fill="#f1f5f9" font-size="9" font-family="monospace">CalcularPoderBase()</text>
     </g>
 
-    <!-- ==================== PACKAGE 2: COMBATE & HABILIDADES ==================== -->
+    <!-- ==================== PACKAGE 2: COMBATE AND HABILIDADES ==================== -->
     <g filter="url(#pkg-shadow)">
         <rect x="940" y="110" width="1000" height="1060" rx="12" fill="#0a192f" stroke="#0284c7" stroke-width="2" opacity="0.95"/>
         <path d="M 940 155 L 1940 155" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="3,3"/>
         <rect x="955" y="100" width="380" height="25" rx="5" fill="#0284c7"/>
-        <text x="965" y="120" fill="#ffffff" font-size="12" font-weight="bold">COMBATE & HABILIDADES</text>
+        <text x="965" y="120" fill="#ffffff" font-size="12" font-weight="bold">COMBATE AND HABILIDADES</text>
     </g>
 
     <!-- CLASS: Habilidade -->
@@ -400,12 +400,12 @@
         <text x="1560" y="612" fill="#f1f5f9" font-size="9" font-family="monospace">ToString(): string</text>
     </g>
 
-    <!-- ==================== PACKAGE 3: ITENS & EFEITOS ==================== -->
+    <!-- ==================== PACKAGE 3: ITENS AND EFEITOS ==================== -->
     <g filter="url(#pkg-shadow)">
         <rect x="1960" y="110" width="810" height="1060" rx="12" fill="#08201a" stroke="#10b981" stroke-width="2" opacity="0.95"/>
         <path d="M 1960 155 L 2770 155" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3"/>
         <rect x="1975" y="100" width="250" height="25" rx="5" fill="#10b981"/>
-        <text x="1985" y="120" fill="#ffffff" font-size="12" font-weight="bold">ITENS & EFEITOS</text>
+        <text x="1985" y="120" fill="#ffffff" font-size="12" font-weight="bold">ITENS AND EFEITOS</text>
     </g>
 
     <!-- CLASS: IAplicavelEfeito (Interface) -->
@@ -422,7 +422,7 @@
         <text x="1980" y="225" fill="#d8b4fe" font-size="10" font-weight="bold">+</text>
         <text x="1990" y="225" fill="#f1f5f9" font-size="9" font-family="monospace">Aplicar(Combatente): void</text>
         <text x="1980" y="240" fill="#d8b4fe" font-size="10" font-weight="bold">+</text>
-        <text x="1990" y="240" fill="#f1f5f9" font-size="9" font-family="monospace">Duração: int {get}</text>
+        <text x="1990" y="240" fill="#f1f5f9" font-size="9" font-family="monospace">Duracao: int {get}</text>
     </g>
 
     <!-- CLASS: Item (Abstract) -->
@@ -471,27 +471,27 @@
     </g>
 
     <!-- ==================== RELATIONSHIPS ==================== -->
-    <!-- Herança Combatente -> Sentinela -->
+    <!-- Heranca Combatente to Sentinela -->
     <line x1="240" y1="685" x2="170" y2="645" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)" stroke-dasharray="4,4"/>
     
-    <!-- Herança Combatente -> Engenheiro -->
+    <!-- Heranca Combatente to Engenheiro -->
     <line x1="240" y1="685" x2="470" y2="645" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)" stroke-dasharray="4,4"/>
     
-    <!-- Herança Combatente -> Biomancer -->
+    <!-- Heranca Combatente to Biomancer -->
     <line x1="240" y1="685" x2="770" y2="645" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)" stroke-dasharray="4,4"/>
     
-    <!-- Herança Combatente -> Inimigo -->
+    <!-- Heranca Combatente to Inimigo -->
     <line x1="450" y1="435" x2="750" y2="305" stroke="#38bdf8" stroke-width="2" marker-end="url(#inheritance)" stroke-dasharray="4,4"/>
     
-    <!-- Composição: Slot usa Habilidade -->
+    <!-- Composicao: Slot usa Habilidade -->
     <line x1="1540" y1="290" x2="1300" y2="265" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#composition)"/>
     <text x="1380" y="275" fill="#38bdf8" font-size="9">usa</text>
     
-    <!-- Composição: ResultadoEmbate usa Habilidade -->
+    <!-- Composicao: ResultadoEmbate usa Habilidade -->
     <line x1="1540" y1="545" x2="1300" y2="400" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#composition)"/>
     <text x="1380" y="480" fill="#38bdf8" font-size="9">registra</text>
     
-    <!-- Realização: Item -> IAplicavelEfeito -->
+    <!-- Realizacao: Item to IAplicavelEfeito -->
     <line x1="2590" y1="405" x2="2180" y2="275" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#realization)"/>
     <text x="2300" y="335" fill="#a855f7" font-size="9">implementa</text>
 
@@ -499,17 +499,17 @@
     <g>
         <text x="40" y="2050" fill="#94a3b8" font-size="11" font-weight="bold">LEGENDA:</text>
         
-        <!-- Herança -->
+        <!-- Heranca -->
         <line x1="40" y1="2070" x2="80" y2="2070" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#inheritance)"/>
-        <text x="90" y="2073" fill="#e2e8f0" font-size="10">Herança / Especialização</text>
+        <text x="90" y="2073" fill="#e2e8f0" font-size="10">Heranca / Especializacao</text>
         
-        <!-- Composição -->
+        <!-- Composicao -->
         <line x1="40" y1="2095" x2="80" y2="2095" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#composition)"/>
-        <text x="90" y="2098" fill="#e2e8f0" font-size="10">Composição (Usa / Contém)</text>
+        <text x="90" y="2098" fill="#e2e8f0" font-size="10">Composicao (Usa / Contem)</text>
         
-        <!-- Realização -->
+        <!-- Realizacao -->
         <line x1="40" y1="2120" x2="80" y2="2120" stroke="#a855f7" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#realization)"/>
-        <text x="90" y="2123" fill="#e2e8f0" font-size="10">Realização de Interface</text>
+        <text x="90" y="2123" fill="#e2e8f0" font-size="10">Realizacao de Interface</text>
         
         <!-- Modificadores -->
         <text x="400" y="2070" fill="#f87171" font-size="10">-</text>
@@ -519,14 +519,14 @@
         <text x="410" y="2095" fill="#e2e8f0" font-size="10">Interno</text>
         
         <text x="400" y="2120" fill="#4ade80" font-size="10">+</text>
-        <text x="410" y="2120" fill="#e2e8f0" font-size="10">Público</text>
+        <text x="410" y="2120" fill="#e2e8f0" font-size="10">Publico</text>
         
         <text x="700" y="2070" fill="#facc15" font-size="10">#</text>
         <text x="710" y="2070" fill="#e2e8f0" font-size="10">Protegido</text>
         
-        <!-- Padrões -->
+        <!-- Padroes -->
         <text x="900" y="2070" fill="#10b981" font-size="10">«singleton»</text>
-        <text x="1050" y="2070" fill="#e2e8f0" font-size="10">Padrão Singleton</text>
+        <text x="1050" y="2070" fill="#e2e8f0" font-size="10">Padrao Singleton</text>
         
         <text x="900" y="2095" fill="#a855f7" font-size="10">«interface»</text>
         <text x="1050" y="2095" fill="#e2e8f0" font-size="10">Interface</text>
@@ -536,6 +536,6 @@
     </g>
 
     <!-- Footer -->
-    <text x="40" y="2170" fill="#64748b" font-size="9">Arquitetura em Camadas | Padrões de Design: Singleton, Factory, State, Strategy, Builder, Observer</text>
-    <text x="40" y="2185" fill="#64748b" font-size="9">.NET 10 | Projeto Final Programação Orientada a Objetos 2024</text>
+    <text x="40" y="2170" fill="#64748b" font-size="9">Arquitetura em Camadas | Padroes de Design: Singleton, Factory, State, Strategy, Builder, Observer</text>
+    <text x="40" y="2185" fill="#64748b" font-size="9">.NET 10 | Projeto Final Programacao Orientada a Objetos 2024</text>
 </svg>
