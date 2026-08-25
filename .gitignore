@@ -1,0 +1,18 @@
+# Build and Output Folders
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+
+# IDE and Editor Files
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Archived Legacy Files
+Archive/
+Classes dos outros/

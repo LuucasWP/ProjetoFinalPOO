@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "Nome": "Medikit Nanomédico",
+    "Raridade": "Comum",
+    "TipoItem": "CuraVida",
+    "ValorEfeito": 35,
+    "Descricao": "Restaura instantaneamente +35 de Vida em um aliado."
+  },
+  {
+    "Id": 2,
+    "Nome": "Injeção de Éter Estabilizadora",
+    "Raridade": "Comum",
+    "TipoItem": "RestauraRecursoEspecial",
+    "ValorEfeito": 25,
+    "Descricao": "Estabiliza e restaura +25 de Adrenalina, Superaquecimento ou Mana."
+  },
+  {
+    "Id": 3,
+    "Nome": "Bateria de Plasma Concentrada",
+    "Raridade": "Comum",
+    "TipoItem": "RecuperaEnergia",
+    "ValorEfeito": 30,
+    "Descricao": "Recarrega +30 pontos de Energia tática."
+  },
+  {
+    "Id": 4,
+    "Nome": "Emissor de Escudo Cinético",
+    "Raridade": "Incomum",
+    "TipoItem": "EscudoEmergencial",
+    "ValorEfeito": 40,
+    "Descricao": "Gera uma barreira protetora temporária de +40 de Escudo."
+  },
+  {
+    "Id": 5,
+    "Nome": "Granada de Fogo Termobárica",
+    "Raridade": "Incomum",
+    "TipoItem": "GranadaFogo",
+    "ValorEfeito": 30,
+    "Descricao": "Explosão térmica que causa 30 de dano de FOGO (eficaz contra Biológicos)."
+  },
+  {
+    "Id": 6,
+    "Nome": "Granada de Pulso Eletrostático",
+    "Raridade": "Incomum",
+    "TipoItem": "GranadaEletrica",
+    "ValorEfeito": 30,
+    "Descricao": "Sobrecarga de alta voltagem que causa 30 de dano ELÉTRICO (eficaz contra Mecânicos)."
+  },
+  {
+    "Id": 7,
+    "Nome": "Frasco de Ácido Quântico",
+    "Raridade": "Incomum",
+    "TipoItem": "GranadaAcido",
+    "ValorEfeito": 30,
+    "Descricao": "Substância corrosiva que causa 30 de dano de ÁCIDO (eficaz contra Armaduras)."
+  },
+  {
+    "Id": 8,
+    "Nome": "Célula Regenerativa Militar",
+    "Raridade": "Raro",
+    "TipoItem": "CuraVida",
+    "ValorEfeito": 70,
+    "Descricao": "Nanomáquinas de alta potência que curam +70 de Vida."
+  },
+  {
+    "Id": 9,
+    "Nome": "Catalisador de Vácuo Arcano",
+    "Raridade": "Epico",
+    "TipoItem": "RestauraRecursoEspecial",
+    "ValorEfeito": 50,
+    "Descricao": "Artefato que restaura +50 de Adrenalina, Superaquecimento ou Mana em combate."
+  },
+  {
+    "Id": 10,
+    "Nome": "Bateria de Antimatéria Experimental",
+    "Raridade": "Lendario",
+    "TipoItem": "RecuperaEnergia",
+    "ValorEfeito": 75,
+    "Descricao": "Restaura +75 de Energia para habilidades de alto calibre."
+  }
+]

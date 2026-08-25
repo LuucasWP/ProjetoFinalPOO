@@ -1,0 +1,286 @@
+{
+  "Sentinela": [
+    {
+      "Nome": "Pancada Brutal",
+      "Descricao": "Golpe pesado com manopla aquecida que causa impacto ígneo.",
+      "Categoria": "Basica",
+      "Modificador": 5,
+      "Afinidade": "Fogo",
+      "PoderBase": 10,
+      "Moeda": 1,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Postura Inabalável",
+      "Descricao": "Ergue o escudo de liga pesada preparando-se para o embate.",
+      "Categoria": "Basica",
+      "Modificador": 3,
+      "Afinidade": "Eletrico",
+      "PoderBase": 8,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 3
+    },
+    {
+      "Nome": "Lança-Granada Ácida",
+      "Descricao": "Dispara cápsula corrosiva altamente eficaz contra armaduras pesadas.",
+      "Categoria": "Basica",
+      "Modificador": 6,
+      "Afinidade": "Acido",
+      "PoderBase": 11,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Impacto Demolidor",
+      "Descricao": "Avanço devastador com propulsores térmicos que rompe as defesas.",
+      "Categoria": "Avancada",
+      "Modificador": 10,
+      "Afinidade": "Fogo",
+      "PoderBase": 16,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Barreira de Titânio",
+      "Descricao": "Projeta um campo de contenção que reduz dano e reforça a blindagem.",
+      "Categoria": "Avancada",
+      "Modificador": 8,
+      "Afinidade": "Acido",
+      "PoderBase": 14,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Fúria do Colosso",
+      "Descricao": "Ataque sísmico avassalador que esmaga o alvo com fluido corrosivo concentrado.",
+      "Categoria": "Especialista",
+      "Modificador": 15,
+      "Afinidade": "Acido",
+      "PoderBase": 22,
+      "Moeda": 3,
+      "PoderAdicionalMoeda": 6
+    }
+  ],
+  "Engenheiro": [
+    {
+      "Nome": "Disparo Eletrostático",
+      "Descricao": "Feixe elétrico concentrado que causa curto-circuito em robôs.",
+      "Categoria": "Basica",
+      "Modificador": 5,
+      "Afinidade": "Eletrico",
+      "PoderBase": 9,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Nanorobôs de Reparo",
+      "Descricao": "Enxame de nanorobôs que recupera integridade e calibra sistemas.",
+      "Categoria": "Basica",
+      "Modificador": 4,
+      "Afinidade": "Eletrico",
+      "PoderBase": 10,
+      "Moeda": 1,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Solda de Plasma",
+      "Descricao": "Tocha térmica de plasma que queima componentes biológicos.",
+      "Categoria": "Basica",
+      "Modificador": 6,
+      "Afinidade": "Fogo",
+      "PoderBase": 10,
+      "Moeda": 1,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Sobrecarga de Circuito",
+      "Descricao": "Pulso eletromagnético em cadeia que sobrecarrega sistemas inimigos.",
+      "Categoria": "Avancada",
+      "Modificador": 10,
+      "Afinidade": "Eletrico",
+      "PoderBase": 15,
+      "Moeda": 3,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Campo de Força Defensivo",
+      "Descricao": "Escudo de partículas eletrostáticas que anula projéteis.",
+      "Categoria": "Avancada",
+      "Modificador": 8,
+      "Afinidade": "Eletrico",
+      "PoderBase": 12,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Canhão Orbital de Partículas",
+      "Descricao": "Sinaliza um bombardeio de feixe de partículas em alta voltagem.",
+      "Categoria": "Especialista",
+      "Modificador": 15,
+      "Afinidade": "Eletrico",
+      "PoderBase": 24,
+      "Moeda": 3,
+      "PoderAdicionalMoeda": 7
+    }
+  ],
+  "Biomancer": [
+    {
+      "Nome": "Dardo Celular Cáustico",
+      "Descricao": "Projétil de enzimas biológicas condensadas e altamente corrosivas.",
+      "Categoria": "Basica",
+      "Modificador": 5,
+      "Afinidade": "Acido",
+      "PoderBase": 9,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Pulso Bio-Psíquico",
+      "Descricao": "Canaliza bio-frequências para estabilizar o foco e a mana.",
+      "Categoria": "Basica",
+      "Modificador": 4,
+      "Afinidade": "Eletrico",
+      "PoderBase": 8,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 3
+    },
+    {
+      "Nome": "Combustão Orgânica",
+      "Descricao": "Reação exotérmica celular de alta voltagem que calcina alvos.",
+      "Categoria": "Basica",
+      "Modificador": 6,
+      "Afinidade": "Fogo",
+      "PoderBase": 11,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 4
+    },
+    {
+      "Nome": "Nuvem Bio-Corrosiva",
+      "Descricao": "Bruma tóxica de esporos cáusticos que derrete blindagens e tecidos.",
+      "Categoria": "Avancada",
+      "Modificador": 10,
+      "Afinidade": "Acido",
+      "PoderBase": 16,
+      "Moeda": 3,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Distorção Bio-Cinética",
+      "Descricao": "Membrana bio-elástica que dissipa o impacto de ataques no embate.",
+      "Categoria": "Avancada",
+      "Modificador": 8,
+      "Afinidade": "Fogo",
+      "PoderBase": 14,
+      "Moeda": 2,
+      "PoderAdicionalMoeda": 5
+    },
+    {
+      "Nome": "Vórtice Celular Absoluto",
+      "Descricao": "Abre uma hiper-reação de biomassa devoradora que calcina em chamas.",
+      "Categoria": "Especialista",
+      "Modificador": 15,
+      "Afinidade": "Fogo",
+      "PoderBase": 25,
+      "Moeda": 3,
+      "PoderAdicionalMoeda": 7
+    }
+  ],
+  "Inimigos": {
+    "Chefe": [
+      {
+        "Nome": "Canhão de Fusão Titânica",
+        "Descricao": "Disparo pesado da bateria principal do Dreadnought.",
+        "Categoria": "Especialista",
+        "Modificador": 0,
+        "Afinidade": "Fogo",
+        "PoderBase": 18,
+        "Moeda": 3,
+        "PoderAdicionalMoeda": 4
+      },
+      {
+        "Nome": "Pulso Eletromagnético",
+        "Descricao": "Onda de choque que sobrecarrega escudos.",
+        "Categoria": "Avancada",
+        "Modificador": 0,
+        "Afinidade": "Eletrico",
+        "PoderBase": 15,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 4
+      },
+      {
+        "Nome": "Salva de Torpedos de Ácido",
+        "Descricao": "Torpedos com ogivas de biocorrosão.",
+        "Categoria": "Avancada",
+        "Modificador": 0,
+        "Afinidade": "Acido",
+        "PoderBase": 16,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 4
+      }
+    ],
+    "Drone": [
+      {
+        "Nome": "Metralhadora Eletrostática",
+        "Descricao": "Rajada de disparos de alta voltagem.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Eletrico",
+        "PoderBase": 8,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 3
+      },
+      {
+        "Nome": "Laser de Corte Térmico",
+        "Descricao": "Feixe concentrado para corte e penetração.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Fogo",
+        "PoderBase": 9,
+        "Moeda": 1,
+        "PoderAdicionalMoeda": 4
+      },
+      {
+        "Nome": "Descarga Elétrica de Choque",
+        "Descricao": "Descarga de alta amperagem.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Eletrico",
+        "PoderBase": 7,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 2
+      }
+    ],
+    "Pirata": [
+      {
+        "Nome": "Ataque Ácido",
+        "Descricao": "Disparo de fluido corrosivo.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Acido",
+        "PoderBase": 8,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 3
+      },
+      {
+        "Nome": "Lâmina Térmica",
+        "Descricao": "Golpe cortante com espada superaquecida.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Fogo",
+        "PoderBase": 9,
+        "Moeda": 2,
+        "PoderAdicionalMoeda": 3
+      },
+      {
+        "Nome": "Ataque Elétrico",
+        "Descricao": "Pulso de choque elétrico direto.",
+        "Categoria": "Basica",
+        "Modificador": 0,
+        "Afinidade": "Eletrico",
+        "PoderBase": 8,
+        "Moeda": 1,
+        "PoderAdicionalMoeda": 4
+      }
+    ]
+  }
+}

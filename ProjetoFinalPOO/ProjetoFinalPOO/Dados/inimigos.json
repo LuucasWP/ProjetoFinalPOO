@@ -1,0 +1,89 @@
+{
+  "Chefe": {
+    "Principal": {
+      "Nome": "Capitânia Dreadnought",
+      "VidaBase": 260,
+      "EscalaVidaPorNivel": 15,
+      "DefesaBase": 14,
+      "Agilidade": 11,
+      "Afinidade": "Armadurado",
+      "ChaveHabilidade": "chefe"
+    },
+    "Escolta1": {
+      "Nome": "Drone Balístico Pesado",
+      "VidaBase": 80,
+      "EscalaVidaPorNivel": 8,
+      "DefesaBase": 10,
+      "Agilidade": 14,
+      "Afinidade": "Mecanico",
+      "ChaveHabilidade": "drone"
+    },
+    "Escolta2": {
+      "Nome": "Algoz Cibernético",
+      "VidaBase": 90,
+      "EscalaVidaPorNivel": 8,
+      "DefesaBase": 8,
+      "Agilidade": 22,
+      "Afinidade": "Biologico",
+      "ChaveHabilidade": "pirata"
+    }
+  },
+  "Elite": {
+    "Elite1": {
+      "Nome": "Corsário Blindado",
+      "VidaBase": 100,
+      "EscalaVidaPorNivel": 12,
+      "DefesaBase": 10,
+      "Agilidade": 10,
+      "Afinidade": "Armadurado",
+      "ChaveHabilidade": "pirata"
+    },
+    "Elite2": {
+      "Nome": "Autômato de Guerra",
+      "VidaBase": 90,
+      "EscalaVidaPorNivel": 12,
+      "DefesaBase": 11,
+      "Agilidade": 12,
+      "Afinidade": "Mecanico",
+      "ChaveHabilidade": "drone"
+    },
+    "Elite3": {
+      "Nome": "Franco-Atirador Sindical",
+      "VidaBase": 70,
+      "EscalaVidaPorNivel": 12,
+      "DefesaBase": 7,
+      "Agilidade": 23,
+      "Afinidade": "Biologico",
+      "ChaveHabilidade": "pirata"
+    }
+  },
+  "Comum": {
+    "DroneAlpha": {
+      "Nome": "Drone de Patrulha Alpha",
+      "VidaBase": 50,
+      "EscalaVidaPorNivel": 10,
+      "DefesaBase": 6,
+      "Agilidade": 16,
+      "Afinidade": "Mecanico",
+      "ChaveHabilidade": "drone"
+    },
+    "SentinelaChoque": {
+      "Nome": "Sentinela de Choque",
+      "VidaBase": 65,
+      "EscalaVidaPorNivel": 10,
+      "DefesaBase": 8,
+      "Agilidade": 7,
+      "Afinidade": "Armadurado",
+      "ChaveHabilidade": "drone"
+    },
+    "CorsarioRecon": {
+      "Nome": "Corsário de Reconhecimento",
+      "VidaBase": 55,
+      "EscalaVidaPorNivel": 10,
+      "DefesaBase": 6,
+      "Agilidade": 18,
+      "Afinidade": "Biologico",
+      "ChaveHabilidade": "pirata"
+    }
+  }
+}
