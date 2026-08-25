@@ -37,19 +37,19 @@ namespace ProjetoFinalPOO.EncontroPlaneta
         private void Curar()
         {
             Console.WriteLine("Você foi curado em 30%: ");
-            //Logica de cura
+            //Efeito de cura
         }
 
         private void MudarHabilidades()
         {
             Console.WriteLine("Para qual habilidade você deseja alterar: ");
-            //Logica de alterar a habilidade
+            //Alterar a habilidade
         }
 
         private void AlterarItem()
         {
             Console.WriteLine("Para qual item você deseja alterar: ");
-            //Logica de alterar o item
+            //Alterar o item
         }
     }
 }
