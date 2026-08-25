@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ProjetoFinalPOO.Enums;
 
 namespace ProjetoFinalPOO.Combatentes
@@ -15,9 +15,10 @@ namespace ProjetoFinalPOO.Combatentes
             {
                 if (value < 0)
                     _adrenalina = 0;
-                if (value > 45)
+                else if (value > 45)
                     _adrenalina = 45;
-                _adrenalina = value;
+                else
+                    _adrenalina = value;
             }
         }
 

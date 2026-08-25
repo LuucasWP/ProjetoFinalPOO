@@ -52,34 +52,41 @@ namespace ProjetoFinalPOO.Model
             switch (Tipo)
             {
                 case TipoItem.CuraVida:
-                    alvo.Defender(); // Aciona recuperação tática nativa
-                    resultado = $"{usuario.Nome} usou {Nome} em {alvo.Nome}, recuperando integridade e postura!";
+                    int cura = ValorEfeito > 0 ? ValorEfeito : 35;
+                    alvo._vidaAtual = Math.Min(alvo.VidaTotal, alvo.VidaAtual + cura);
+                    alvo.Defender(); // Aciona postura defensiva e reforço tático
+                    resultado = $"{usuario.Nome} usou {Nome} em {alvo.Nome}, restaurando +{cura} HP (Vida: {alvo.VidaAtual}/{alvo.VidaTotal})!";
                     break;
 
                 case TipoItem.RecuperaEnergia:
-                case TipoItem.RestauraSanidade:
-                    alvo.AlterarModificador(ValorEfeito);
+                case TipoItem.RestauraRecursoEspecial:
+                    if (alvo is Biomancer)
+                        alvo.AlterarModificador(-ValorEfeito); // Mana += ValorEfeito
+                    else
+                        alvo.AlterarModificador(ValorEfeito); // Adrenalina / Sobreaquecimento += ValorEfeito
                     resultado = $"{usuario.Nome} usou {Nome} em {alvo.Nome}, potencializando seu recurso especial em +{ValorEfeito}!";
                     break;
 
                 case TipoItem.EscudoEmergencial:
+                    int escudo = ValorEfeito > 0 ? ValorEfeito : 20;
+                    alvo._vidaAtual = Math.Min(alvo.VidaTotal, alvo.VidaAtual + escudo);
                     alvo.Defender();
-                    resultado = $"{usuario.Nome} ativou {Nome} em {alvo.Nome}, assumindo postura defensiva reforçada!";
+                    resultado = $"{usuario.Nome} ativou {Nome} em {alvo.Nome}, assumindo postura defensiva e reforço de blindagem (+{escudo} HP)!";
                     break;
 
                 case TipoItem.GranadaFogo:
                     alvo.ReceberDano(ValorEfeito);
-                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano de FOGO!";
+                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano de FOGO (HP: {alvo.VidaAtual}/{alvo.VidaTotal})!";
                     break;
 
                 case TipoItem.GranadaEletrica:
                     alvo.ReceberDano(ValorEfeito);
-                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano ELÉTRICO!";
+                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano ELÉTRICO (HP: {alvo.VidaAtual}/{alvo.VidaTotal})!";
                     break;
 
                 case TipoItem.GranadaAcido:
                     alvo.ReceberDano(ValorEfeito);
-                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano de ÁCIDO!";
+                    resultado = $"{usuario.Nome} arremessou {Nome} contra {alvo.Nome} causando {ValorEfeito} de dano de ÁCIDO (HP: {alvo.VidaAtual}/{alvo.VidaTotal})!";
                     break;
             }
 

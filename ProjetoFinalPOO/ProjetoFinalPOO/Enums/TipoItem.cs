@@ -7,7 +7,7 @@ namespace ProjetoFinalPOO.Enums
     {
         CuraVida,
         RecuperaEnergia,
-        RestauraSanidade,
+        RestauraRecursoEspecial,
         EscudoEmergencial,
         GranadaFogo,
         GranadaEletrica,

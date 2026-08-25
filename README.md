@@ -3,7 +3,7 @@ mapa estilo slay the spire com tipos de planetas e estações espaciais com efei
 história é um grupo de mercenários carregando uma pessoa como carga para fora de um espaço controlado por um outro grupo
 boss final poderia ser um time fodão do grupo
 batalha inspirada em limbus company em que o jogador seleciona as ações que o personagem irá executar e o embate se desenrola baseado em parâmetros e o vencedor irá efetivamente atacar e causar o dano
-possivelmente adicionar mecânica que aumenta as chances de sucesso em um embate com base em algum atributo (por exemplo sanidade)
+possivelmente adicionar mecânica que aumenta as chances de sucesso em um embate com base em algum atributo (recursos de classe: Adrenalina, Sobreaquecimento e Mana)
 classes como: brutamontes, engenheiro, *-mancer
 jogador pode selecionar as ações do personagem através de cartas
 levels até level 10

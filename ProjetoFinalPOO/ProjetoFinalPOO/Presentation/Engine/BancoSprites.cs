@@ -285,11 +285,11 @@ namespace ProjetoFinalPOO.Model
                     @"  │ [EN++] │  ",
                     @"  └────────┘  "
                 },
-                TipoItem.RestauraSanidade => new string[]
+                TipoItem.RestauraRecursoEspecial => new string[]
                 {
                     @"  ┌────────┐  ",
                     @"  │  (..)  │  ",
-                    @"  │ <@_@>  │  ",
+                    @"  │ <REC+> │  ",
                     @"  └────────┘  "
                 },
                 TipoItem.EscudoEmergencial => new string[]

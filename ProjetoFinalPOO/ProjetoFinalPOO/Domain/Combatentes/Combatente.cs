@@ -1,4 +1,4 @@
-﻿using ProjetoFinalPOO.Enums;
+using ProjetoFinalPOO.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace ProjetoFinalPOO.Combatentes
         internal AfinidadeDefesa _afinidade { get; set; }
         internal List<Habilidade> _habilidades { get; set; }
         internal List<Habilidade> _habilidadesDisponiveis { get; set; }
-        public bool _estaDefendendo { get; set; }
+        internal bool _estaDefendendo { get; set; }
 
         public string Nome => _nome;
         public int Level => _level;
@@ -31,7 +31,8 @@ namespace ProjetoFinalPOO.Combatentes
             {
                 if (value < 25)
                     _vidaTotal = 25;
-                _vidaTotal = value;
+                else
+                    _vidaTotal = value;
             }
         }
         public int VidaAtual
@@ -41,9 +42,10 @@ namespace ProjetoFinalPOO.Combatentes
             {
                 if (value < 0)
                     _vidaAtual = 0;
-                if (value > VidaTotal)
+                else if (value > VidaTotal)
                     _vidaAtual = VidaTotal;
-                _vidaAtual = value;
+                else
+                    _vidaAtual = value;
             }
         }
         public int Defesa => _defesa;
@@ -52,7 +54,8 @@ namespace ProjetoFinalPOO.Combatentes
         public List<Habilidade> Habilidades => _habilidades;
         public List<Habilidade> HabilidadesDisponiveis => _habilidadesDisponiveis;
 
-        public bool EstaMorto => VidaAtual == 0;
+        public bool EstaMorto => VidaAtual <= 0;
+        public bool EstaDefendendo => _estaDefendendo;
         public bool estaDefendo => _estaDefendendo;
         protected Combatente()
         {
@@ -64,9 +67,9 @@ namespace ProjetoFinalPOO.Combatentes
             _habilidadesDisponiveis = new List<Habilidade>();
         }
 
-        public void AdcionarHabilidade(List<Habilidade> habilidadesAdcionada)
+        public void AdicionarHabilidade(List<Habilidade> habilidadesAdicionadas)
         {
-            foreach (var habilidade in habilidadesAdcionada)
+            foreach (var habilidade in habilidadesAdicionadas)
             {
                 int contadorHabilidade = 0;
 
@@ -95,9 +98,11 @@ namespace ProjetoFinalPOO.Combatentes
             }
         }
 
-        public void AdcionarHabilidadesDisponiveis(List<Habilidade> habilidadesAdcionada)
+        public void AdcionarHabilidade(List<Habilidade> habilidadesAdcionada) => AdicionarHabilidade(habilidadesAdcionada);
+
+        public void AdicionarHabilidadesDisponiveis(List<Habilidade> habilidadesAdicionadas)
         {
-            foreach (var habilidade in habilidadesAdcionada)
+            foreach (var habilidade in habilidadesAdicionadas)
             {
                 int contadorHabilidade = 0;
 
@@ -122,6 +127,8 @@ namespace ProjetoFinalPOO.Combatentes
                 }
             }
         }
+
+        public void AdcionarHabilidadesDisponiveis(List<Habilidade> habilidadesAdcionada) => AdicionarHabilidadesDisponiveis(habilidadesAdcionada);
 
         public bool SubstituirHabilidade(Habilidade habilidadeSubstituida, Habilidade novaHabilidade)
         {

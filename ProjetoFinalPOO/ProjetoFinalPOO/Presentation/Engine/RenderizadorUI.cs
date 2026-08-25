@@ -277,7 +277,7 @@ namespace ProjetoFinalPOO.Model
                         {
                             statusLinha = "►► MIRA TRAVADA [ALVO SELECIONADO] ◄◄";
                         }
-                        else if (slot.HabilidadePlanejada != null && slot.AlvoPlanejadoSlot >= 0 && slotsAdversarios != null && slot.AlvoPlanejadoSlot < slotsAdversarios.Length)
+                        else if (!slot.JaAtacouNestaRodada && !c.EstaMorto && slot.HabilidadePlanejada != null && slot.AlvoPlanejadoSlot >= 0 && slotsAdversarios != null && slot.AlvoPlanejadoSlot < slotsAdversarios.Length)
                         {
                             var alvo = slotsAdversarios[slot.AlvoPlanejadoSlot]?.Combatente;
                             string nomeAlvo = alvo != null ? alvo.Nome : $"Slot {slot.AlvoPlanejadoSlot + 1}";

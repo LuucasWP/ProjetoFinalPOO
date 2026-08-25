@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ProjetoFinalPOO.Combatentes;
 using ProjetoFinalPOO.Enums;
 using System.Collections.Generic;
@@ -66,27 +66,30 @@ namespace ProjetoFinalPOO
         {
             _rodada++;
             _ordem.Clear();
-            OrdernarOrdemCombatentes();
+            OrdenarOrdemCombatentes();
             AdicionarHabilidadesDisponiveis();
+            _intencaoAtaqueInimigos.Clear();
             CriarIntencaoAtaqueInimigos();
+            ResetarDefesa();
         }
 
 
-        private void OrdernarOrdemCombatentes()
+        private void OrdenarOrdemCombatentes()
         {
+            _ordem.Clear();
             List<Combatente> ordem = new List<Combatente>();
 
-            ordem.AddRange(_combatentesAliados);
-            ordem.AddRange(_combatentesInimigos);
+            ordem.AddRange(_combatentesAliados.Where(c => !c.EstaMorto));
+            ordem.AddRange(_combatentesInimigos.Where(c => !c.EstaMorto));
             _ordem = ordem.OrderByDescending(c => c.Agilidade).ToList();
         }
 
         private void AdicionarHabilidadesDisponiveis()
         {
-            foreach (Combatente combatente in Ordem)
+            foreach (Combatente combatente in _ordem)
             {
                 if (combatente.HabilidadesDisponiveis.Count == 0)
-                    combatente.AdcionarHabilidadesDisponiveis(combatente.Habilidades);
+                    combatente.AdicionarHabilidadesDisponiveis(combatente.Habilidades);
             }
         }
 
@@ -98,6 +101,12 @@ namespace ProjetoFinalPOO
                 int indexHabilidade = rnd.Next(inimigo._habilidadesDisponiveis.Count);
                 _intencaoAtaqueInimigos.Add(inimigo, inimigo.HabilidadesDisponiveis[indexHabilidade]);
             }
+        }
+
+        private void ResetarDefesa()
+        {
+            foreach (Combatente combatente in _ordem)
+                combatente._estaDefendendo = false;
         }
 
         private void RemoverIntencaoAtaqueInimigo(Combatente inimigo)
@@ -134,10 +143,12 @@ namespace ProjetoFinalPOO
             if (alvo.HabilidadesDisponiveis.Find(h => h.Id == habilidadeDoAlvo.Id).Moeda > 0 &&
                     aliadoAtacando.HabilidadesDisponiveis.Find(h => h.Id == habilidadeSelecionada.Id).Moeda == 0)
             {
+                aliadoAtacando.HabilidadesDisponiveis.Remove(habilidadeSelecionada);
+                RemoverIntencaoAtaqueInimigo(alvo);
                 return alvo;
             }
 
-            aliadoAtacando.AlterarModificador(habilidadeSelecionada.Modificador);
+            alvo.HabilidadesDisponiveis.Remove(habilidadeDoAlvo);
             RemoverIntencaoAtaqueInimigo(alvo);
             return aliadoAtacando;
         }
@@ -152,12 +163,13 @@ namespace ProjetoFinalPOO
 
             int defesaAlvo = alvo.Defesa;
 
-            bool estaDefendendo = alvo.estaDefendo;
+            bool estaDefendendo = alvo.EstaDefendendo;
 
             danoFinal = (int)(poderHabilidade * multiplicadorAfinidade) - (estaDefendendo ? 2 * defesaAlvo : defesaAlvo);
-
+            if (danoFinal <= 0) danoFinal = 1;
             alvo.ReceberDano(danoFinal);
             RemoverHabilidadeUtilizada(habilidade, atacador);
+            atacador.AlterarModificador(habilidade.Modificador);
 
             return danoFinal;
         }
@@ -177,7 +189,7 @@ namespace ProjetoFinalPOO
             return Atacar(alvo, atacador, habilidadeAtacador);
         }
 
-        private Combatente DecidirAlvoAtaqueSemOposicao()
+        public Combatente DecidirAlvoAtaqueSemOposicao()
         {
             Random rnd = new Random();
             int aleatorio = rnd.Next(CombatentesAliados.Count);
@@ -254,12 +266,12 @@ namespace ProjetoFinalPOO
 
         public bool VerificarFimDeCombate()
         {
-            if (_combatentesAliados.FindAll(a => a.EstaMorto).Count != _combatentesAliados.Count)
-                return false;
-            if (_combatentesInimigos.FindAll(a => a.EstaMorto).Count != _combatentesAliados.Count)
-                return false;
+            if (_combatentesAliados.All(a => a.EstaMorto))
+                return true;
+            if (_combatentesInimigos.All(a => a.EstaMorto))
+                return true;
 
-            return true;
+            return false;
         }
     }
 }

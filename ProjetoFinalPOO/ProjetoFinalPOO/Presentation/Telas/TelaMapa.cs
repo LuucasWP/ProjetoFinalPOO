@@ -158,7 +158,8 @@ namespace ProjetoFinalPOO.Model.Telas
                             ? tecla.Key - ConsoleKey.D1
                             : tecla.Key - ConsoleKey.NumPad1;
 
-                        if (idx >= 0 && idx < _verticeAtual.Arestas.Count)
+                        var arestasDisponiveis = ObterArestasAdjacentesValidas();
+                        if (idx >= 0 && idx < arestasDisponiveis.Count)
                         {
                             _indiceArestaSelecionada = idx;
                             if (_modoVisualizacao == ModoVisualizacaoMapa.NavegacaoRotas)
@@ -175,28 +176,54 @@ namespace ProjetoFinalPOO.Model.Telas
             }
         }
 
+        private List<Aresta> ObterArestasAdjacentesValidas()
+        {
+            if (_verticeAtual == null || _verticeAtual.Arestas == null) return new List<Aresta>();
+
+            int pOrig = ObterNumeroPlaneta(_verticeAtual.Nome);
+            int gOrig = ObterNumeroGalaxia(_verticeAtual.Nome);
+
+            if (gOrig == 0 || _verticeAtual.Nome.Equals("Inicio", StringComparison.OrdinalIgnoreCase))
+            {
+                return _verticeAtual.Arestas;
+            }
+
+            return _verticeAtual.Arestas.Where(a =>
+            {
+                int gDest = ObterNumeroGalaxia(a.Destino.Nome);
+                int pDest = ObterNumeroPlaneta(a.Destino.Nome);
+
+                if (gDest == 6) return true; // Na Galáxia 6 converge para o Chefe
+                return Math.Abs(pDest - pOrig) <= 1; // Apenas nós imediatamente adjacentes (delta <= 1)
+            }).ToList();
+        }
+
         private void MoverSelecaoCima()
         {
-            if (_verticeAtual.Arestas.Count == 0) return;
-            _indiceArestaSelecionada = (_indiceArestaSelecionada - 1 + _verticeAtual.Arestas.Count) % _verticeAtual.Arestas.Count;
+            var arestas = ObterArestasAdjacentesValidas();
+            if (arestas.Count == 0) return;
+            _indiceArestaSelecionada = (_indiceArestaSelecionada - 1 + arestas.Count) % arestas.Count;
         }
 
         private void MoverSelecaoBaixo()
         {
-            if (_verticeAtual.Arestas.Count == 0) return;
-            _indiceArestaSelecionada = (_indiceArestaSelecionada + 1) % _verticeAtual.Arestas.Count;
+            var arestas = ObterArestasAdjacentesValidas();
+            if (arestas.Count == 0) return;
+            _indiceArestaSelecionada = (_indiceArestaSelecionada + 1) % arestas.Count;
         }
 
         private bool RealizarSaltoHiperespacial()
         {
-            if (_verticeAtual.Arestas.Count == 0)
+            var arestas = ObterArestasAdjacentesValidas();
+            if (arestas.Count == 0)
             {
                 // Chegou ao fim do mapa (Galáxia 6)
                 ExibirFimDeJogoFinal(vitoria: true);
                 return false;
             }
 
-            Aresta arestaEscolhida = _verticeAtual.Arestas[_indiceArestaSelecionada];
+            _indiceArestaSelecionada = Math.Clamp(_indiceArestaSelecionada, 0, arestas.Count - 1);
+            Aresta arestaEscolhida = arestas[_indiceArestaSelecionada];
             Vertice destino = arestaEscolhida.Destino;
 
             // Animação de Salto Hiperespacial
@@ -605,9 +632,10 @@ namespace ProjetoFinalPOO.Model.Telas
             int pAtual = ObterNumeroPlaneta(_verticeAtual.Nome);
             if (g == galaxiaAtual && pAtual == numeroPlaneta)
             {
-                for (int i = 0; i < _verticeAtual.Arestas.Count; i++)
+                var arestasValidas = ObterArestasAdjacentesValidas();
+                for (int i = 0; i < arestasValidas.Count; i++)
                 {
-                    var aresta = _verticeAtual.Arestas[i];
+                    var aresta = arestasValidas[i];
                     int pDest = ObterNumeroPlaneta(aresta.Destino.Nome);
 
                     if (pDest == numeroPlaneta)
@@ -688,9 +716,10 @@ namespace ProjetoFinalPOO.Model.Telas
             int pAtu = ObterNumeroPlaneta(_verticeAtual.Nome);
             if (g == galaxiaAtual)
             {
-                for (int i = 0; i < _verticeAtual.Arestas.Count; i++)
+                var arestasValidas = ObterArestasAdjacentesValidas();
+                for (int i = 0; i < arestasValidas.Count; i++)
                 {
-                    var aresta = _verticeAtual.Arestas[i];
+                    var aresta = arestasValidas[i];
                     int pDest = ObterNumeroPlaneta(aresta.Destino.Nome);
                     bool isSel = (i == _indiceArestaSelecionada);
 
@@ -792,7 +821,8 @@ namespace ProjetoFinalPOO.Model.Telas
             else if (g == galaxiaAtual + 1)
             {
                 // Verifica se este planeta é um destino diretamente adjacente e alcançável a partir da posição atual
-                int arestaIndex = _verticeAtual.Arestas.FindIndex(a => a.Destino.Nome.Equals(nomeNo, StringComparison.OrdinalIgnoreCase));
+                var arestasValidas = ObterArestasAdjacentesValidas();
+                int arestaIndex = arestasValidas.FindIndex(a => a.Destino.Nome.Equals(nomeNo, StringComparison.OrdinalIgnoreCase));
 
                 if (arestaIndex >= 0)
                 {
@@ -852,7 +882,8 @@ namespace ProjetoFinalPOO.Model.Telas
         /// </summary>
         private void DesenharScannerPlanetaAlvo()
         {
-            if (_verticeAtual == null || _verticeAtual.Arestas == null || _verticeAtual.Arestas.Count == 0)
+            var arestasValidas = ObterArestasAdjacentesValidas();
+            if (_verticeAtual == null || arestasValidas.Count == 0)
             {
                 RenderizadorUI.DesenharInicioSecao($"DESTINO FINAL ALCANÇADO: {_verticeAtual?.Nome.ToUpper()}", RenderizadorUI.LarguraPadrao, ConsoleColor.Cyan);
                 RenderizadorUI.DesenharLinhaCentralizada(">> A CARGA 73 FOI ENTREGUE EM SEGURANÇA NO PONTO DE EXTRAÇÃO! <<", RenderizadorUI.LarguraPadrao, ConsoleColor.Green, ConsoleColor.Cyan);
@@ -862,8 +893,8 @@ namespace ProjetoFinalPOO.Model.Telas
                 return;
             }
 
-            int indexEfetivo = Math.Clamp(_indiceArestaSelecionada, 0, _verticeAtual.Arestas.Count - 1);
-            var arestaSelecionada = _verticeAtual.Arestas[indexEfetivo];
+            int indexEfetivo = Math.Clamp(_indiceArestaSelecionada, 0, arestasValidas.Count - 1);
+            var arestaSelecionada = arestasValidas[indexEfetivo];
             var destino = arestaSelecionada.Destino;
 
             string[] arteCenario = BancoSprites.ObterArteCenario(destino.Nome);

@@ -1,4 +1,4 @@
-﻿using ProjetoFinalPOO.Enums;
+using ProjetoFinalPOO.Enums;
 
 namespace ProjetoFinalPOO
 {
@@ -13,7 +13,7 @@ namespace ProjetoFinalPOO
         private AfinidadeAtaque _afinidade { get; set; }
         private int _poderBase { get; set; }
         private int _moeda { get; set; }
-        private int _poderAdiconalMoeda { get; set; }
+        private int _poderAdicionalMoeda { get; set; }
 
         public string Nome => _nome;
         public string Descricao => _descricao;
@@ -22,9 +22,9 @@ namespace ProjetoFinalPOO
         public AfinidadeAtaque Afinidade => _afinidade;
         public int PoderBase => _poderBase;
         public int Moeda => _moeda;
-        public int PoderAdicionalMoeda => _poderAdiconalMoeda;
+        public int PoderAdicionalMoeda => _poderAdicionalMoeda;
 
-        public Habilidade(string nome, string descricao, CategoriaHabilidade categoria, int modificador, AfinidadeAtaque afinidade, int poderBase, int moeda, int poderAdiconalMoeda)
+        public Habilidade(string nome, string descricao, CategoriaHabilidade categoria, int modificador, AfinidadeAtaque afinidade, int poderBase, int moeda, int poderAdicionalMoeda)
         {
             _contadorID++;
             Id = _contadorID;
@@ -35,7 +35,7 @@ namespace ProjetoFinalPOO
             _afinidade = afinidade;
             _poderBase = poderBase;
             _moeda = moeda;
-            _poderAdiconalMoeda = poderAdiconalMoeda;
+            _poderAdicionalMoeda = poderAdicionalMoeda;
         }
 
         internal void RemoverMoeda()

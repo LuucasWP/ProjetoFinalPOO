@@ -1,0 +1,10 @@
+{
+  "LarguraConsole": 110,
+  "AlturaConsole": 32,
+  "CreditosIniciais": 250,
+  "IntegridadeNaveInicial": 100,
+  "ExpPorVitoriaBase": 30,
+  "ExpPorGalaxiaMultiplicador": 15,
+  "CapacidadeMaximaInventario": 10,
+  "NivelMaximoTripulacao": 10
+}

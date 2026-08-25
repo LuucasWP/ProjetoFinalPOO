@@ -91,11 +91,60 @@ namespace ProjetoFinalPOO.Model.Telas
                         }
                         break;
 
-                    case ConsoleKey.Escape:
+                    case ConsoleKey.T:
                     case ConsoleKey.Enter:
+                        SubstituirHabilidadeSelecionada();
+                        break;
+
+                    case ConsoleKey.Escape:
                         emExecucao = false;
                         break;
                 }
+            }
+        }
+
+        private void SubstituirHabilidadeSelecionada()
+        {
+            var heroi = _tripulacao[_indicePersonagem];
+            if (heroi.Habilidades.Count == 0 || _indiceHabilidade < 0 || _indiceHabilidade >= heroi.Habilidades.Count)
+                return;
+
+            var habAtual = heroi.Habilidades[_indiceHabilidade];
+
+            // Obtém opções compatíveis da mesma categoria a partir do banco de habilidades
+            List<Habilidade> todasDoHeroi = heroi switch
+            {
+                Sentinela => BancoHabilidades.ObterHabilidadesSentinela(),
+                Engenheiro => BancoHabilidades.ObterHabilidadesEngenheiro(),
+                Biomancer => BancoHabilidades.ObterHabilidadesBiomancer(),
+                _ => new List<Habilidade>()
+            };
+
+            var alternativas = todasDoHeroi
+                .Where(h => h.Categoria == habAtual.Categoria && h.Nome != habAtual.Nome)
+                .ToList();
+
+            if (alternativas.Count == 0)
+            {
+                _mensagemStatus = $"[!] Nenhuma carta alternativa da categoria {habAtual.Categoria} disponível no momento.";
+                return;
+            }
+
+            var novaHab = alternativas[0];
+            bool sucesso = heroi.SubstituirHabilidade(habAtual, novaHab);
+            if (sucesso)
+            {
+                if (heroi.Habilidades.Contains(habAtual))
+                {
+                    heroi.Habilidades.Remove(habAtual);
+                }
+                heroi.HabilidadesDisponiveis.Clear();
+                heroi.AdicionarHabilidadesDisponiveis(heroi.Habilidades);
+                _mensagemStatus = $"[✓] '{habAtual.Nome}' foi substituída por '{novaHab.Nome}' com sucesso!";
+            }
+            else
+            {
+                _mensagemStatus = "[!] Falha ao substituir a habilidade selecionada.";
             }
         }
 
@@ -156,7 +205,7 @@ namespace ProjetoFinalPOO.Model.Telas
         private void DesenharRodape()
         {
             Console.ForegroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine("  [◄/► ou A/D] Trocar Personagem | [▲/▼ ou W/S] Selecionar Carta | [1-6] Seleção Direta | [ENTER/ESC] Voltar");
+            Console.WriteLine("  [◄/► ou A/D] Personagem | [▲/▼ ou W/S] Selecionar | [ENTER/T] Substituir Carta | [ESC] Voltar");
             Console.ResetColor();
         }
 

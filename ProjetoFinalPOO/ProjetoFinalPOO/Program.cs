@@ -13,6 +13,9 @@ namespace ProjetoFinalPOO
                 // Configura o console com resolução ampla (110 colunas x 32 linhas), UTF-8 e cursor oculto
                 ConfiguradorTela.ConfigurarTelaCheia();
 
+                // Carrega todos os dados e configurações a partir dos arquivos JSON externos
+                CarregadorDadosJogo.CarregarTodosDados();
+
                 // Inicializa o orquestrador do jogo
                 ControladorJogo jogo = new ControladorJogo();
                 jogo.Iniciar();

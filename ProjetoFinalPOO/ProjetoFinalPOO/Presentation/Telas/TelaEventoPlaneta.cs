@@ -279,7 +279,26 @@ namespace ProjetoFinalPOO.Model.Telas
 
                 if (vitoria)
                 {
-                    CreditosGanhos += (_tipoEncontro == TipoEncontro.Chefe ? 300 : 70);
+                    int expGanho = 30 + _numeroGalaxia * 15;
+                    CreditosGanhos += (_tipoEncontro == TipoEncontro.Chefe ? 400 : 60 + _numeroGalaxia * 20);
+
+                    // Concede EXP aos heróis sobreviventes e sobe de nível se acumulado (Cap level 10 - README 9)
+                    foreach (var aliado in _tripulacao.Where(c => !c.EstaMorto))
+                    {
+                        aliado._exp += expGanho;
+                        while (aliado._exp >= 100 && aliado._level < 10)
+                        {
+                            aliado._level++;
+                            aliado._exp -= 100;
+                            aliado._vidaTotal += 12;
+                            aliado._vidaAtual = Math.Min(aliado.VidaTotal, aliado.VidaAtual + 20);
+                            aliado._defesa += 1;
+                            if (aliado._level % 3 == 0)
+                            {
+                                aliado._agilidade += 1;
+                            }
+                        }
+                    }
 
                     // Recompensa de escolha de 1 item pós-combate (README 22)
                     var telaItem = new TelaEscolhaItem(BancoItens.GerarEscolhaTresItens(), _inventarioEquipe);
@@ -362,39 +381,52 @@ namespace ProjetoFinalPOO.Model.Telas
         private List<Combatente> GerarEsquadraoInimigo()
         {
             var inimigos = new List<Combatente>();
+            int fatorNivel = Math.Max(1, _numeroGalaxia);
 
-            if (_tipoEncontro == TipoEncontro.Chefe)
+            if (_tipoEncontro == TipoEncontro.Chefe || _numeroGalaxia == 6)
             {
                 // Esquadrão Chefe: Capitânia Sindical Titânica e Escolta Pesada
-                var chefe = new InimigoTeste("Capitânia Dreadnought");
-                chefe.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("chefe"));
-                chefe.AdcionarHabilidadesDisponiveis(chefe.Habilidades);
+                int vidaChefe = 260 + (fatorNivel * 15);
+                int defChefe = 14 + fatorNivel;
+                var chefe = new Inimigo("Capitânia Dreadnought", vidaChefe, defChefe, 11, AfinidadeDefesa.Armadurado);
+                chefe._level = fatorNivel;
+                chefe.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("chefe", fatorNivel));
+                chefe.AdicionarHabilidadesDisponiveis(chefe.Habilidades);
 
-                var escolta1 = new InimigoTeste("Drone Balístico Pesado");
-                escolta1.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone"));
-                escolta1.AdcionarHabilidadesDisponiveis(escolta1.Habilidades);
+                var escolta1 = new Inimigo("Drone Balístico Pesado", 80 + (fatorNivel * 8), 10 + fatorNivel, 14, AfinidadeDefesa.Mecanico);
+                escolta1._level = fatorNivel;
+                escolta1.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone", fatorNivel));
+                escolta1.AdicionarHabilidadesDisponiveis(escolta1.Habilidades);
 
-                var escolta2 = new InimigoTeste("Algoz Cibernético");
-                escolta2.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata"));
-                escolta2.AdcionarHabilidadesDisponiveis(escolta2.Habilidades);
+                var escolta2 = new Inimigo("Algoz Cibernético", 90 + (fatorNivel * 8), 8 + fatorNivel, 22, AfinidadeDefesa.Biologico);
+                escolta2._level = fatorNivel;
+                escolta2.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata", fatorNivel));
+                escolta2.AdicionarHabilidadesDisponiveis(escolta2.Habilidades);
 
                 inimigos.Add(chefe);
                 inimigos.Add(escolta1);
                 inimigos.Add(escolta2);
             }
-            else if (_tipoEncontro == TipoEncontro.CombateElite)
+            else if (_tipoEncontro == TipoEncontro.CombateElite || _numeroGalaxia >= 4)
             {
-                var elite1 = new InimigoTeste("Corsário Blindado");
-                elite1.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata"));
-                elite1.AdcionarHabilidadesDisponiveis(elite1.Habilidades);
+                // Inimigos de Elite / Setor Avançado
+                int vidaBase = 80 + (fatorNivel * 12);
+                int defBase = 8 + fatorNivel;
 
-                var elite2 = new InimigoTeste("Autômato de Guerra");
-                elite2.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone"));
-                elite2.AdcionarHabilidadesDisponiveis(elite2.Habilidades);
+                var elite1 = new Inimigo("Corsário Blindado", vidaBase + 20, defBase + 2, 10, AfinidadeDefesa.Armadurado);
+                elite1._level = fatorNivel;
+                elite1.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata", fatorNivel));
+                elite1.AdicionarHabilidadesDisponiveis(elite1.Habilidades);
 
-                var elite3 = new InimigoTeste("Franco-Atirador Sindical");
-                elite3.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata"));
-                elite3.AdcionarHabilidadesDisponiveis(elite3.Habilidades);
+                var elite2 = new Inimigo("Autômato de Guerra", vidaBase + 10, defBase + 3, 12, AfinidadeDefesa.Mecanico);
+                elite2._level = fatorNivel;
+                elite2.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone", fatorNivel));
+                elite2.AdicionarHabilidadesDisponiveis(elite2.Habilidades);
+
+                var elite3 = new Inimigo("Franco-Atirador Sindical", vidaBase - 10, defBase - 1, 23, AfinidadeDefesa.Biologico);
+                elite3._level = fatorNivel;
+                elite3.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata", fatorNivel));
+                elite3.AdicionarHabilidadesDisponiveis(elite3.Habilidades);
 
                 inimigos.Add(elite1);
                 inimigos.Add(elite2);
@@ -402,23 +434,29 @@ namespace ProjetoFinalPOO.Model.Telas
             }
             else
             {
-                // Combate comum: 2 ou 3 drones e patrulhas balanceados
-                var d1 = new InimigoTeste("Drone de Patrulha Alpha");
-                d1.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone"));
-                d1.AdcionarHabilidadesDisponiveis(d1.Habilidades);
+                // Combate comum: Escala progressiva de Vida, Defesa e Habilidades com a galáxia
+                int vidaComum = 50 + (fatorNivel * 10);
+                int defComum = 6 + fatorNivel;
 
-                var d2 = new InimigoTeste("Sentinela de Choque");
-                d2.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone"));
-                d2.AdcionarHabilidadesDisponiveis(d2.Habilidades);
+                var d1 = new Inimigo("Drone de Patrulha Alpha", vidaComum, defComum, 16, AfinidadeDefesa.Mecanico);
+                d1._level = fatorNivel;
+                d1.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone", fatorNivel));
+                d1.AdicionarHabilidadesDisponiveis(d1.Habilidades);
+
+                var d2 = new Inimigo("Sentinela de Choque", vidaComum + 15, defComum + 2, 7, AfinidadeDefesa.Armadurado);
+                d2._level = fatorNivel;
+                d2.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("drone", fatorNivel));
+                d2.AdicionarHabilidadesDisponiveis(d2.Habilidades);
 
                 inimigos.Add(d1);
                 inimigos.Add(d2);
 
-                if (_numeroGalaxia >= 3)
+                if (_numeroGalaxia >= 2)
                 {
-                    var d3 = new InimigoTeste("Corsário de Reconhecimento");
-                    d3.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata"));
-                    d3.AdcionarHabilidadesDisponiveis(d3.Habilidades);
+                    var d3 = new Inimigo("Corsário de Reconhecimento", vidaComum + 5, defComum, 18, AfinidadeDefesa.Biologico);
+                    d3._level = fatorNivel;
+                    d3.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo("pirata", fatorNivel));
+                    d3.AdicionarHabilidadesDisponiveis(d3.Habilidades);
                     inimigos.Add(d3);
                 }
             }

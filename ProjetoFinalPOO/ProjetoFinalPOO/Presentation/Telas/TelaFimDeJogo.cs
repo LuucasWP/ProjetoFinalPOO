@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using ProjetoFinalPOO.Combatentes;
 using ProjetoFinalPOO.Enums;
+using ProjetoFinalPOO.Música;
 
 namespace ProjetoFinalPOO.Model.Telas
 {
@@ -40,6 +41,10 @@ namespace ProjetoFinalPOO.Model.Telas
 
         public void Executar()
         {
+            if (_vitoria)
+            {
+                try { BibliotecaDeMusicas.TemaEspacialOriginal()?.Tocar(); } catch { }
+            }
             Renderizar();
             Console.ReadKey(true);
         }

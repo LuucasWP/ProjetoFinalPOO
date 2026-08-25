@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using ProjetoFinalPOO.Combatentes;
 using ProjetoFinalPOO.Enums;
+using ProjetoFinalPOO.Música;
 
 namespace ProjetoFinalPOO.Model.Telas
 {
@@ -74,11 +75,11 @@ namespace ProjetoFinalPOO.Model.Telas
                 {
                     if (slot.Combatente.Habilidades.Count == 0)
                     {
-                        slot.Combatente.AdcionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo(slot.Combatente.Nome));
+                        slot.Combatente.AdicionarHabilidade(BancoHabilidades.ObterHabilidadesInimigo(slot.Combatente.Nome));
                     }
                     if (slot.Combatente.HabilidadesDisponiveis.Count == 0)
                     {
-                        slot.Combatente.AdcionarHabilidadesDisponiveis(slot.Combatente.Habilidades);
+                        slot.Combatente.AdicionarHabilidadesDisponiveis(slot.Combatente.Habilidades);
                     }
                 }
             }
@@ -99,17 +100,16 @@ namespace ProjetoFinalPOO.Model.Telas
         {
             while (true)
             {
-                // Início de nova rodada
+                // Início de nova rodada no ControladorCombate
                 PrepararNovaRodada();
 
-                // Execução dos turnos em ordem de iniciativa
-                for (int i = 0; i < _ordemIniciativa.Count; i++)
+                // Execução dos turnos em ordem de iniciativa consumindo o ControladorCombate
+                while (_controladorCombate.VerificarFimDeRodada())
                 {
-                    var ativo = _ordemIniciativa[i];
-                    if (ativo.EstaMorto) continue;
+                    var (ativo, ehAliado) = _controladorCombate.AcaoProximoCombatente();
+                    if (ativo == null || ativo.EstaMorto) continue;
 
                     _combatenteAtivo = ativo;
-                    bool ehAliado = _slotsAliados.Any(s => s.Combatente == ativo);
 
                     if (ehAliado)
                     {
@@ -120,7 +120,7 @@ namespace ProjetoFinalPOO.Model.Telas
                         ExecutarTurnoInimigo(ativo);
                     }
 
-                    // Checa condições de fim de combate
+                    // Checa condições de fim de combate consumindo o ControladorCombate
                     if (VerificarFimDeCombate(out bool vitoriaAliada))
                     {
                         ExibirFimDeCombate(vitoriaAliada);
@@ -142,28 +142,20 @@ namespace ProjetoFinalPOO.Model.Telas
 
             // Inicia rodada no ControladorCombate (calcula ordem, habilidades disponíveis e intenções de ataque dos inimigos)
             _controladorCombate.IniciarRodada();
+            _ordemIniciativa = _controladorCombate.Ordem.ToList();
 
-            _ordemIniciativa = _slotsAliados.Concat(_slotsInimigos)
-                .Where(s => s.Combatente != null && !s.Combatente.EstaMorto)
-                .Select(s => s.Combatente)
-                .OrderByDescending(c => c.Agilidade)
-                .ToList();
-
-            // Atualiza intenções visuais nos slots inimigos
-            var aliadosVivos = _slotsAliados.Where(s => s.Combatente != null && !s.Combatente.EstaMorto).ToList();
-            if (aliadosVivos.Count > 0)
+            // Atualiza intenções visuais nos slots inimigos utilizando o ControladorCombate
+            foreach (var slotInimigo in _slotsInimigos.Where(s => s.Combatente != null && !s.Combatente.EstaMorto))
             {
-                foreach (var slotInimigo in _slotsInimigos.Where(s => s.Combatente != null && !s.Combatente.EstaMorto))
+                if (_controladorCombate.IntencaoAtaqueInimigos.TryGetValue(slotInimigo.Combatente, out var habIntencao))
                 {
-                    if (_controladorCombate.IntencaoAtaqueInimigos.TryGetValue(slotInimigo.Combatente, out var habIntencao))
-                    {
-                        slotInimigo.HabilidadePlanejada = habIntencao;
-                        slotInimigo.AlvoPlanejadoSlot = Array.IndexOf(_slotsAliados, aliadosVivos[_rng.Next(aliadosVivos.Count)]);
-                    }
+                    slotInimigo.HabilidadePlanejada = habIntencao;
+                    Combatente alvoEscolhido = _controladorCombate.DecidirAlvoAtaqueSemOposicao();
+                    slotInimigo.AlvoPlanejadoSlot = Array.FindIndex(_slotsAliados, s => s.Combatente == alvoEscolhido);
                 }
             }
 
-            _logBatalha.Add($"--- [ INÍCIO DA RODADA {_rodadaAtual} ] ---");
+            _logBatalha.Add($"--- [ INÍCIO DA RODADA {_controladorCombate.Rodada} ] ---");
         }
 
         private void ExecutarTurnoAliado(Combatente aliado)
@@ -172,7 +164,7 @@ namespace ProjetoFinalPOO.Model.Telas
             if (slotAliado == null || slotAliado.JaAtacouNestaRodada) return;
 
             bool turnoConcluido = false;
-            int opcaoMenu = 0; // 0: Atacar, 1: Usar Item, 2: Defender
+            OpcaoMenuCombate opcaoMenu = OpcaoMenuCombate.Atacar;
 
             while (!turnoConcluido)
             {
@@ -187,42 +179,46 @@ namespace ProjetoFinalPOO.Model.Telas
                     case ConsoleKey.W:
                     case ConsoleKey.LeftArrow:
                     case ConsoleKey.A:
-                        opcaoMenu = (opcaoMenu - 1 + 3) % 3;
+                        opcaoMenu = (opcaoMenu == OpcaoMenuCombate.Atacar) ? OpcaoMenuCombate.Defender : (opcaoMenu - 1);
                         break;
 
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
-                        opcaoMenu = (opcaoMenu + 1) % 3;
+                        opcaoMenu = (opcaoMenu == OpcaoMenuCombate.Defender) ? OpcaoMenuCombate.Atacar : (opcaoMenu + 1);
                         break;
 
                     case ConsoleKey.D1:
-                        opcaoMenu = 0;
+                        opcaoMenu = OpcaoMenuCombate.Atacar;
                         turnoConcluido = ProcessarAtaqueAliado(aliado, slotAliado);
                         break;
 
                     case ConsoleKey.D2:
-                        opcaoMenu = 1;
+                        opcaoMenu = OpcaoMenuCombate.UsarItem;
                         turnoConcluido = ProcessarUsoItemAliado(aliado);
                         break;
 
                     case ConsoleKey.D3:
-                        opcaoMenu = 2;
+                        opcaoMenu = OpcaoMenuCombate.Defender;
                         ProcessarDefesaAliado(aliado, slotAliado);
                         turnoConcluido = true;
                         break;
 
                     case ConsoleKey.Enter:
                     case ConsoleKey.Spacebar:
-                        if (opcaoMenu == 0)
-                            turnoConcluido = ProcessarAtaqueAliado(aliado, slotAliado);
-                        else if (opcaoMenu == 1)
-                            turnoConcluido = ProcessarUsoItemAliado(aliado);
-                        else if (opcaoMenu == 2)
+                        switch (opcaoMenu)
                         {
-                            ProcessarDefesaAliado(aliado, slotAliado);
-                            turnoConcluido = true;
+                            case OpcaoMenuCombate.Atacar:
+                                turnoConcluido = ProcessarAtaqueAliado(aliado, slotAliado);
+                                break;
+                            case OpcaoMenuCombate.UsarItem:
+                                turnoConcluido = ProcessarUsoItemAliado(aliado);
+                                break;
+                            case OpcaoMenuCombate.Defender:
+                                ProcessarDefesaAliado(aliado, slotAliado);
+                                turnoConcluido = true;
+                                break;
                         }
                         break;
                 }
@@ -233,14 +229,22 @@ namespace ProjetoFinalPOO.Model.Telas
 
         private bool ProcessarAtaqueAliado(Combatente aliado, Slot slotAliado)
         {
-            var cartasDisponiveis = aliado.HabilidadesDisponiveis.Count > 0 ? aliado.HabilidadesDisponiveis : aliado.Habilidades;
-            if (cartasDisponiveis == null || cartasDisponiveis.Count == 0)
+            var cartasTotais = aliado.Habilidades;
+            if (cartasTotais == null || cartasTotais.Count == 0)
+            {
+                _logBatalha.Add($"[!] {aliado.Nome} não possui habilidades equipadas!");
+                return false;
+            }
+
+            // Verifica se há ao menos uma habilidade disponível com moedas ativas
+            if (aliado.HabilidadesDisponiveis.Count == 0 || !aliado.HabilidadesDisponiveis.Any(h => h.Moeda > 0))
             {
                 _logBatalha.Add($"[!] {aliado.Nome} não possui habilidades disponíveis para atacar!");
                 return false;
             }
 
-            int cartaIdx = 0;
+            int primeiroDisp = cartasTotais.FindIndex(h => aliado.HabilidadesDisponiveis.Exists(hd => hd.Id == h.Id && hd.Moeda > 0));
+            int cartaIdx = primeiroDisp >= 0 ? primeiroDisp : 0;
             bool escolhendoCarta = true;
 
             // 1. Escolha da Habilidade
@@ -257,14 +261,14 @@ namespace ProjetoFinalPOO.Model.Telas
                     case ConsoleKey.A:
                     case ConsoleKey.UpArrow:
                     case ConsoleKey.W:
-                        cartaIdx = (cartaIdx - 1 + cartasDisponiveis.Count) % cartasDisponiveis.Count;
+                        cartaIdx = (cartaIdx - 1 + cartasTotais.Count) % cartasTotais.Count;
                         break;
 
                     case ConsoleKey.RightArrow:
                     case ConsoleKey.D:
                     case ConsoleKey.DownArrow:
                     case ConsoleKey.S:
-                        cartaIdx = (cartaIdx + 1) % cartasDisponiveis.Count;
+                        cartaIdx = (cartaIdx + 1) % cartasTotais.Count;
                         break;
 
                     case ConsoleKey.D1:
@@ -274,16 +278,34 @@ namespace ProjetoFinalPOO.Model.Telas
                     case ConsoleKey.D5:
                     case ConsoleKey.D6:
                         int numIdx = tecla.Key - ConsoleKey.D1;
-                        if (numIdx >= 0 && numIdx < cartasDisponiveis.Count)
+                        if (numIdx >= 0 && numIdx < cartasTotais.Count)
                         {
                             cartaIdx = numIdx;
-                            escolhendoCarta = false;
+                            var habSel = cartasTotais[cartaIdx];
+                            bool disp = aliado.HabilidadesDisponiveis.Exists(hd => hd.Id == habSel.Id && hd.Moeda > 0);
+                            if (disp)
+                            {
+                                escolhendoCarta = false;
+                            }
+                            else
+                            {
+                                _logBatalha.Add($"[!] A habilidade '{habSel.Nome}' já foi gasta! Escolha outra.");
+                            }
                         }
                         break;
 
                     case ConsoleKey.Enter:
                     case ConsoleKey.Spacebar:
-                        escolhendoCarta = false;
+                        var habAtual = cartasTotais[cartaIdx];
+                        bool habDisp = aliado.HabilidadesDisponiveis.Exists(hd => hd.Id == habAtual.Id && hd.Moeda > 0);
+                        if (habDisp)
+                        {
+                            escolhendoCarta = false;
+                        }
+                        else
+                        {
+                            _logBatalha.Add($"[!] A habilidade '{habAtual.Nome}' já foi gasta! Escolha outra.");
+                        }
                         break;
 
                     case ConsoleKey.Escape:
@@ -291,7 +313,13 @@ namespace ProjetoFinalPOO.Model.Telas
                 }
             }
 
-            var habilidadeEscolhida = cartasDisponiveis[cartaIdx];
+            var cartaEscolhida = cartasTotais[cartaIdx];
+            var habilidadeEscolhida = aliado.HabilidadesDisponiveis.FirstOrDefault(hd => hd.Id == cartaEscolhida.Id && hd.Moeda > 0);
+            if (habilidadeEscolhida == null)
+            {
+                _logBatalha.Add($"[!] A habilidade '{cartaEscolhida.Nome}' não está disponível!");
+                return false;
+            }
 
             // 2. Escolha do Alvo Inimigo
             var inimigosVivos = _slotsInimigos.Where(s => s.Combatente != null && !s.Combatente.EstaMorto).ToList();
@@ -428,6 +456,9 @@ namespace ProjetoFinalPOO.Model.Telas
 
             ExecutarResolucaoAcao(slotInimigo, slotAlvo, atacanteEhAliado: false);
             slotInimigo.JaAtacouNestaRodada = true;
+            slotInimigo.HabilidadePlanejada = null;
+            slotInimigo.AlvoPlanejadoSlot = -1;
+            _controladorCombate.IntencaoAtaqueInimigos.Remove(inimigo);
         }
 
         private void ExecutarResolucaoAcao(Slot slotAtacante, Slot slotDefensor, bool atacanteEhAliado)
@@ -446,16 +477,26 @@ namespace ProjetoFinalPOO.Model.Telas
                 // =========================================================================
                 // ATAQUE UNILATERAL (SEM OPOSIÇÃO)
                 // =========================================================================
-                int danoAplicado = _controladorCombate.Atacar(defensor, atacante, habAtacante);
+                int danoAplicado;
+                if (!atacanteEhAliado && _controladorCombate.IntencaoAtaqueInimigos.ContainsKey(atacante))
+                {
+                    danoAplicado = _controladorCombate.InimigoAtacaSemOposicao(atacante);
+                }
+                else
+                {
+                    danoAplicado = _controladorCombate.Atacar(defensor, atacante, habAtacante);
+                }
+
+                var moedasAtacante = RolarMoedasDetalhado(atacante, habAtacante, out int poderAtacante);
 
                 var resultado = new ResultadoEmbate(
                     atacante: atacante,
                     defensor: defensor,
                     habilidadeAtacante: habAtacante,
                     habilidadeDefensor: null,
-                    moedasAtacante: new List<bool>(),
+                    moedasAtacante: moedasAtacante,
                     moedasDefensor: new List<bool>(),
-                    poderFinalAtacante: atacante.CalcularPoderBase(habAtacante),
+                    poderFinalAtacante: poderAtacante,
                     poderFinalDefensor: 0,
                     vitoriaAtacante: true,
                     ehAtaqueUnilateral: true,
@@ -476,6 +517,9 @@ namespace ProjetoFinalPOO.Model.Telas
                     if (defensor.EstaMorto)
                     {
                         InimigosDerrotados++;
+                        slotDefensor.HabilidadePlanejada = null;
+                        slotDefensor.AlvoPlanejadoSlot = -1;
+                        _controladorCombate.IntencaoAtaqueInimigos.Remove(defensor);
                         _logBatalha.Add($"[ALVO ABATIDO] {defensor.Nome} foi neutralizado!");
                     }
                 }
@@ -501,18 +545,22 @@ namespace ProjetoFinalPOO.Model.Telas
                 bool atacanteVenceu = (vencedor == atacante);
                 var perdedor = atacanteVenceu ? defensor : atacante;
                 var habVencedor = atacanteVenceu ? habAtacante : habDefensor;
+                var habPerdedor = atacanteVenceu ? habDefensor : habAtacante;
 
                 int danoAplicado = _controladorCombate.Atacar(perdedor, vencedor, habVencedor);
+
+                var moedasVencedor = RolarMoedasDetalhado(vencedor, habVencedor, out int poderVencedor);
+                var moedasPerdedor = RolarMoedasDetalhado(perdedor, habPerdedor, out int poderPerdedor);
 
                 var resultado = new ResultadoEmbate(
                     atacante: vencedor,
                     defensor: perdedor,
                     habilidadeAtacante: habVencedor,
-                    habilidadeDefensor: atacanteVenceu ? habDefensor : habAtacante,
-                    moedasAtacante: new List<bool>(),
-                    moedasDefensor: new List<bool>(),
-                    poderFinalAtacante: vencedor.CalcularPoderBase(habVencedor),
-                    poderFinalDefensor: perdedor.CalcularPoderBase(atacanteVenceu ? habDefensor : habAtacante),
+                    habilidadeDefensor: habPerdedor,
+                    moedasAtacante: moedasVencedor,
+                    moedasDefensor: moedasPerdedor,
+                    poderFinalAtacante: poderVencedor,
+                    poderFinalDefensor: poderPerdedor,
                     vitoriaAtacante: true,
                     ehAtaqueUnilateral: false,
                     multiplicadorAfinidade: 1.0,
@@ -525,10 +573,11 @@ namespace ProjetoFinalPOO.Model.Telas
 
                 _logBatalha.Add($"  -> {vencedor.Nome} venceu o embate e desferiu {danoAplicado} HP em {perdedor.Nome}!");
 
-                if (atacanteVenceu)
-                {
-                    slotDefensor.JaAtacouNestaRodada = true;
-                }
+                // O defensor gasta sua intenção de ataque no embate
+                slotDefensor.JaAtacouNestaRodada = true;
+                slotDefensor.HabilidadePlanejada = null;
+                slotDefensor.AlvoPlanejadoSlot = -1;
+                _controladorCombate.IntencaoAtaqueInimigos.Remove(defensor);
 
                 if (resultado.AtacanteEhAliado)
                 {
@@ -545,6 +594,38 @@ namespace ProjetoFinalPOO.Model.Telas
             Thread.Sleep(400);
         }
 
+        private List<bool> RolarMoedasDetalhado(Combatente c, Habilidade h, out int poderTotal)
+        {
+            var moedas = new List<bool>();
+            if (c == null || h == null)
+            {
+                poderTotal = 0;
+                return moedas;
+            }
+
+            Random rnd = new Random();
+            int threshold = c switch
+            {
+                Sentinela s => s.Adrenalina,
+                Engenheiro e => e.Sobreaquecimento,
+                Biomancer b => b.Mana,
+                _ => 50
+            };
+
+            poderTotal = h.PoderBase;
+            for (int i = 0; i < h.Moeda; i++)
+            {
+                bool cara = rnd.Next(threshold, 100) > 50;
+                moedas.Add(cara);
+                if (cara)
+                {
+                    poderTotal += h.PoderAdicionalMoeda;
+                }
+            }
+
+            return moedas;
+        }
+
         private void ExecutarAnimacaoEmbate(Combatente atacante, Combatente defensor, ResultadoEmbate resultado, bool atacanteEhAliado)
         {
             if (atacante != null && defensor != null && resultado != null)
@@ -558,18 +639,10 @@ namespace ProjetoFinalPOO.Model.Telas
 
         private bool VerificarFimDeCombate(out bool vitoriaAliada)
         {
-            bool todosInimigosMortos = _slotsInimigos.All(s => s.Combatente == null || s.Combatente.EstaMorto);
-            bool todosAliadosMortos = _slotsAliados.All(s => s.Combatente == null || s.Combatente.EstaMorto);
-
-            if (todosInimigosMortos)
+            bool fim = _controladorCombate.VerificarFimDeCombate();
+            if (fim)
             {
-                vitoriaAliada = true;
-                return true;
-            }
-
-            if (todosAliadosMortos)
-            {
-                vitoriaAliada = false;
+                vitoriaAliada = _controladorCombate.CombatentesInimigos.All(i => i == null || i.EstaMorto);
                 return true;
             }
 
@@ -589,6 +662,7 @@ namespace ProjetoFinalPOO.Model.Telas
             RenderizadorUI.DesenharInicioSecao("RELATÓRIO PÓS-BATALHA", 0, corTema);
             if (vitoria)
             {
+                try { BibliotecaDeMusicas.FanfarraDeConquista()?.Tocar(); } catch { }
                 int expGanha = _ehChefe ? 150 : 60;
                 RenderizadorUI.DesenharLinhaCentralizada("A tripulação neutralizou todas as ameaças com sucesso!", 0, ConsoleColor.Yellow, corTema);
                 RenderizadorUI.DesenharLinhaCentralizada($"Recompensas: +{expGanha} EXP para todos os tripulantes vivos | +80 Créditos Espaciais", 0, ConsoleColor.White, corTema);
@@ -646,23 +720,23 @@ namespace ProjetoFinalPOO.Model.Telas
             Console.WriteLine();
         }
 
-        private void DesenharCaixaEscolhaAcaoAliado(Combatente aliado, int opcaoSelecionada)
+        private void DesenharCaixaEscolhaAcaoAliado(Combatente aliado, OpcaoMenuCombate opcaoSelecionada)
         {
             RenderizadorUI.DesenharInicioSecao($"TURNO TÁTICO: {aliado.Nome.ToUpper()} ({aliado.GetType().Name})", 0, ConsoleColor.Green);
 
-            string[] opcoes = new[]
+            var opcoes = new (OpcaoMenuCombate Opcao, string Texto)[]
             {
-                "[1] Atacar com Habilidade",
-                "[2] Usar Item do Inventário",
-                "[3] Postura Defensiva (+5% HP e Blindagem)"
+                (OpcaoMenuCombate.Atacar, "[1] Atacar com Habilidade"),
+                (OpcaoMenuCombate.UsarItem, "[2] Usar Item do Inventário"),
+                (OpcaoMenuCombate.Defender, "[3] Postura Defensiva (+5% HP e Blindagem)")
             };
 
-            for (int i = 0; i < opcoes.Length; i++)
+            foreach (var (opcao, texto) in opcoes)
             {
-                bool sel = (i == opcaoSelecionada);
+                bool sel = (opcao == opcaoSelecionada);
                 string prefixo = sel ? "  ►► " : "     ";
                 ConsoleColor cor = sel ? ConsoleColor.Yellow : ConsoleColor.White;
-                RenderizadorUI.DesenharLinhaConteudo(prefixo + opcoes[i], 0, cor, ConsoleColor.Green);
+                RenderizadorUI.DesenharLinhaConteudo(prefixo + texto, 0, cor, ConsoleColor.Green);
             }
 
             RenderizadorUI.DesenharFimSecao(0, ConsoleColor.Green);
