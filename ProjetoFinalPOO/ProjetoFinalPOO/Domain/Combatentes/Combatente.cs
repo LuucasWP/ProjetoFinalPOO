@@ -56,7 +56,6 @@ namespace ProjetoFinalPOO.Combatentes
 
         public bool EstaMorto => VidaAtual <= 0;
         public bool EstaDefendendo => _estaDefendendo;
-        public bool estaDefendo => _estaDefendendo;
         protected Combatente()
         {
             _contadorID++;
@@ -98,13 +97,10 @@ namespace ProjetoFinalPOO.Combatentes
             }
         }
 
-        public void AdcionarHabilidade(List<Habilidade> habilidadesAdcionada) => AdicionarHabilidade(habilidadesAdcionada);
-
         public void AdicionarHabilidadesDisponiveis(List<Habilidade> habilidadesAdicionadas)
         {
             foreach (var habilidade in habilidadesAdicionadas)
             {
-                habilidade.ResetarMoeda();
                 int contadorHabilidade = 0;
 
                 contadorHabilidade = _habilidadesDisponiveis.FindAll(x => x.Categoria == habilidade.Categoria).Count();
@@ -113,23 +109,21 @@ namespace ProjetoFinalPOO.Combatentes
                 {
                     case CategoriaHabilidade.Basica:
                         if (contadorHabilidade < 3)
-                            _habilidadesDisponiveis.Add(habilidade.Clonar());
+                            _habilidadesDisponiveis.Add(habilidade);
                         break;
                     case CategoriaHabilidade.Avancada:
                         if (contadorHabilidade < 2)
-                            _habilidadesDisponiveis.Add(habilidade.Clonar());
+                            _habilidadesDisponiveis.Add(habilidade);
                         break;
                     case CategoriaHabilidade.Especialista:
                         if (contadorHabilidade < 1)
-                            _habilidadesDisponiveis.Add(habilidade.Clonar());
+                            _habilidadesDisponiveis.Add(habilidade);
                         break;
                     default:
                         break;
                 }
             }
         }
-
-        public void AdcionarHabilidadesDisponiveis(List<Habilidade> habilidadesAdcionada) => AdicionarHabilidadesDisponiveis(habilidadesAdcionada);
 
         public bool SubstituirHabilidade(Habilidade habilidadeSubstituida, Habilidade novaHabilidade)
         {
@@ -159,12 +153,7 @@ namespace ProjetoFinalPOO.Combatentes
 
         internal void RemoverMoeda(Habilidade habilidade)
         {
-            if (habilidade == null) return;
-            var h = _habilidadesDisponiveis.Find(x => x.Id == habilidade.Id);
-            if (h != null)
-                h.RemoverMoeda();
-            else
-                habilidade.RemoverMoeda();
+            _habilidadesDisponiveis.Find(h => h.Id == habilidade.Id).RemoverMoeda();
         }
 
         internal virtual void ReceberDano(int Dano)

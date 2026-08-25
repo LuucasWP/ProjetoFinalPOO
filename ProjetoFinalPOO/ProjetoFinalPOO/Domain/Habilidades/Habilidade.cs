@@ -13,7 +13,6 @@ namespace ProjetoFinalPOO
         private AfinidadeAtaque _afinidade { get; set; }
         private int _poderBase { get; set; }
         private int _moeda { get; set; }
-        private int _moedaMaxima { get; set; }
         private int _poderAdicionalMoeda { get; set; }
 
         public string Nome => _nome;
@@ -23,7 +22,6 @@ namespace ProjetoFinalPOO
         public AfinidadeAtaque Afinidade => _afinidade;
         public int PoderBase => _poderBase;
         public int Moeda => _moeda;
-        public int MoedaMaxima => _moedaMaxima;
         public int PoderAdicionalMoeda => _poderAdicionalMoeda;
 
         public Habilidade(string nome, string descricao, CategoriaHabilidade categoria, int modificador, AfinidadeAtaque afinidade, int poderBase, int moeda, int poderAdicionalMoeda)
@@ -37,7 +35,6 @@ namespace ProjetoFinalPOO
             _afinidade = afinidade;
             _poderBase = poderBase;
             _moeda = moeda;
-            _moedaMaxima = moeda;
             _poderAdicionalMoeda = poderAdicionalMoeda;
         }
 
@@ -45,18 +42,6 @@ namespace ProjetoFinalPOO
         {
             if (_moeda > 0)
                 _moeda--;
-        }
-
-        internal void ResetarMoeda()
-        {
-            _moeda = _moedaMaxima;
-        }
-
-        public Habilidade Clonar()
-        {
-            var clone = new Habilidade(_nome, _descricao, _categoria, _modificador, _afinidade, _poderBase, _moedaMaxima, _poderAdicionalMoeda);
-            clone.Id = this.Id;
-            return clone;
         }
     }
 }

@@ -14,12 +14,14 @@ namespace ProjetoFinalPOO
         private int _rodada { get; set; }
         private List<Combatente> _ordem { get; set; }
         private Dictionary<Combatente, Habilidade> _intencaoAtaqueInimigos { get; set; }
+        private Dictionary<Combatente, Combatente> _intencaoAlvoAtaqueInimigos { get; set; }
 
         public List<Combatente> CombatentesAliados => _combatentesAliados;
         public List<Combatente> CombatentesInimigos => _combatentesInimigos;
         public List<Combatente> Ordem => _ordem;
         public int Rodada => _rodada;
         public Dictionary<Combatente, Habilidade> IntencaoAtaqueInimigos => _intencaoAtaqueInimigos;
+        public Dictionary<Combatente, Combatente> IntencaoAlvoAtaqueInimigos => _intencaoAlvoAtaqueInimigos;
 
         private ControladorCombate()
         {
@@ -32,6 +34,7 @@ namespace ProjetoFinalPOO
             };
             _ordem = new List<Combatente>();
             _intencaoAtaqueInimigos = new Dictionary<Combatente, Habilidade>();
+            _intencaoAlvoAtaqueInimigos = new Dictionary<Combatente, Combatente>();
         }
 
         public static ControladorCombate Instancia()
@@ -65,14 +68,11 @@ namespace ProjetoFinalPOO
         public void IniciarRodada()
         {
             _rodada++;
-            _ordem.Clear();
             OrdenarOrdemCombatentes();
             AdicionarHabilidadesDisponiveis();
-            _intencaoAtaqueInimigos.Clear();
             CriarIntencaoAtaqueInimigos();
             ResetarDefesa();
         }
-
 
         private void OrdenarOrdemCombatentes()
         {
@@ -95,11 +95,12 @@ namespace ProjetoFinalPOO
 
         private void CriarIntencaoAtaqueInimigos()
         {
-            foreach (Combatente inimigo in _combatentesInimigos)
+            foreach (Combatente inimigo in _combatentesInimigos.Where(i => !i.EstaMorto))
             {
                 Random rnd = new Random();
                 int indexHabilidade = rnd.Next(inimigo._habilidadesDisponiveis.Count);
                 _intencaoAtaqueInimigos.Add(inimigo, inimigo.HabilidadesDisponiveis[indexHabilidade]);
+                _intencaoAlvoAtaqueInimigos.Add(inimigo, DecidirAlvoAtaqueInimigo());
             }
         }
 
@@ -111,28 +112,21 @@ namespace ProjetoFinalPOO
 
         private void RemoverIntencaoAtaqueInimigo(Combatente inimigo)
         {
-            if (!_intencaoAtaqueInimigos.ContainsKey(inimigo))
+            if (!IntencaoAtaqueInimigos.ContainsKey(inimigo))
+                return;
+            if (!IntencaoAlvoAtaqueInimigos.ContainsKey(inimigo))
                 return;
 
             _intencaoAtaqueInimigos.Remove(inimigo);
+            _intencaoAlvoAtaqueInimigos.Remove(inimigo);
+
             RemoverDaOrdem(inimigo);
         }
 
 
         public Combatente RealizarEmbate(Combatente alvo, Combatente aliadoAtacando, Habilidade habilidadeSelecionada)
         {
-            if (!IntencaoAtaqueInimigos.TryGetValue(alvo, out var habilidadeDoAlvo) || habilidadeDoAlvo == null)
-            {
-                habilidadeDoAlvo = alvo.HabilidadesDisponiveis.FirstOrDefault() ?? alvo.Habilidades.FirstOrDefault();
-            }
-
-            if (habilidadeDoAlvo == null || habilidadeSelecionada == null)
-            {
-                return aliadoAtacando;
-            }
-
-            int moedasAlvo = habilidadeDoAlvo.Moeda;
-            int moedasAtacante = habilidadeSelecionada.Moeda;
+            Habilidade habilidadeDoAlvo = IntencaoAtaqueInimigos[alvo];
 
             do
             {
@@ -144,24 +138,21 @@ namespace ProjetoFinalPOO
                 else if (PoderHabilidadeSelecionada > PoderHabilidadeAlvo)
                 {
                     alvo.RemoverMoeda(habilidadeDoAlvo);
-                    moedasAlvo--;
                 }
                 else
-                {
                     aliadoAtacando.RemoverMoeda(habilidadeSelecionada);
-                    moedasAtacante--;
-                }
             }
-            while (moedasAlvo > 0 && moedasAtacante > 0);
+            while (alvo.HabilidadesDisponiveis.Find(h => h.Id == habilidadeDoAlvo.Id).Moeda > 0 &&
+                    aliadoAtacando.HabilidadesDisponiveis.Find(h => h.Id == habilidadeSelecionada.Id).Moeda > 0);
 
-            if (moedasAlvo > 0 && moedasAtacante <= 0)
+            if (alvo.HabilidadesDisponiveis.Find(h => h.Id == habilidadeDoAlvo.Id).Moeda > 0 &&
+                    aliadoAtacando.HabilidadesDisponiveis.Find(h => h.Id == habilidadeSelecionada.Id).Moeda == 0)
             {
-                aliadoAtacando.HabilidadesDisponiveis.Remove(habilidadeSelecionada);
                 RemoverIntencaoAtaqueInimigo(alvo);
                 return alvo;
             }
 
-            alvo.HabilidadesDisponiveis.Remove(habilidadeDoAlvo);
+            aliadoAtacando.AlterarModificador(habilidadeSelecionada.Modificador);
             RemoverIntencaoAtaqueInimigo(alvo);
             return aliadoAtacando;
         }
@@ -179,8 +170,10 @@ namespace ProjetoFinalPOO
             bool estaDefendendo = alvo.EstaDefendendo;
 
             danoFinal = (int)(poderHabilidade * multiplicadorAfinidade) - (estaDefendendo ? 2 * defesaAlvo : defesaAlvo);
-            if (danoFinal <= 0) danoFinal = 1;
+            if (danoFinal <= 0)
+                danoFinal = 1;
             alvo.ReceberDano(danoFinal);
+
             RemoverHabilidadeUtilizada(habilidade, atacador);
             atacador.AlterarModificador(habilidade.Modificador);
 
@@ -195,17 +188,18 @@ namespace ProjetoFinalPOO
 
         public int InimigoAtacaSemOposicao(Combatente atacador)
         {
-
             Habilidade habilidadeAtacador = IntencaoAtaqueInimigos[atacador];
-            Combatente alvo = DecidirAlvoAtaqueSemOposicao();
+            Combatente alvo = IntencaoAlvoAtaqueInimigos[atacador];
+            RemoverIntencaoAtaqueInimigo(atacador);
 
             return Atacar(alvo, atacador, habilidadeAtacador);
         }
 
-        public Combatente DecidirAlvoAtaqueSemOposicao()
+        private Combatente DecidirAlvoAtaqueInimigo()
         {
             Random rnd = new Random();
-            int aleatorio = rnd.Next(CombatentesAliados.Count);
+            int aliadosVivos = CombatentesAliados.FindAll(c => !c.EstaMorto).Count;
+            int aleatorio = rnd.Next(aliadosVivos);
 
             return CombatentesAliados[aleatorio];
         }

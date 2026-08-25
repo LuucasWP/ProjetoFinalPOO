@@ -147,10 +147,10 @@ namespace ProjetoFinalPOO.Model.Telas
             // Atualiza intenções visuais nos slots inimigos utilizando o ControladorCombate
             foreach (var slotInimigo in _slotsInimigos.Where(s => s.Combatente != null && !s.Combatente.EstaMorto))
             {
-                if (_controladorCombate.IntencaoAtaqueInimigos.TryGetValue(slotInimigo.Combatente, out var habIntencao))
+                if (_controladorCombate.IntencaoAtaqueInimigos.TryGetValue(slotInimigo.Combatente, out var habIntencao) &&
+                    _controladorCombate.IntencaoAlvoAtaqueInimigos.TryGetValue(slotInimigo.Combatente, out var alvoEscolhido))
                 {
                     slotInimigo.HabilidadePlanejada = habIntencao;
-                    Combatente alvoEscolhido = _controladorCombate.DecidirAlvoAtaqueSemOposicao();
                     slotInimigo.AlvoPlanejadoSlot = Array.FindIndex(_slotsAliados, s => s.Combatente == alvoEscolhido);
                 }
             }

@@ -71,7 +71,7 @@ namespace ProjetoFinalPOO.Combatentes
         internal override void Defender()
         {
             base.Defender();
-            Adrenalina += Math.Max(2, (int)(Adrenalina * 0.10) + 2);
+            Adrenalina += (int)(Adrenalina * 0.10);
         }
     }
 }
